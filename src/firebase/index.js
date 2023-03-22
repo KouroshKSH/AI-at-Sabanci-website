@@ -12,7 +12,8 @@ const firebaseConfig = {
   projectId: "ai-club-website",
   storageBucket: "ai-club-website.appspot.com",
   messagingSenderId: "295864976747",
-  appId: "1:295864976747:web:55715fffd4759e5ce6782e"
+  appId: "1:295864976747:web:55715fffd4759e5ce6782e",
+  storageBucket: ''
 };
 
 // Initialize Firebase

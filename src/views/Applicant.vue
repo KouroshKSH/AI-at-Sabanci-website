@@ -31,15 +31,4 @@ mounted() {
   this.index = this.$route.params.id;
 }
 }
-/*
-fullName: "",
-    email: "",
-    program: "",
-    year: "",
-    GPA: "",
-    aiInterest: "",
-    clubKnowledge: "",
-    clubInterest: "",
-    LinkedIn: "",
-    GitHub: "",*/
 </script>

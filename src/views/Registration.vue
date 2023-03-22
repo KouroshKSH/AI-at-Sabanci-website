@@ -1,43 +1,35 @@
 <template>
-    <div>
-        <!--<div style="float: left; text-align: left; margin-left: 5%; font-size: 1.5vh; margin-top: 5%">
-            <label style="margin-top: 3%" for="email">Sabanci email </label><span style="color: red">*</span><span>:</span>
-            <input type="text" id="email" v-model="email" /><br>
-            <h3 v-if="showEmailAlert" style="margin-top: 1%; color: red; font-size: 15px">Please enter your email address.</h3>
-            <h3 v-if="showSabanciEmailAlert" style="margin-top: 1%; color: red; font-size: 15px">Please make sure you entered your Sabanci email address.</h3>
-            <h3 v-if="showMemberEmailAlert" style="margin-top: 1%; color: red; font-size: 15px">This email does not belong to an approved club member.</h3>       
-            <h3 v-if="showMemberIsRegisteredAlert" style="margin-top: 1%; color: red; font-size: 15px">There is already a password associated to this email address, please consider using the normal login instead.</h3>            
-            <label style="margin-top: 3%" for="password">Password </label><span style="color: red">*</span><span>:</span>
-            <input type="text" id="password" v-model="password" /><br>
-            <h3 v-if="showPasswordDescription" style="margin-top: 1%; color: gray; font-size: 15px">A password must be at least 8 characters long and contain both lower and uppercase letters, digits</h3>            
-            <h3 v-if="showPasswordAlert" style="margin-top: 1%; color: red; font-size: 15px">Please enter a password.</h3>
-            <h3 v-if="showPasswordLengthAlert" style="margin-top: 1%; color: red; font-size: 15px">Please make sure your password is at least 8 characters long.</h3>
-            <h3 v-if="showPasswordNoUpperAlert" style="margin-top: 1%; color: red; font-size: 15px">Please make sure the password has uppercase letters.</h3>
-            <h3 v-if="showPasswordNoLowerAlert" style="margin-top: 1%; color: red; font-size: 15px">Please make sure the password has lowercase letters.</h3>
-            <h3 v-if="showPasswordNoDigitsAlert" style="margin-top: 1%; color: red; font-size: 15px">Please make sure the password you entered has digits.</h3>
-            <h3 v-if="showPasswordNoSymbolsAlert" style="margin-top: 1%; color: red; font-size: 15px">Please make sure the password you entered has special symbols</h3>
-            <label style="margin-top: 3%" for="passwordRepeat">Confirm Password </label><span style="color: red">*</span><span>:</span>
-            <input type="password" id="passwordRepeat" v-model="passwordRepeat" /><br>
-            <h3 v-if="showPasswordRepeatAlert" style="margin-top: 1%; color: red; font-size: 15px">Please enter your password again.</h3>
-            <h3 v-if="showPasswordRepeatMatchAlert" style="margin-top: 1%; color: red; font-size: 15px">The password confirmation must match the password.</h3>
-            <b-button @click="sendForm()">Submit</b-button>
-        </div>-->
+  <div>
+    <div v-if="!darkMode">
         <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Michroma">
         <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Inter">
         <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Cinzel">
         <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
-        <b-container>
+        <b-container fluid align-y="center">
           <b-row style="padding-top:10%" align-h="center" class="sign-up-two">
               <p class="your-account">Your Account</p>
               <p class="is-it-your-first-time-here-you-can-crea">
                   Has you membership application been approved? Login from below to access your profile.
               </p>
               <input class="group-16" placeholder="Email" />
-              <input class="group-17" placeholder="Password" />
-              <input class="group-18" placeholder="Password again">
-              <div @click="sendForm()" class="submit-button">
-                  <p class="sign-up">Sign Up</p>
+              <h3 v-if="showEmailAlert" class="warning">Please enter your email address.</h3>
+              <h3 v-if="showSabanciEmailAlert" class="warning">Please make sure you entered your Sabanci email address.</h3>
+              <h3 v-if="showMemberEmailAlert" class="warning">This email does not belong to an approved club member.</h3>       
+              <h3 v-if="showMemberIsRegisteredAlert" class="warning">There is already a password associated to this email address, please consider using the normal login instead.</h3>
+              <input class="group-17" type="password" placeholder="Password" />
+              <h3 v-if="showPasswordDescription" class="warning" style="color: black">A password must be at least 8 characters long and contain both lower and uppercase letters and digits</h3>            
+              <h3 v-if="showPasswordAlert" class="warning">Please enter a password.</h3>
+              <h3 v-if="showPasswordLengthAlert" class="warning">Please make sure your password is at least 8 characters long.</h3>
+              <h3 v-if="showPasswordNoUpperAlert" class="warning">Please make sure the password has uppercase letters.</h3>
+              <h3 v-if="showPasswordNoLowerAlert" class="warning">Please make sure the password has lowercase letters.</h3>
+              <h3 v-if="showPasswordNoDigitsAlert" class="warning">Please make sure the password you entered has digits.</h3>
+              <h3 v-if="showPasswordNoSymbolsAlert" class="warning">Please make sure the password you entered has special symbols</h3>
+              <input class="group-17" type="password" placeholder="Password again">
+              <h3 v-if="showPasswordRepeatAlert" class="warning">Please enter your password again.</h3>
+              <h3 v-if="showPasswordRepeatMatchAlert" class="warning">The password confirmation must match the password.</h3>
+              <div style="margin-top: 5%; margin-bottom: 3%" @click="sendForm()" class="submit-button">
+                  <p class="click-here">Sign Up</p>
               </div>
               <router-link to="/login"><p class="already-have-an-account-you-can-log-in">Have you logged in before? Log in normally from here.</p></router-link>
               <div class="relative-wrapper-one">
@@ -45,6 +37,44 @@
             </b-row>
         </b-container>
     </div>
+    <div v-else style="height: 100vh; background-color: #242424;">
+        <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Michroma">
+        <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Inter">
+        <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Cinzel">
+        <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <b-container fluid align-y="center">
+          <b-row style="padding-top:10%" align-h="center" class="d-sign-up-two">
+              <p class="d-your-account">Your Account</p>
+              <p class="d-is-it-your-first-time-here-you-can-crea">
+                  Has you membership application been approved? Login from below to access your profile.
+              </p>
+              <input class="d-group-16" placeholder="Email" />
+              <h3 v-if="showEmailAlert" class="warning">Please enter your email address.</h3>
+              <h3 v-if="showSabanciEmailAlert" class="warning">Please make sure you entered your Sabanci email address.</h3>
+              <h3 v-if="showMemberEmailAlert" class="warning">This email does not belong to an approved club member.</h3>       
+              <h3 v-if="showMemberIsRegisteredAlert" class="warning">There is already a password associated to this email address, please consider using the normal login instead.</h3>
+              <input class="d-group-17" type="password" placeholder="Password" />
+              <h3 v-if="showPasswordDescription" class="warning" style="color: white">A password must be at least 8 characters long and contain both lower and uppercase letters and digits</h3>            
+              <h3 v-if="showPasswordAlert" class="warning">Please enter a password.</h3>
+              <h3 v-if="showPasswordLengthAlert" class="warning">Please make sure your password is at least 8 characters long.</h3>
+              <h3 v-if="showPasswordNoUpperAlert" class="warning">Please make sure the password has uppercase letters.</h3>
+              <h3 v-if="showPasswordNoLowerAlert" class="warning">Please make sure the password has lowercase letters.</h3>
+              <h3 v-if="showPasswordNoDigitsAlert" class="warning">Please make sure the password you entered has digits.</h3>
+              <h3 v-if="showPasswordNoSymbolsAlert" class="warning">Please make sure the password you entered has special symbols</h3>
+              <input class="d-group-17" type="password" placeholder="Password again">
+              <h3 v-if="showPasswordRepeatAlert" class="warning">Please enter your password again.</h3>
+              <h3 v-if="showPasswordRepeatMatchAlert" class="warning">The password confirmation must match the password.</h3>
+              <div style="margin-top: 5%; margin-bottom: 3%" @click="sendForm()" class="d-submit-button">
+                  <p class="d-click-here">Sign Up</p>
+              </div>
+              <router-link to="/login"><p class="d-already-have-an-account-you-can-log-in">Have you logged in before? Log in normally from here.</p></router-link>
+              <div class="relative-wrapper-one">
+              </div>
+            </b-row>
+        </b-container>
+    </div>
+  </div>
 </template>
 
 <script>
@@ -89,6 +119,11 @@ export default {
         CV: (optional)
         */
    },
+   computed: {
+      darkMode: function() {
+        return this.$store.state.darkMode;
+      }
+    },
    methods: {
     //handleFileUpload(){
     //  this.CV = this.$refs.file.files[0];
@@ -143,205 +178,869 @@ export default {
 </script>
 
 <style scoped>
-.sign-up-two {
-  background-color: white;
-  padding: 32px 0 0;
-  display: flex;
-  flex-direction: column;
-  align-items: flex-start;
+@media (min-aspect-ratio: 8/5){
+  .d-submit-button {
+    border-radius: 5px;
+    padding: 1% 0.5% 1% 0.5%;
+    box-shadow: 0 4px 4px 0 rgba(0, 0, 0, 0.25);
+    color: white;
+    align-items: center;
+    position: relative;
+    border: 2px solid rgba(255, 255, 255, 1);
+    width: 6%;
+    margin-left: 47%;
+    margin-right: 47%;
+  }
+  .d-submit-button:hover {
+    border-radius: 5px;
+    padding: 1% 0.5% 1% 0.5%;
+    box-shadow: 0 4px 4px 0 rgba(0, 0, 0, 0.25);
+    align-items: center;
+    position: relative;
+    border: 2px solid rgba(255, 255, 255, 1);
+    transition: background-color 0.5s, color 0.5s;
+    color: black;
+    background-color: white;
+    border: 2px solid black;
+    width: 6%;
+    margin-left: 47%;
+    margin-right: 47%;
+    
+  }
+  .d-click-here {
+    font-family: "Inter";
+    font-size: 1.5vh;
+    font-weight: 400;
+    line-height: normal;
+    text-align: center;
+    margin: auto;
+    text-shadow: 0 4px 4px rgba(0, 0, 0, 0.25);
+  }
 }
-.your-account {
-  font-family: "Cinzel";
-  font-size: 60px;
-  font-weight: 400;
-  line-height: normal;
-  color: gray;
-  text-align: center;
+@media (max-aspect-ratio: 8/5) and (min-aspect-ratio: 6/5){
+  .d-submit-button {
+    border-radius: 5px;
+    padding: 1% 0.5% 1% 0.5%;
+    box-shadow: 0 4px 4px 0 rgba(0, 0, 0, 0.25);
+    color: white;
+    align-items: center;
+    position: relative;
+    border: 2px solid rgba(255, 255, 255, 1);
+    width: 8%;
+    margin-left: 46%;
+    margin-right: 46%;
+  }
+  .d-submit-button:hover {
+    border-radius: 5px;
+    padding: 1% 0.5% 1% 0.5%;
+    box-shadow: 0 4px 4px 0 rgba(0, 0, 0, 0.25);
+    align-items: center;
+    position: relative;
+    border: 2px solid rgba(255, 255, 255, 1);
+    transition: background-color 0.5s, color 0.5s;
+    color: black;
+    background-color: white;
+    border: 2px solid black;
+    width: 8%;
+    margin-left: 46%;
+    margin-right: 46%;
+    
+  }
+  .d-click-here {
+    font-family: "Inter";
+    font-size: 1.5vh;
+    font-weight: 400;
+    line-height: normal;
+    text-align: center;
+    margin: auto;
+    text-shadow: 0 4px 4px rgba(0, 0, 0, 0.25);
+  }
 }
-.is-it-your-first-time-here-you-can-crea {
-  width: 100%;
-  font-family: "Inter";
-  font-size: 24px;
-  font-weight: 200;
-  line-height: normal;
-  color: gray;
-  text-align: center;
-  margin-top: 3%;
+@media (max-aspect-ratio: 6/5) and (min-aspect-ratio: 1/1){
+  .d-submit-button {
+    border-radius: 5px;
+    padding: 1% 0.5% 1% 0.5%;
+    box-shadow: 0 4px 4px 0 rgba(0, 0, 0, 0.25);
+    color: white;
+    align-items: center;
+    position: relative;
+    border: 2px solid rgba(255, 255, 255, 1);
+    width: 10%;
+    margin-left: 45%;
+    margin-right: 45%;
+  }
+  .d-submit-button:hover {
+    border-radius: 5px;
+    padding: 1% 0.5% 1% 0.5%;
+    box-shadow: 0 4px 4px 0 rgba(0, 0, 0, 0.25);
+    align-items: center;
+    position: relative;
+    border: 2px solid rgba(255, 255, 255, 1);
+    transition: background-color 0.5s, color 0.5s;
+    color: black;
+    background-color: white;
+    border: 2px solid black;
+    width: 10%;
+    margin-left: 45%;
+    margin-right: 45%;
+    
+  }
+  .d-click-here {
+    font-family: "Inter";
+    font-size: 1.5vh;
+    font-weight: 400;
+    line-height: normal;
+    text-align: center;
+    margin: auto;
+    text-shadow: 0 4px 4px rgba(0, 0, 0, 0.25);
+  }
 }
-.group-16 {
-  padding: 3% 0% 3% 2%;
-  display: flex;
-  align-items: center;
-  border: 2px solid rgba(225, 225, 225, 1);
-  margin-top: 3%;
-  max-width: 70%;
-  margin-left: 15%;
-  margin-right: 15%;
+@media (max-aspect-ratio: 1/1) and (min-aspect-ratio: 3/5){
+    .d-submit-button {
+      border-radius: 5px;
+      padding: 1% 0.5% 1% 0.5%;
+      box-shadow: 0 4px 4px 0 rgba(0, 0, 0, 0.25);
+      color: white;
+      align-items: center;
+      position: relative;
+      border: 2px solid rgba(255, 255, 255, 1);
+      width: 12%;
+      margin-left: 44%;
+      margin-right: 44%;
+    }
+    .d-submit-button:hover {
+      border-radius: 5px;
+      padding: 1% 0.5% 1% 0.5%;
+      box-shadow: 0 4px 4px 0 rgba(0, 0, 0, 0.25);
+      align-items: center;
+      position: relative;
+      border: 2px solid rgba(255, 255, 255, 1);
+      transition: background-color 0.5s, color 0.5s;
+      color: black;
+      background-color: white;
+      border: 2px solid black;
+      width: 12%;
+      margin-left: 44%;
+      margin-right: 44%;
+      
+    }
+    .d-click-here {
+      font-family: "Inter";
+      font-size: 1.5vw;
+      font-weight: 400;
+      line-height: normal;
+      text-align: center;
+      margin: auto;
+      text-shadow: 0 4px 4px rgba(0, 0, 0, 0.25);
+    }
 }
-.username {
-  font-family: "Inter";
-  font-size: 24px;
-  font-weight: 200;
-  line-height: normal;
-  color: rgba(0, 0, 0, 0.3);
+@media (max-aspect-ratio: 3/5) and (min-aspect-ratio: 2/5){
+  .d-submit-button {
+    border-radius: 5px;
+    padding: 1% 0.5% 1% 0.5%;
+    box-shadow: 0 4px 4px 0 rgba(0, 0, 0, 0.25);
+    color: white;
+    align-items: center;
+    position: relative;
+    border: 2px solid rgba(255, 255, 255, 1);
+    width: 10%;
+    margin-left: 45%;
+    margin-right: 45%;
+  }
+  .d-submit-button:hover {
+    border-radius: 5px;
+    padding: 1% 0.5% 1% 0.5%;
+    box-shadow: 0 4px 4px 0 rgba(0, 0, 0, 0.25);
+    align-items: center;
+    position: relative;
+    border: 2px solid rgba(255, 255, 255, 1);
+    transition: background-color 0.5s, color 0.5s;
+    color: black;
+    background-color: white;
+    border: 2px solid black;
+    width: 10%;
+    margin-left: 42.5%;
+    margin-right: 42.5%;
+    
+  }
+  .d-click-here {
+    font-family: "Inter";
+    font-size: 1.5vw;
+    font-weight: 400;
+    line-height: normal;
+    text-align: center;
+    margin: auto;
+    text-shadow: 0 4px 4px rgba(0, 0, 0, 0.25);
+  }
 }
-.group-17 {
-  padding: 3% 0% 3% 2%;
-  display: flex;
-  align-items: center;
-  border: 2px solid rgba(225, 225, 225, 1);
-  margin-top: 2%;
-  max-width: 70%;
-  margin-left: 15%;
-  margin-right: 15%;
+@media (max-aspect-ratio: 2/5){
+  .d-submit-button {
+    border-radius: 5px;
+    padding: 1% 0.5% 1% 0.5%;
+    box-shadow: 0 4px 4px 0 rgba(0, 0, 0, 0.25);
+    color: white;
+    align-items: center;
+    position: relative;
+    border: 2px solid rgba(255, 255, 255, 1);
+    width: 15%;
+    margin-left: 42.5%;
+    margin-right: 42.5%;
+  }
+  .d-submit-button:hover {
+    border-radius: 5px;
+    padding: 1% 0.5% 1% 0.5%;
+    box-shadow: 0 4px 4px 0 rgba(0, 0, 0, 0.25);
+    align-items: center;
+    position: relative;
+    border: 2px solid rgba(255, 255, 255, 1);
+    transition: background-color 0.5s, color 0.5s;
+    color: black;
+    background-color: white;
+    border: 2px solid black;
+    width: 15%;
+    margin-left: 42.5%;
+    margin-right: 42.5%;
+    
+  }
+  .d-click-here {
+    font-family: "Inter";
+    font-size: 1.5vw;
+    font-weight: 400;
+    line-height: normal;
+    text-align: center;
+    margin: auto;
+    text-shadow: 0 4px 4px rgba(0, 0, 0, 0.25);
+  }
 }
-.group-18 {
-  padding: 3% 0% 3% 2%;
-  display: flex;
-  align-items: center;
-  border: 2px solid rgba(225, 225, 225, 1);
-  margin-top: 2%;
-  max-width: 70%;
-  margin-left: 15%;
-  margin-right: 15%;
+
+@media (min-aspect-ratio: 8/5){
+  .submit-button {
+    border-radius: 5px;
+    padding: 1% 0.5% 1% 0.5%;
+    box-shadow: 0 4px 4px 0 rgba(0, 0, 0, 0.25);
+    color: black;
+    align-items: center;
+    position: relative;
+    border: 2px solid black;
+    width: 6%;
+    margin-left: 47%;
+    margin-right: 47%;
+  }
+  .submit-button:hover {
+    border-radius: 5px;
+    padding: 1% 0.5% 1% 0.5%;
+    box-shadow: 0 4px 4px 0 rgba(0, 0, 0, 0.25);
+    align-items: center;
+    position: relative;
+    transition: background-color 0.5s, color 0.5s;
+    color: white;
+    background-color: black;
+    border: 2px solid black;
+    width: 6%;
+    margin-left: 47%;
+    margin-right: 47%;
+    
+  }
+  .click-here {
+    font-family: "Inter";
+    font-size: 1.5vh;
+    font-weight: 400;
+    line-height: normal;
+    text-align: center;
+    margin: auto;
+    text-shadow: 0 4px 4px rgba(0, 0, 0, 0.25);
+  }
 }
-/*
-.captcha-two {
-  background-color: rgba(233, 233, 233, 1);
-  margin-bottom: 50px;
-  margin-left: 500px;
-  padding: 19px 15px 11px 22px;
-  display: flex;
-  flex-direction: column;
-  align-items: flex-start;
+@media (max-aspect-ratio: 8/5) and (min-aspect-ratio: 6/5){
+  .submit-button {
+    border-radius: 5px;
+    padding: 1% 0.5% 1% 0.5%;
+    box-shadow: 0 4px 4px 0 rgba(0, 0, 0, 0.25);
+    color: black;
+    align-items: center;
+    position: relative;
+    border: 2px solid black;
+    width: 8%;
+    margin-left: 46%;
+    margin-right: 46%;
+  }
+  .submit-button:hover {
+    border-radius: 5px;
+    padding: 1% 0.5% 1% 0.5%;
+    box-shadow: 0 4px 4px 0 rgba(0, 0, 0, 0.25);
+    align-items: center;
+    position: relative;
+    transition: background-color 0.5s, color 0.5s;
+    color: white;
+    background-color: black;
+    border: 2px solid black;
+    width: 8%;
+    margin-left: 46%;
+    margin-right: 46%;
+    
+  }
+  .click-here {
+    font-family: "Inter";
+    font-size: 1.5vh;
+    font-weight: 400;
+    line-height: normal;
+    color: black;
+    text-align: center;
+    margin: auto;
+    text-shadow: 0 4px 4px rgba(0, 0, 0, 0.25);
+  }
 }
-.captcha {
-  font-family: "Inter";
-  font-size: 22px;
-  font-weight: 400;
-  line-height: normal;
-  color: black;
-  text-align: center;
-  margin-bottom: 4px;
+@media (max-aspect-ratio: 6/5) and (min-aspect-ratio: 1/1){
+  .submit-button {
+    border-radius: 5px;
+    padding: 1% 0.5% 1% 0.5%;
+    box-shadow: 0 4px 4px 0 rgba(0, 0, 0, 0.25);
+    color: white;
+    align-items: center;
+    position: relative;
+    border: 2px solid black;
+    width: 10%;
+    margin-left: 45%;
+    margin-right: 45%;
+  }
+  .submit-button:hover {
+    border-radius: 5px;
+    padding: 1% 0.5% 1% 0.5%;
+    box-shadow: 0 4px 4px 0 rgba(0, 0, 0, 0.25);
+    align-items: center;
+    position: relative;
+    transition: background-color 0.5s, color 0.5s;
+    color: white;
+    background-color: black;
+    border: 2px solid black;
+    width: 10%;
+    margin-left: 45%;
+    margin-right: 45%;
+    
+  }
+  .click-here {
+    font-family: "Inter";
+    font-size: 1.5vh;
+    font-weight: 400;
+    line-height: normal;
+    color: black;
+    text-align: center;
+    margin: auto;
+    text-shadow: 0 4px 4px rgba(0, 0, 0, 0.25);
+  }
 }
-*/
-.rectangle-78 {
-  width: 46px;
-  height: 46px;
-  background-color: white;
+@media (max-aspect-ratio: 1/1) and (min-aspect-ratio: 3/5){
+  .submit-button {
+    border-radius: 5px;
+    padding: 1% 0.5% 1% 0.5%;
+    box-shadow: 0 4px 4px 0 rgba(0, 0, 0, 0.25);
+    color: black;
+    align-items: center;
+    position: relative;
+    border: 2px solid black;
+    width: 12%;
+    margin-left: 44%;
+    margin-right: 44%;
+  }
+  .submit-button:hover {
+    border-radius: 5px;
+    padding: 1% 0.5% 1% 0.5%;
+    box-shadow: 0 4px 4px 0 rgba(0, 0, 0, 0.25);
+    align-items: center;
+    position: relative;
+    transition: background-color 0.5s, color 0.5s;
+    color: white;
+    background-color: black;
+    border: 2px solid black;
+    width: 12%;
+    margin-left: 44%;
+    margin-right: 44%;
+    
+  }
+  .click-here {
+    font-family: "Inter";
+    font-size: 1.5vw;
+    font-weight: 400;
+    line-height: normal;
+    text-align: center;
+    margin: auto;
+    text-shadow: 0 4px 4px rgba(0, 0, 0, 0.25);
+  }
 }
-.submit-button {
-  border-radius: 5px;
-  padding: 0.5% 10% 0% 0%;
-  box-shadow: 0 4px 4px 0 rgba(0, 0, 0, 0.25);
-  color: black;
-  align-items: center;
-  position: relative;
-  border: 2px solid black;
-  margin-top: 3%;
-  width: 10%;
-  margin-left: 45%;
-  margin-right: 45%;
+@media (max-aspect-ratio: 3/5) and (min-aspect-ratio: 2/5){
+  .submit-button {
+    border-radius: 5px;
+    padding: 1% 0.5% 1% 0.5%;
+    box-shadow: 0 4px 4px 0 rgba(0, 0, 0, 0.25);
+    color: black;
+    border: 2px solid black;
+    align-items: center;
+    position: relative;
+    width: 15%;
+    margin-left: 42.5%;
+    margin-right: 42.5%;
+  }
+  .submit-button:hover {
+    border-radius: 5px;
+    padding: 1% 0.5% 1% 0.5%;
+    box-shadow: 0 4px 4px 0 rgba(0, 0, 0, 0.25);
+    align-items: center;
+    position: relative;
+    transition: background-color 0.5s, color 0.5s;
+    color: white;
+    background-color: black;
+    border: 2px solid black;
+    width: 15%;
+    margin-left: 42.5%;
+    margin-right: 42.5%;
+    
+  }
+  .click-here {
+    font-family: "Inter";
+    font-size: 1.5vw;
+    font-weight: 400;
+    line-height: normal;
+    text-align: center;
+    margin: auto;
+    text-shadow: 0 4px 4px rgba(0, 0, 0, 0.25);
+  }
 }
-.submit-button:hover {
-  border-radius: 5px;
-  padding: 0.5% 10% 0% 0%;
-  box-shadow: 0 4px 4px 0 rgba(0, 0, 0, 0.25);
-  align-items: center;
-  position: relative;
-  border: 2px solid rgba(255, 255, 255, 1);
-  transition: background-color 0.5s, color 0.5s;
-  color: white;
-  background-color: black;
-  border: 3px solid black;
-  margin-top: 3%;
-  width: 10%;
-  margin-left: 45%;
-  margin-right: 45%;
-  
+@media (max-aspect-ratio: 2/5){
+  .submit-button {
+    border-radius: 5px;
+    padding: 1% 0.5% 1% 0.5%;
+    box-shadow: 0 4px 4px 0 rgba(0, 0, 0, 0.25);
+    color: black;
+    align-items: center;
+    position: relative;
+    border: 2px solid black;
+    width: 15%;
+    margin-left: 42.5%;
+    margin-right: 42.5%;
+  }
+  .submit-button:hover {
+    border-radius: 5px;
+    padding: 1% 0.5% 1% 0.5%;
+    box-shadow: 0 4px 4px 0 rgba(0, 0, 0, 0.25);
+    align-items: center;
+    position: relative;
+    transition: background-color 0.5s, color 0.5s;
+    color: white;
+    background-color: black;
+    border: 2px solid black;
+    width: 15%;
+    margin-left: 42.5%;
+    margin-right: 42.5%;
+    
+  }
+  .click-here {
+    font-family: "Inter";
+    font-size: 1.5vw;
+    font-weight: 400;
+    line-height: normal;
+    text-align: center;
+    margin: auto;
+    text-shadow: 0 4px 4px rgba(0, 0, 0, 0.25);
+  }
 }
-.sign-up {
-  width: 120.41px;
-  font-family: "Inter";
-  font-size: 22px;
-  font-weight: 400;
-  line-height: normal;
-  color: rgba(84, 84, 84, 1);
-  text-align: center;
+
+@media (min-aspect-ratio: 1/1){
+  .d-sign-up-two {
+    background-color: #242424;
+    padding: 32px 0 0;
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+  }
+  .d-your-account {
+    font-family: "Cinzel";
+    font-size: 6vh;
+    font-weight: 400;
+    line-height: normal;
+    color: white;
+    text-align: center;
+  }
+  .d-is-it-your-first-time-here-you-can-crea {
+    width: 100%;
+    font-family: "Inter";
+    font-size: 2vh;
+    font-weight: 200;
+    line-height: normal;
+    color: white;
+    text-align: center;
+    margin-top: 3%;
+  }
+  .d-group-16 {
+    padding: 3% 0% 3% 2%;
+    display: flex;
+    align-items: center;
+    border: 2px solid gray;
+    margin-top: 3%;
+    max-width: 70%;
+    margin-left: 15%;
+    margin-right: 15%;
+    background-color: #242424;
+    color: white;
+  }
+  .d-username-or-email {
+    font-family: "Inter";
+    font-size: 2vh; 
+    font-weight: 200;
+    line-height: normal;
+    color: white;
+  }
+  .d-group-17 {
+    padding: 3% 0% 3% 2%;
+    display: flex;
+    align-items: center;
+    border: 2px solid gray;
+    margin-top: 2%;
+    max-width: 70%;
+    margin-left: 15%;
+    margin-right: 15%;
+    background-color: #242424;
+    color: white;
+  }
+  /*
+  .captcha-two {
+    background-color: rgba(233, 233, 233, 1);
+    margin-bottom: 50px;
+    margin-left: 500px;
+    padding: 19px 15px 11px 22px;
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+  }
+  .captcha {
+    font-family: "Inter";
+    font-size: 22px;
+    font-weight: 400;
+    line-height: normal;
+    color: black;
+    text-align: center;
+    margin-bottom: 4px;
+  }
+  */
+  .rectangle-78 {
+    width: 46px;
+    height: 46px;
+    background-color: white;
+  }
+  .d-already-have-an-account-you-can-log-in {
+    text-align: center;
+    font-family: "Inter";
+    font-size: 1.5vh;
+    font-weight: 200;
+    line-height: normal;
+    color: white;
+    margin-top: 3%;
+  }
+  .relative-wrapper-one {
+    position: relative;
+  }
 }
-.sign-up:hover {
-  width: 120.41px;
-  font-family: "Inter";
-  font-size: 22px;
-  font-weight: 400;
-  line-height: normal;
-  color: white;
-  text-align: center;
+@media (max-aspect-ratio: 1/1){
+  .d-sign-up-two {
+    background-color: #242424;
+    padding: 32px 0 0;
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+  }
+  .d-your-account {
+    font-family: "Cinzel";
+    font-size: 6vw;
+    font-weight: 400;
+    line-height: normal;
+    color: white;
+    text-align: center;
+    margin-top: 15%;
+  }
+  .d-is-it-your-first-time-here-you-can-crea {
+    width: 100%;
+    font-family: "Inter";
+    font-size: 2vw;
+    font-weight: 200;
+    line-height: normal;
+    color: white;
+    text-align: center;
+    margin-top: 3%;
+  }
+  .d-group-16 {
+    padding: 3% 0% 3% 2%;
+    display: flex;
+    align-items: center;
+    border: 2px solid gray;
+    margin-top: 3%;
+    max-width: 70%;
+    margin-left: 15%;
+    margin-right: 15%;
+    background-color: #242424;
+    color: white;
+  }
+  .d-username-or-email {
+    font-family: "Inter";
+    font-size: 2vw; 
+    font-weight: 200;
+    line-height: normal;
+    color: white;
+  }
+  .d-group-17 {
+    padding: 3% 0% 3% 2%;
+    display: flex;
+    align-items: center;
+    border: 2px solid gray;
+    margin-top: 2%;
+    max-width: 70%;
+    margin-left: 15%;
+    margin-right: 15%;
+    background-color: #242424;
+    color: white;
+  }
+  /*
+  .captcha-two {
+    background-color: rgba(233, 233, 233, 1);
+    margin-bottom: 50px;
+    margin-left: 500px;
+    padding: 19px 15px 11px 22px;
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+  }
+  .captcha {
+    font-family: "Inter";
+    font-size: 22px;
+    font-weight: 400;
+    line-height: normal;
+    color: black;
+    text-align: center;
+    margin-bottom: 4px;
+  }
+  */
+  .rectangle-78 {
+    width: 46px;
+    height: 46px;
+    background-color: white;
+  }
+  .d-already-have-an-account-you-can-log-in {
+    text-align: center;
+    font-family: "Inter";
+    font-size: 1.5vw;
+    font-weight: 200;
+    line-height: normal;
+    color: white;
+    margin-top: 3%;
+  }
+  .relative-wrapper-one {
+    position: relative;
+  }
 }
-.already-have-an-account-you-can-log-in {
-  text-align: center;
-  font-family: "Inter";
-  font-size: 22px;
-  font-weight: 200;
-  line-height: normal;
-  color: gray;
-  margin-top: 3%;
+
+@media (min-aspect-ratio: 1/1){
+  .warning {
+    margin-top: 1%;
+    color: red; 
+    font-size: 1vh;
+    margin-left: 15%;
+    width: 70%;
+  }
+  .sign-up-two {
+    background-color: white;
+    padding: 32px 0 0;
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+  }
+  .your-account {
+    font-family: "Cinzel";
+    font-size: 6vh;
+    font-weight: 400;
+    line-height: normal;
+    color: gray;
+    text-align: center;
+  }
+  .is-it-your-first-time-here-you-can-crea {
+    width: 100%;
+    font-family: "Inter";
+    font-size: 2vh;
+    font-weight: 200;
+    line-height: normal;
+    color: gray;
+    text-align: center;
+    margin-top: 3%;
+  }
+  .group-16 {
+    padding: 3% 0% 3% 2%;
+    display: flex;
+    align-items: center;
+    border: 2px solid rgba(225, 225, 225, 1);
+    margin-top: 3%;
+    max-width: 70%;
+    margin-left: 15%;
+    margin-right: 15%;
+  }
+  .username-or-email {
+    font-family: "Inter";
+    font-size: 2vh; 
+    font-weight: 200;
+    line-height: normal;
+    color: rgba(0, 0, 0, 0.3);
+  }
+  .group-17 {
+    padding: 3% 0% 3% 2%;
+    display: flex;
+    align-items: center;
+    border: 2px solid rgba(225, 225, 225, 1);
+    margin-top: 2%;
+    max-width: 70%;
+    margin-left: 15%;
+    margin-right: 15%;
+  }
+  /*
+  .captcha-two {
+    background-color: rgba(233, 233, 233, 1);
+    margin-bottom: 50px;
+    margin-left: 500px;
+    padding: 19px 15px 11px 22px;
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+  }
+  .captcha {
+    font-family: "Inter";
+    font-size: 22px;
+    font-weight: 400;
+    line-height: normal;
+    color: black;
+    text-align: center;
+    margin-bottom: 4px;
+  }
+  */
+  .rectangle-78 {
+    width: 46px;
+    height: 46px;
+    background-color: white;
+  }
+  .already-have-an-account-you-can-log-in {
+    text-align: center;
+    font-family: "Inter";
+    font-size: 1.5vh;
+    font-weight: 200;
+    line-height: normal;
+    color: gray;
+    margin-top: 3%;
+  }
+  .relative-wrapper-one {
+    position: relative;
+  }
 }
-.relative-wrapper-one {
-  position: relative;
-}
-.rectangle-35 {
-  width: 1302px;
-  height: 249px;
-  position: absolute;
-  right: 266px;
-  bottom: -43px;
-}
-.bottom-bar {
-  background-color: black;
-  padding: 55px 67px 48px 844px;
-  display: flex;
-  align-items: flex-start;
-  position: relative;
-}
-.flex-wrapper-two {
-  margin-right: 683px;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-}
-.contact-us {
-  font-family: "Inter";
-  font-size: 24px;
-  font-weight: 200;
-  line-height: normal;
-  color: white;
-  margin-bottom: 26px;
-}
-.powered-by-squared-space {
-  font-family: "Inter";
-  font-size: 18px;
-  font-weight: 400;
-  line-height: normal;
-  color: white;
-}
-.back-to-top-two {
-  margin-top: 8px;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-}
-.back-to-top-arrow {
-  width: 36px;
-  height: 18px;
-  margin-bottom: 14px;
-}
-.back-to-top {
-  font-family: "Inter";
-  font-size: 18px;
-  font-weight: 300;
-  line-height: normal;
-  color: white;
-  text-align: center;
+@media (max-aspect-ratio: 1/1){
+  .warning {
+    margin-top: 1%;
+    color: red; 
+    font-size: 2vw;
+    margin-left: 15%;
+    width: 70%;
+  }
+  .sign-up-two {
+    background-color: white;
+    padding: 32px 0 0;
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+  }
+  .your-account {
+    font-family: "Cinzel";
+    font-size: 6vw;
+    font-weight: 400;
+    line-height: normal;
+    color: gray;
+    text-align: center;
+    margin-top: 15%;
+  }
+  .is-it-your-first-time-here-you-can-crea {
+    width: 100%;
+    font-family: "Inter";
+    font-size: 2vw;
+    font-weight: 200;
+    line-height: normal;
+    color: gray;
+    text-align: center;
+    margin-top: 3%;
+  }
+  .group-16 {
+    padding: 3% 0% 3% 2%;
+    display: flex;
+    align-items: center;
+    border: 2px solid rgba(225, 225, 225, 1);
+    margin-top: 3%;
+    max-width: 70%;
+    margin-left: 15%;
+    margin-right: 15%;
+  }
+  .username {
+    font-family: "Inter";
+    font-size: 2vw;
+    font-weight: 200;
+    line-height: normal;
+    color: rgba(0, 0, 0, 0.3);
+  }
+  .group-17 {
+    padding: 3% 0% 3% 2%;
+    display: flex;
+    align-items: center;
+    border: 2px solid rgba(225, 225, 225, 1);
+    margin-top: 2%;
+    max-width: 70%;
+    margin-left: 15%;
+    margin-right: 15%;
+  }
+  .group-18 {
+    padding: 3% 0% 3% 2%;
+    display: flex;
+    align-items: center;
+    border: 2px solid rgba(225, 225, 225, 1);
+    margin-top: 2%;
+    max-width: 70%;
+    margin-left: 15%;
+    margin-right: 15%;
+  }
+  /*
+  .captcha-two {
+    background-color: rgba(233, 233, 233, 1);
+    margin-bottom: 50px;
+    margin-left: 500px;
+    padding: 19px 15px 11px 22px;
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+  }
+  .captcha {
+    font-family: "Inter";
+    font-size: 22px;
+    font-weight: 400;
+    line-height: normal;
+    color: black;
+    text-align: center;
+    margin-bottom: 4px;
+  }
+  */
+  .rectangle-78 {
+    width: 46px;
+    height: 46px;
+    background-color: white;
+  }
+  .already-have-an-account-you-can-log-in {
+    text-align: center;
+    font-family: "Inter";
+    font-size: 1.5vw;
+    font-weight: 200;
+    line-height: normal;
+    color: gray;
+    margin-top: 3%;
+  }
+  .relative-wrapper-one {
+    position: relative;
+  }
 }
 </style>

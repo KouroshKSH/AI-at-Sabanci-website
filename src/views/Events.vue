@@ -1,5 +1,6 @@
 <template>
-    <div class="events-three">
+  <div id="events">
+    <div v-if="!darkMode" class="events-three" style="min-height: 100vh">
       <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Michroma">
       <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Inter">
       <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Cinzel">
@@ -12,89 +13,168 @@
         <b-row>
           <b-col>
             <p class="lorem-ipsum-dolor-sit-amet-consectetur">
-              Lorem ipsum dolor sit amet, consectetur adipiscing
-              elit, sed do eiusmod tempor incididunt
+              Join us in these events and stay up-to-date with the rapidly evolving world of artificial intelligence.
             </p>
           </b-col>
         </b-row>
       </b-container>
-      <b-container fluid v-if="events[(page-1)*3]" class="relative-wrapper-one">
-        <b-row align-h="center">
-          <div class="num-1st-event">
-            <img
-              alt=""
-              class="rectangle-34"
-              :src=events[(page-1)*3].img
-            />
-            <div class="flex-wrapper-three">
+      <div class="events" style="width: 100%">
+        <b-container fluid v-if="events[(page-1)*3]" class="relative-wrapper-one">
+          <b-row align-h="center">
+            <div class="num-1st-event">
+              <img
+                alt=""
+                class="rectangle-34"
+                :src=events[(page-1)*3].img
+              />
+              <div class="flex-wrapper-three">
+                <p class="our-first-event">{{ events[(page-1)*3].name }}</p>
+                <p
+                  class="join-our-first-event-where-we-will-pres"
+                >
+                    {{events[(page-1)*3].abstract}}
+                </p>
+                <p class="wednesday-march-1st-2023-1800-2000">
+                  {{events[(page-1)*3].date}}<br />
+                  {{events[(page-1)*3].time}}<br />
+                  {{events[(page-1)*3].location}}
+                </p>
+                <router-link :to=event+((page-1)*3)><p class="read-more">Read More</p></router-link>
+              </div>
+              
+            </div>
+          </b-row>
+        </b-container>
+        <b-container fluid v-if="events[(page-1)*3+1]" class="relative-wrapper-one">
+          <b-row align-h="center">
+            <div class="num-1st-event">
+              <img
+                alt=""
+                class="rectangle-34"
+                :src=events[(page-1)*3+1].img
+              />
+              <div class="flex-wrapper-three">
+                <p class="our-first-event">{{ events[(page-1)*3+1].name }}</p>
+                <p
+                  class="join-our-first-event-where-we-will-pres"
+                >
+                    {{events[(page-1)*3+1].abstract}}
+                </p>
+                <p class="wednesday-march-1st-2023-1800-2000">
+                  {{events[(page-1)*3+1].date}}<br />
+                  {{events[(page-1)*3+1].time}}<br />
+                  {{events[(page-1)*3+1].location}}
+                </p>
+                <router-link :to=event+((page-1)*3+1)><p class="read-more">Read More</p></router-link>
+              </div>
+            </div>
+          </b-row>
+        </b-container>
+        <b-container fluid v-if="events[(page-1)*3+2]" class="relative-wrapper-one">
+          <b-row align-h="center">
+            <div class="num-1st-event">
+              <img
+                alt=""
+                class="rectangle-34"
+                :src=events[(page-1)*3+2].img
+              />
+              <div class="flex-wrapper-three">
+                <p class="our-first-event">{{ events[(page-1)*3+2].name }}</p>
+                <p
+                  class="join-our-first-event-where-we-will-pres"
+                >
+                    {{events[(page-1)*3+2].abstract}}
+                </p>
+                <p class="wednesday-march-1st-2023-1800-2000">
+                  {{events[(page-1)*3+2].date}}<br />
+                  {{events[(page-1)*3+2].time}}<br />
+                  {{events[(page-1)*3+2].location}}
+                </p>
+                <router-link :to=event+((page-1)*3+2)><p class="read-more">Read More</p></router-link>
+              </div>
+            </div>
+          </b-row>  
+        </b-container>
+      </div> <!--wide-->
+      <div class="m-events">
+        <b-container fluid v-if="events[(page-1)*3]" class="relative-wrapper-one">
+          <b-row align-h="left">
+            <div class="num-1st-event">
+              <img
+                alt=""
+                class="rectangle-34"
+                :src=events[(page-1)*3].img
+              />
               <p class="our-first-event">{{ events[(page-1)*3].name }}</p>
-              <p
-                class="join-our-first-event-where-we-will-pres"
-              >
-                  {{events[(page-1)*3].abstract}}
-              </p>
-              <p class="wednesday-march-1st-2023-1800-2000">
-                {{events[(page-1)*3].date}}<br />
-                {{events[(page-1)*3].time}}<br />
-                {{events[(page-1)*3].location}}
-              </p>
+              <div class="flex-wrapper-three">
+                <p
+                  class="join-our-first-event-where-we-will-pres"
+                >
+                    {{events[(page-1)*3].abstract}}
+                </p>
+                <p class="wednesday-march-1st-2023-1800-2000">
+                  {{events[(page-1)*3].date}}<br />
+                  {{events[(page-1)*3].time}}<br />
+                  {{events[(page-1)*3].location}}
+                </p>
+                <router-link :to=event+((page-1)*3)><p class="read-more">Read More</p></router-link>
+              </div>
             </div>
-            <router-link :to=event+((page-1)*3)><p class="read-more">Read More</p></router-link>
-          </div>
-        </b-row>
-      </b-container>
-      <b-container fluid v-if="events[(page-1)*3+1]" class="relative-wrapper-one">
-        <b-row align-h="center">
-          <div class="num-1st-event">
-            <img
-              alt=""
-              class="rectangle-34"
-              :src=events[(page-1)*3+1].img
-            />
-            <div class="flex-wrapper-three">
+          </b-row>
+        </b-container>
+        <b-container fluid v-if="events[(page-1)*3+1]" class="relative-wrapper-one">
+          <b-row align-h="left">
+            <div class="num-1st-event">
+              <img
+                alt=""
+                class="rectangle-34"
+                :src=events[(page-1)*3+1].img
+              />
               <p class="our-first-event">{{ events[(page-1)*3+1].name }}</p>
-              <p
-                class="join-our-first-event-where-we-will-pres"
-              >
-                  {{events[(page-1)*3+1].abstract}}
-              </p>
-              <p class="wednesday-march-1st-2023-1800-2000">
-                {{events[(page-1)*3+1].date}}<br />
-                {{events[(page-1)*3+1].time}}<br />
-                {{events[(page-1)*3+1].location}}
-              </p>
+              <div class="flex-wrapper-three">
+                <p
+                  class="join-our-first-event-where-we-will-pres"
+                >
+                    {{events[(page-1)*3+1].abstract}}
+                </p>
+                <p class="wednesday-march-1st-2023-1800-2000">
+                  {{events[(page-1)*3+1].date}}<br />
+                  {{events[(page-1)*3+1].time}}<br />
+                  {{events[(page-1)*3+1].location}}
+                </p>
+                <router-link :to=event+((page-1)*3+1)><p class="read-more">Read More</p></router-link>
+              </div>
             </div>
-            <router-link :to=event+((page-1)*3+1)><p class="read-more">Read More</p></router-link>
-          </div>
-        </b-row>
-      </b-container>
-      <b-container fluid v-if="events[(page-1)*3+2]" class="relative-wrapper-one">
-        <b-row align-h="center">
-          <div class="num-1st-event">
-            <img
-              alt=""
-              class="rectangle-34"
-              :src=events[(page-1)*3+2].img
-            />
-            <div class="flex-wrapper-three">
-              <p class="our-first-event">{{ events[(page-1)*3+2].name }}</p>
-              <p
-                class="join-our-first-event-where-we-will-pres"
-              >
-                  {{events[(page-1)*3+2].abstract}}
-              </p>
-              <p class="wednesday-march-1st-2023-1800-2000">
-                {{events[(page-1)*3+2].date}}<br />
-                {{events[(page-1)*3+2].time}}<br />
-                {{events[(page-1)*3+2].location}}
-              </p>
+          </b-row>
+        </b-container>
+        <b-container fluid v-if="events[(page-1)*3+2]" class="relative-wrapper-one">
+          <b-row align-h="left">
+            <div class="num-1st-event">
+              <img
+                alt=""
+                class="rectangle-34"
+                :src=events[(page-1)*3+2].img
+              />
+              <div class="flex-wrapper-three">
+                <p class="our-first-event">{{ events[(page-1)*3+2].name }}</p>
+                <p
+                  class="join-our-first-event-where-we-will-pres"
+                >
+                    {{events[(page-1)*3+2].abstract}}
+                </p>
+                <p class="wednesday-march-1st-2023-1800-2000">
+                  {{events[(page-1)*3+2].date}}<br />
+                  {{events[(page-1)*3+2].time}}<br />
+                  {{events[(page-1)*3+2].location}}
+                </p>
+                <router-link :to=event+((page-1)*3+2)><p class="read-more">Read More</p></router-link>
+              </div>
             </div>
-            <router-link :to=event+((page-1)*3+2)><p class="read-more">Read More</p></router-link>
-          </div>
-        </b-row>  
-      </b-container>
+          </b-row>  
+        </b-container>
+      </div> <!--mobi;e-->
       <b-container class="group-14">
-        <b-row align-h="center">
+        <b-row align-h="center" style="margin-top: 5%;">
             <div style="width: 36px; height: 18px">
               <img
                 v-if="page>1"
@@ -104,7 +184,7 @@
                 @click="page--"
               />
             </div>
-            <p style="margin-left: 1.3%; width: 0%">{{ page }}</p>
+            <p style="margin-top: 0.5%; width: 0%">{{ page }}</p>
             <div style="width: 36px; height: 18px">
               <img
                 v-if="Math.ceil(events.length/3)>page"
@@ -117,7 +197,216 @@
         </b-row>
       </b-container>
     </div>
-  </template>
+    <div v-else class="d-events-three" style="min-height: 100vh">
+      <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Michroma">
+      <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Inter">
+      <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Cinzel">
+      <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+      <meta name="viewport" content="width=device-width, initial-scale=1.0">
+      <b-container style="margin-top: 3%">
+        <b-row>
+          <b-col><p class="d-events-two">Events</p></b-col>
+        </b-row>
+        <b-row>
+          <b-col>
+            <p class="d-lorem-ipsum-dolor-sit-amet-consectetur">
+              Join us in these events and stay up-to-date with the rapidly evolving world of artificial intelligence.
+            </p>
+          </b-col>
+        </b-row>
+      </b-container>
+      <div class="events" style="width: 100%">
+        <b-container fluid v-if="events[(page-1)*3]" class="relative-wrapper-one">
+          <b-row align-h="center">
+            <div class="d-num-1st-event">
+              <img
+                alt=""
+                class="rectangle-34"
+                :src=events[(page-1)*3].img
+              />
+              <div class="flex-wrapper-three">
+                <p class="d-our-first-event">{{ events[(page-1)*3].name }}</p>
+                <p
+                  class="d-join-our-first-event-where-we-will-pres"
+                >
+                    {{events[(page-1)*3].abstract}}
+                </p>
+                <p class="d-wednesday-march-1st-2023-1800-2000">
+                  {{events[(page-1)*3].date}}<br />
+                  {{events[(page-1)*3].time}}<br />
+                  {{events[(page-1)*3].location}}
+                </p>
+                <router-link :to=event+((page-1)*3)><p class="d-read-more">Read More</p></router-link>
+              </div>
+              
+            </div>
+          </b-row>
+        </b-container>
+        <b-container fluid v-if="events[(page-1)*3+1]" class="relative-wrapper-one">
+          <b-row align-h="center">
+            <div class="d-num-1st-event">
+              <img
+                alt=""
+                class="rectangle-34"
+                :src=events[(page-1)*3+1].img
+              />
+              <div class="flex-wrapper-three">
+                <p class="d-our-first-event">{{ events[(page-1)*3+1].name }}</p>
+                <p
+                  class="d-join-our-first-event-where-we-will-pres"
+                >
+                    {{events[(page-1)*3+1].abstract}}
+                </p>
+                <p class="d-wednesday-march-1st-2023-1800-2000">
+                  {{events[(page-1)*3+1].date}}<br />
+                  {{events[(page-1)*3+1].time}}<br />
+                  {{events[(page-1)*3+1].location}}
+                </p>
+                <router-link :to=event+((page-1)*3+1)><p class="d-read-more">Read More</p></router-link>
+              </div>
+            </div>
+          </b-row>
+        </b-container>
+        <b-container fluid v-if="events[(page-1)*3+2]" class="relative-wrapper-one">
+          <b-row align-h="center">
+            <div class="d-num-1st-event">
+              <img
+                alt=""
+                class="rectangle-34"
+                :src=events[(page-1)*3+2].img
+              />
+              <div class="flex-wrapper-three">
+                <p class="d-our-first-event">{{ events[(page-1)*3+2].name }}</p>
+                <p
+                  class="d-join-our-first-event-where-we-will-pres"
+                >
+                    {{events[(page-1)*3+2].abstract}}
+                </p>
+                <p class="d-wednesday-march-1st-2023-1800-2000">
+                  {{events[(page-1)*3+2].date}}<br />
+                  {{events[(page-1)*3+2].time}}<br />
+                  {{events[(page-1)*3+2].location}}
+                </p>
+                <router-link :to=event+((page-1)*3+2)><p class="d-read-more">Read More</p></router-link>
+              </div>
+            </div>
+          </b-row>  
+        </b-container>
+      </div> <!--wide-->
+      <div class="m-events">
+        <b-container fluid v-if="events[(page-1)*3]" class="relative-wrapper-one">
+          <b-row align-h="left">
+            <div class="d-num-1st-event">
+              <img
+                alt=""
+                class="rectangle-34"
+                :src=events[(page-1)*3].img
+              />
+              <p class="d-our-first-event">{{ events[(page-1)*3].name }}</p>
+              <div class="flex-wrapper-three">
+                <p
+                  class="d-join-our-first-event-where-we-will-pres"
+                >
+                    {{events[(page-1)*3].abstract}}
+                </p>
+                <p class="d-wednesday-march-1st-2023-1800-2000">
+                  {{events[(page-1)*3].date}}<br />
+                  {{events[(page-1)*3].time}}<br />
+                  {{events[(page-1)*3].location}}
+                </p>
+                <router-link :to=event+((page-1)*3)><p class="d-read-more">Read More</p></router-link>
+              </div>
+            </div>
+          </b-row>
+        </b-container>
+        <b-container fluid v-if="events[(page-1)*3+1]" class="relative-wrapper-one">
+          <b-row align-h="left">
+            <div class="d-num-1st-event">
+              <img
+                alt=""
+                class="rectangle-34"
+                :src=events[(page-1)*3+1].img
+              />
+              <p class="d-our-first-event">{{ events[(page-1)*3+1].name }}</p>
+              <div class="flex-wrapper-three">
+                <p
+                  class="d-join-our-first-event-where-we-will-pres"
+                >
+                    {{events[(page-1)*3+1].abstract}}
+                </p>
+                <p class="d-wednesday-march-1st-2023-1800-2000">
+                  {{events[(page-1)*3+1].date}}<br />
+                  {{events[(page-1)*3+1].time}}<br />
+                  {{events[(page-1)*3+1].location}}
+                </p>
+                <router-link :to=event+((page-1)*3+1)><p class="d-read-more">Read More</p></router-link>
+              </div>
+            </div>
+          </b-row>
+        </b-container>
+        <b-container fluid v-if="events[(page-1)*3+2]" class="relative-wrapper-one">
+          <b-row align-h="left">
+            <div class="d-num-1st-event">
+              <img
+                alt=""
+                class="rectangle-34"
+                :src=events[(page-1)*3+2].img
+              />
+              <div class="flex-wrapper-three">
+                <p class="d-our-first-event">{{ events[(page-1)*3+2].name }}</p>
+                <p
+                  class="d-join-our-first-event-where-we-will-pres"
+                >
+                    {{events[(page-1)*3+2].abstract}}
+                </p>
+                <p class="d-wednesday-march-1st-2023-1800-2000">
+                  {{events[(page-1)*3+2].date}}<br />
+                  {{events[(page-1)*3+2].time}}<br />
+                  {{events[(page-1)*3+2].location}}
+                </p>
+                <router-link :to=event+((page-1)*3+2)><p class="d-read-more">Read More</p></router-link>
+              </div>
+            </div>
+          </b-row>  
+        </b-container>
+      </div><!--mobile-->
+      <b-container class="group-14">
+        <b-row align-h="center" style="margin-top: 3%;">
+            <div style="width: 36px; height: 18px">
+              <img
+                v-if="page>1"
+                alt=""
+                class="back-to-top-arrow-two"
+                src="https://static.overlay-tech.com/assets/eed53001-380b-4cd2-b196-a9a3d2901933.svg"
+                @click="page--"
+              />
+            </div>
+            <p style="margin-top: 0.5%; width: 0%; color: white">{{ page }}</p>
+            <div style="width: 36px; height: 18px">
+              <img
+                v-if="Math.ceil(events.length/3)>page"
+                alt=""
+                class="back-to-top-arrow"
+                src="https://static.overlay-tech.com/assets/10a1e514-f99b-435a-b9cf-c317b6a48dd3.svg"
+                @click="page++"
+              />
+            </div>
+        </b-row>
+      </b-container>
+    </div>
+    <b-container style="padding-bottom: 5%; min-height: 0vh" fluid class="bottom-bar">
+        <div class="flex-wrapper-seven">
+              <router-link to="/contactUs"><div style="width: 100%; padding-top: 15%"><p class="contact-us">Contact Us</p></div></router-link>
+        </div>
+        <a href="#events">  
+          <img
+            style="max-width:5%; position: absolute; right: 5%; cursor: pointer;"
+            src="../assets/back to top.png"
+          >
+        </a>
+    </b-container>
+  </div>
+</template>
   
   <script>
   export default {
@@ -194,205 +483,395 @@
                 
             ]
         }
-    }
+    },
+    computed: {
+      darkMode: function() {
+        return this.$store.state.darkMode;
+      }
+    },
   };
   </script>
   
   <style scoped>
-  .events-three {
-    background-color: white;
-    padding: 32px 0 0;
-    display: flex;
-    flex-direction: column;
-    align-items: flex-start;
+  @media (min-aspect-ratio: 1/1){
+    .contact-us {
+      font-family: "Inter";
+      font-size: 4vh;
+      font-weight: 200;
+      line-height: normal;
+      color: rgba(255, 255, 255, 1);
+      text-align: center;
+    }
+    .flex-wrapper-seven {
+        margin-right: 0px;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+    }
+    .bottom-bar {
+      background-color: rgba(0, 0, 0, 1);
+      margin-bottom: 0%;
+      padding-left: 30%;
+      padding-right: 30%;
+      position: relative;
+    }
   }
-  .events-two {
-    font-family: "Cinzel";
-    font-size: 60px;
-    font-weight: 400;
-    line-height: normal;
-    color: gray;
-    text-align: center;
-    width: 100%;
+  @media (max-aspect-ratio: 1/1){
+    .contact-us {
+      font-family: "Inter";
+      font-size: 4vw;
+      font-weight: 200;
+      line-height: normal;
+      color: rgba(255, 255, 255, 1);
+      margin-bottom: 0%;
+      text-align: center;
+    }
+    .flex-wrapper-seven {
+        margin-right: 0px;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+    }
+    .bottom-bar {
+      background-color: rgba(0, 0, 0, 1);
+      margin-bottom: 0%;
+      padding-left: 30%;
+      padding-right: 30%;
+      position: relative;
+    }
   }
-  .lorem-ipsum-dolor-sit-amet-consectetur {
-    width: 100%;
-    font-family: "Inter";
-    font-size: 24px;
-    font-weight: 200;
-    line-height: normal;
-    color: gray;
-    text-align: center;
+
+  @media (min-aspect-ratio: 1/1){
+    .m-events{
+      display: none;
+    }
+    .d-events-three {
+      background-color: #242424;
+      padding: 32px 0 0;
+      display: flex;
+      flex-direction: column;
+      align-items: flex-start;
+    }
+    .d-events-two {
+      font-family: "Cinzel";
+      font-size: 4vh;
+      font-weight: 400;
+      line-height: normal;
+      color: white;
+      text-align: center;
+    }
+    .d-lorem-ipsum-dolor-sit-amet-consectetur {
+      width: 100%;
+      font-family: "Inter";
+      font-size: 2vh;
+      font-weight: 200;
+      line-height: normal;
+      color: white;
+      text-align: center;
+    }
+    .d-num-1st-event {
+      width: 75%;
+      background-color: #242424;
+      padding: 2% 3% 2% 3%;
+      box-shadow: 0 0 10px 0 rgba(0, 0, 0, 0.14);
+      display: flex;
+      align-items: flex-start;
+      position: relative;
+    }
+    .d-our-first-event {
+      color: white;
+    }
+    .d-join-our-first-event-where-we-will-pres {
+      height: 8%;
+      width: 100%;
+      font-family: "Inter";
+      font-size: 2vh;
+      font-weight: 200;
+      line-height: normal;
+      color: white;
+      display: flex;
+    }
+    .d-wednesday-march-1st-2023-1800-2000 {
+      height: 6%;
+      width: 80%;
+      font-family: "Inter";
+      font-size: 1.5vh;
+      font-weight: 200;
+      line-height: normal;
+      color: white;
+      display: flex;
+    }
+    .d-read-more {
+      font-family: "Inter";
+      font-size: 1.5vh;
+      width: 12vh;
+      margin-bottom: 0;
+      margin-right: 0;
+      font-weight: 200;
+      line-height: normal;
+      color: white;
+      text-decoration: underline;
+      position: absolute;
+      right: 0;
+      bottom: 10%;
+    }
   }
-  .relative-wrapper-one {
-    position: relative;
+  @media (max-aspect-ratio: 1/1){
+    .d-events-three {
+      background-color: #242424;
+      padding: 32px 0 0;
+      display: flex;
+      flex-direction: column;
+      align-items: flex-start;
+    }
+    .d-events-two {
+      font-family: "Cinzel";
+      font-size: 6vw;
+      font-weight: 400;
+      line-height: normal;
+      color: white;
+      text-align: center;
+      width: 100%;
+      margin-top: 15%;
+    }
+    .d-lorem-ipsum-dolor-sit-amet-consectetur {
+      width: 80%;
+      margin-left: 10%;
+      margin-right: 10%;
+      font-family: "Inter";
+      font-size: 3.5vw;
+      font-weight: 200;
+      line-height: normal;
+      color: white;
+      text-align: center;
+    }
+    .d-num-1st-event {
+      width: 75%;
+      background-color: #242424;
+      padding: 2% 3% 2% 3%;
+      margin-top: 10%;
+
+    }
+    .d-our-first-event {
+      color: white;
+      width: 100%;
+      font-size: 5vw;
+      margin-top: 5%;
+    }
+    .d-join-our-first-event-where-we-will-pres {
+      height: 8%;
+      width: 100%;
+      margin-top: 10%;
+      font-family: "Inter";
+      font-size: 3.5vw;
+      font-weight: 200;
+      line-height: normal;
+      color: white;
+      text-align: left;
+      float: left;
+    }
+    .d-wednesday-march-1st-2023-1800-2000 {
+      height: 100%;
+      width: 100%;
+      font-family: "Inter";
+      font-size: 3.5vw;
+      font-weight: 200;
+      color: white;
+    }
+    .d-read-more {
+      font-family: "Inter";
+      font-size: 2.5vw;
+      width: 20vw;
+      margin-bottom: 0;
+      margin-right: 0;
+      font-weight: 200;
+      line-height: normal;
+      color: white;
+      text-decoration: underline;
+      position: absolute;
+      right: 20%
+    }
   }
-  .num-1st-event {
-    width: 75%;
-    background-color: white;
-    padding: 37px 48px 35px 46px;
-    box-shadow: 0 0 10px 0 rgba(0, 0, 0, 0.14);
-    display: flex;
-    align-items: flex-start;
-    position: relative;
+
+  @media (min-aspect-ratio: 1/1){
+    .m-events{
+      display: none
+    }
+    .events-three {
+      background-color: white;
+      padding: 32px 0 0;
+      display: flex;
+      flex-direction: column;
+      align-items: flex-start;
+    }
+    .events-two {
+      font-family: "Cinzel";
+      font-size: 4vh;
+      font-weight: 400;
+      line-height: normal;
+      color: gray;
+      text-align: center;
+    }
+    .lorem-ipsum-dolor-sit-amet-consectetur {
+      width: 100%;
+      font-family: "Inter";
+      font-size: 2vh;
+      font-weight: 200;
+      line-height: normal;
+      color: gray;
+      text-align: center;
+    }
+    .relative-wrapper-one {
+      position: relative;
+    }
+    .num-1st-event {
+      width: 75%;
+      background-color: white;
+      padding: 2% 3% 2% 3%;
+      box-shadow: 0 0 10px 0 rgba(0, 0, 0, 0.14);
+      display: flex;
+      align-items: flex-start;
+      position: relative;
+    }
+    .rectangle-34 {
+      width: 100%;
+      max-width: 249px;
+      height: auto;
+      margin-right: 2%;
+    }
+    .flex-wrapper-three {
+      display: flex;
+      flex-direction: column;
+      align-items: flex-start;
+    }
+    .our-first-event {
+      color: gray;
+    }
+    .join-our-first-event-where-we-will-pres {
+      height: 8%;
+      width: 100%;
+      font-family: "Inter";
+      font-size: 2vh;
+      font-weight: 200;
+      line-height: normal;
+      color: gray;
+      display: flex;
+    }
+    .wednesday-march-1st-2023-1800-2000 {
+      height: 6%;
+      width: 80%;
+      font-family: "Inter";
+      font-size: 1.5vh;
+      font-weight: 200;
+      line-height: normal;
+      color: gray;
+      display: flex;
+    }
+    .read-more {
+      font-family: "Inter";
+      font-size: 1.5vh;
+      width: 12vh;
+      margin-bottom: 0;
+      margin-right: 0;
+      font-weight: 200;
+      line-height: normal;
+      color: black;
+      text-decoration: underline;
+      position: absolute;
+      right: 0;
+      bottom: 10%;
+    }
   }
-  .rectangle-34 {
-    width: 100%;
-    max-width: 249px;
-    height: auto;
-    margin-right: 34px;
-  }
-  .flex-wrapper-three {
-    display: flex;
-    flex-direction: column;
-    align-items: flex-start;
-  }
-  .our-first-event {
-    color: gray;
-    margin-bottom: 13px;
-  }
-  .join-our-first-event-where-we-will-pres {
-    height: 8%;
-    width: 80%;
-    font-family: "Inter";
-    font-size: 24px;
-    font-weight: 200;
-    line-height: normal;
-    color: gray;
-    display: flex;
-  }
-  .wednesday-march-1st-2023-1800-2000 {
-    height: 6%;
-    width: 80%;
-    font-family: "Inter";
-    font-size: 18px;
-    font-weight: 200;
-    line-height: normal;
-    color: gray;
-    display: flex;
-  }
-  .read-more {
-    font-family: "Inter";
-    font-size: 18px;
-    font-weight: 200;
-    line-height: normal;
-    color: black;
-    text-decoration: underline;
-    position: absolute;
-    right: 42px;
-    bottom: 36px;
-  }
-  .relative-wrapper-two {
-    position: relative;
-  }
-  .num-2nd-event {
-    background-color: white;
-    padding: 38px 44px 34px 46px;
-    box-shadow: 0 0 10px 0 rgba(0, 0, 0, 0.14);
-    display: flex;
-    align-items: flex-start;
-    position: relative;
-  }
-  .in-this-workshop-we-will-implement-the {
-    height: 0px;
-    width: 847px;
-    font-family: "Inter";
-    font-size: 24px;
-    font-weight: 200;
-    line-height: normal;
-    color: gray;
-    display: flex;
-  }
-  .read-more-two {
-    font-family: "Inter";
-    font-size: 18px;
-    font-weight: 200;
-    line-height: normal;
-    color: black;
-    text-decoration: underline;
-    position: absolute;
-    right: 42px;
-    bottom: 34px;
-  }
-  .relative-wrapper-three {
-    position: relative;
-  }
-  .num-3rd-event {
-    background-color: white;
-    padding: 34px 44px 38px 46px;
-    box-shadow: 0 0 10px 0 rgba(0, 0, 0, 0.14);
-    display: flex;
-    align-items: flex-start;
-    position: relative;
-  }
-  .read-more-three {
-    font-family: "Inter";
-    font-size: 18px;
-    font-weight: 200;
-    line-height: normal;
-    color: black;
-    text-decoration: underline;
-    position: absolute;
-  }
-  .group-14 {
-    margin-top: 1%;
-    padding: 0 0px 18px 0;
-    position: relative;
-  }
-  .back-to-top-arrow {
-    margin-top: 0%;
-    width: 36px;
-    height: 18px;
-    position: relative;
-  }
-  .back-to-top-arrow-two {
-    margin-top: 0%;
-    width: 36px;
-    height: 18px;
-    position: relative;
-  }
-  .bottom-bar {
-    background-color: black;
-    padding: 55px 67px 48px 844px;
-    display: flex;
-    align-items: flex-start;
-  }
-  .flex-wrapper-two {
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-  }
-  .contact-us {
-    font-family: "Inter";
-    font-size: 24px;
-    font-weight: 200;
-    line-height: normal;
-    color: white;
-  }
-  .powered-by-squared-space {
-    font-family: "Inter";
-    font-size: 18px;
-    font-weight: 400;
-    line-height: normal;
-    color: white;
-  }
-  .back-to-top-two {
-    margin-top: 8px;
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-  }
-  .back-to-top-arrow-three {
-    width: 36px;
-    height: 18px;
-    margin-bottom: 14px;
-  }
-  .back-to-top {
-    font-family: "Inter";
-    font-size: 18px;
-    font-weight: 300;
-    line-height: normal;
-    color: white;
-    text-align: center;
+  @media (max-aspect-ratio: 1/1){
+    .events{
+      display: none;
+    }
+    .events-three {
+      background-color: white;
+      padding: 32px 0 0;
+      display: flex;
+      flex-direction: column;
+      align-items: flex-start;
+    }
+    .events-two {
+      font-family: "Cinzel";
+      font-size: 6vw;
+      font-weight: 400;
+      line-height: normal;
+      color: gray;
+      text-align: center;
+      width: 100%;
+      margin-top: 15%;
+    }
+    .lorem-ipsum-dolor-sit-amet-consectetur {
+      width: 80%;
+      margin-left: 10%;
+      margin-right: 10%;
+      font-family: "Inter";
+      font-size: 3.5vw;
+      font-weight: 200;
+      line-height: normal;
+      color: gray;
+      text-align: center;
+    }
+    .relative-wrapper-one {
+      position: relative;
+    }
+    .num-1st-event {
+      width: 75%;
+      background-color: white;
+      padding: 2% 3% 2% 3%;
+      margin-top: 10%;
+
+    }
+    .rectangle-34 {
+      width: 25%;
+      max-width: 249px;
+      height: auto;
+      margin-right: 2%;
+      float: left;
+    }
+    .flex-wrapper-three {
+
+    }
+    .our-first-event {
+      color: gray;
+      width: 100%;
+      font-size: 5vw;
+      margin-top: 5%;
+    }
+    .join-our-first-event-where-we-will-pres {
+      height: 8%;
+      width: 100%;
+      margin-top: 10%;
+      font-family: "Inter";
+      font-size: 3.5vw;
+      font-weight: 200;
+      line-height: normal;
+      color: gray;
+      text-align: left;
+      float: left;
+    }
+    .wednesday-march-1st-2023-1800-2000 {
+      height: 100%;
+      width: 100%;
+      font-family: "Inter";
+      font-size: 3.5vw;
+      font-weight: 200;
+      color: gray;
+    }
+    .read-more {
+      font-family: "Inter";
+      font-size: 2.5vw;
+      width: 20vw;
+      margin-bottom: 0;
+      margin-right: 0;
+      font-weight: 200;
+      line-height: normal;
+      color: black;
+      text-decoration: underline;
+      position: absolute;
+      right: 20%
+    }
   }
   </style>

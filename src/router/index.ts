@@ -16,6 +16,7 @@ import Workshops from '../views/Workshops.vue'
 import AboutUs from '../views/AboutUs.vue'
 import Events from '../views/Events.vue'
 import Event from '../views/Event.vue'
+import ContactUs from '../views/ContactUs.vue'
 import { auth } from '../firebase'
 require('dotenv').config()
 Vue.use(VueRouter)
@@ -27,6 +28,11 @@ const routes: Array<RouteConfig> = [
     path: '/',
     name: 'Home',
     component: Home
+  },
+  {
+    path: '/contactUs',
+    name: 'ContactUs',
+    component: ContactUs
   },
   {
     path: '/projectAddingForm',
