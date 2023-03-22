@@ -1,6 +1,5 @@
 <template>
     <div>
-      
       <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Michroma">
       <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Inter">
       <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Cinzel">

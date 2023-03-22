@@ -752,9 +752,9 @@ textarea {
     align-items: center;
     position: relative;
     border: 2px solid rgba(255, 255, 255, 1);
-    width: 10%;
-    margin-left: 45%;
-    margin-right: 45%;
+    width: 15%;
+    margin-left: 42.5%;
+    margin-right: 42.5%;
   }
   .d-submit-button:hover {
     border-radius: 5px;
@@ -767,7 +767,7 @@ textarea {
     color: black;
     background-color: white;
     border: 2px solid black;
-    width: 10%;
+    width: 15%;
     margin-left: 42.5%;
     margin-right: 42.5%;
     

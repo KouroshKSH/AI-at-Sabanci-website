@@ -795,16 +795,16 @@
     margin-top: 0%;
   }
   .events-two {
-      font-family: "Cinzel";
-      font-size: 4vh;
-      font-weight: 400;
-      line-height: normal;
-      color: gray;
-      text-align: center;
-      width: 60%;
-      margin-left: 20%;
-      margin-right: 20%;
-    }
+    font-family: "Cinzel";
+    font-size: 4vh;
+    font-weight: 400;
+    line-height: normal;
+    color: gray;
+    text-align: center;
+    width: 60%;
+    margin-left: 20%;
+    margin-right: 20%;
+  }
   .specific-event {
     background-color: white;
     padding: 32px 0 0;

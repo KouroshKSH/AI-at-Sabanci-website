@@ -10,12 +10,12 @@
             <div class="flex-wrapper-seven"></div>
             <div style="width: 100%;">
                 
-                <div class="flex-wrapper-five" style="background-color: rgba(207,207,207,1); margin-top: 30%">
+                <div class="flex-wrapper-five" style="background-color: rgba(207,207,207,1)">
                   <div class="flex-wrapper-six"><p class="join-us-two" style="z-index: 2">Join Us</p></div>
                   <!--<p class="become-a-part-of-our-club-participate-i">
                     Apply to becoming a member of the club and earn the chance to use top level AI equipment and be directly involved in developing projects related to AI/ML development 
                   </p>-->
-                  <div class="blur bubblepos-1">
+                  <div class="blur bubblepos-1" style="margin-top: 4%">
                     Become a part of our club, participate in your favorite activities, and make the best out of it.
                   </div>
                   <div class="emoji">👋</div>
@@ -449,7 +449,7 @@ textarea {
   .d-emoji{
     position: absolute; 
     left: 43%; 
-    top: 17%; 
+    top: 20%; 
     font-size: 3vh
   }
 }
@@ -784,7 +784,7 @@ textarea {
     position: relative;
     width: 100%;
     margin-top: 5%;
-    margin-bottom: 5%;
+    margin-bottom: 0%;
   }
 }
 @media (max-aspect-ratio: 1/1){
@@ -986,6 +986,7 @@ textarea {
     position: relative;
     width: 100%;
     height: 100%;
+    margin-top: 30%;
     background-repeat: no-repeat
   }
 }

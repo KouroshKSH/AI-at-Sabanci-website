@@ -25,7 +25,7 @@
         </b-row>
       </b-container>
     </div>
-    <div v-else style="background-color: #242424; height: 100vh">
+    <div v-else style="background-color: #242424; min-height: 100vh">
       <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Michroma">
       <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Inter">
       <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Cinzel">

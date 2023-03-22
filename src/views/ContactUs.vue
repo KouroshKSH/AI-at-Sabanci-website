@@ -37,7 +37,7 @@
             </b-container>
             </div>
         </div>
-        <div v-else style="background-color: #242424; width: 100%; height: 100vh">
+        <div v-else style="background-color: #242424; width: 100%; min-height: 100vh">
             <div class="form">
             <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Michroma">
             <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Inter">
@@ -623,6 +623,7 @@ textarea {
     line-height: normal;
     color: white;
     text-align: center;
+    margin-top: 5%;
   }
   .d-welcome-back {
     width: 100%;
@@ -699,6 +700,7 @@ textarea {
     line-height: normal;
     color: white;
     text-align: center;
+    margin-top: 25%;
   }
   .d-welcome-back {
     width: 100%;
@@ -781,6 +783,7 @@ textarea {
     line-height: normal;
     color: gray;
     text-align: center;
+    margin-top: 5%;
   }
   .welcome-back {
     width: 100%;
@@ -856,6 +859,7 @@ textarea {
     line-height: normal;
     color: gray;
     text-align: center;
+    margin-top: 25%;
   }
   .welcome-back {
     width: 100%;

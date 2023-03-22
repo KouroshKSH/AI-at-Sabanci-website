@@ -6,35 +6,35 @@
       <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Cinzel">
       <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
       <b-container style="margin-top: 3%" class="flex-wrapper-three">
-        <div align-h="center">
+        <div style="margin-left: 5%;">
           <p class="our-team-two">Our Team</p>
           <div style="width: 80%; margin-left: 10%; margin-right: 10%">
             <div class="frame">
-              <img
+              <!--<img
                 alt=""
                 style="margin: 0; display:inline;"
                 class="back-to-top-arrow"
                 src="https://static.overlay-tech.com/assets/6c07ba1d-0e46-4f7c-bed6-7fa69e6d7515.svg"
                 @click="flipBackward()"
-              />
+              />-->
               <img
                 alt=""
-                style="display:inline;"
+                style="display:inline; margin-left: 5%;"
                 class="rectangle-32"
                 :src=currentImg
               />
-              <img
+              <!--<img
                 alt=""
                 style="margin: 0; display:inline;"
                 class="back-to-top-arrow"
                 src="https://static.overlay-tech.com/assets/1a565dfe-3cde-4e60-93b1-3b242ecbf376.svg"
                 @click="flipForward()"
-              />
+              />-->
             </div>
           </div>
         </div>
       </b-container>
-      <b-container class="flex-wrapper-one">
+      <!--<b-container class="flex-wrapper-one">
         <b-row>
           <div class="rectangle-49">
             <img
@@ -78,7 +78,7 @@
             <div @click="currentImg=images[4]" class="rectangle-56"></div>
           </div>
       </b-row>
-      </b-container>
+      </b-container>-->
       <b-container fluid><b-row align-h="center"><div class="line-12"></div></b-row></b-container>
       <b-container>
         <p class="who-are-we">Who are We?</p>
@@ -91,82 +91,15 @@
       <b-container>
         <p class="meet-the-members">Meet the Members</p>
         <div class="members">
-            <b-row align-H="center" class="flex-wrapper-four">
-                <b-col align-h="center">
+            <b-row class="flex-wrapper-four">
+                <b-col>
                   <img
                   alt=""
                   class="ellipse-1"
-                  src="https://static.overlay-tech.com/assets/060f10d0-b40f-40f6-865d-bf529beefec7.png"
+                  :src=memberPics.serhan_yilmaz 
                   />
                   <p class="name">Serhan Yilmaz</p>
-                </b-col>
-                <b-col align-h="center">
-                  <img
-                    alt=""
-                    class="ellipse-1"
-                    src="https://static.overlay-tech.com/assets/8d6a979d-04d4-43e3-beec-a2509426b3a0.png"
-                  />
-                  <p class="name">
-                    Some Long Name to Test
-                  </p>
-                </b-col>
-                <b-col align-h="center">
-                  <img
-                    alt=""
-                    class="ellipse-1"
-                    src="https://static.overlay-tech.com/assets/1f19bd6a-c2af-4680-8b42-42c3858c0443.png"
-                  />
-                  <p class="name">Person 3</p>
-                </b-col>
-            </b-row>
-            <b-row align-h="center" class="flex-wrapper-six">
-              <b-col align-h="center">
-                <img
-                  alt=""
-                  class="ellipse-1"
-                  src="https://static.overlay-tech.com/assets/6fa02e6d-5b79-4e88-a2ca-a21c8e3f03bb.png"
-                />
-                <p class="name">Random Joe</p>
-              </b-col> 
-              <b-col align-h="center">  
-                <img
-                  alt=""
-                  class="ellipse-1"
-                  src="https://static.overlay-tech.com/assets/95622fa4-461a-4d80-a209-49cbf270dbdf.png"
-                />
-                <p class="name">
-                  ABCDEFG
-                </p>
-              </b-col>
-              <b-col align-h="center">
-                <img
-                  alt=""
-                  class="ellipse-1"
-                  src="https://static.overlay-tech.com/assets/c9145e30-25f7-40d8-a000-64097fec986b.png"
-                />
-                <p class="name">hello!</p>
-              </b-col>
-            </b-row> 
-        </div><!--For wide view-->
-        <div class="m-members">
-            <b-row align-H="center" class="flex-wrapper-four">
-                <b-col align-h="center">
-                  <img
-                  alt=""
-                  class="ellipse-1"
-                  src="https://static.overlay-tech.com/assets/060f10d0-b40f-40f6-865d-bf529beefec7.png"
-                  />
-                  <p class="name">Serhan Yilmaz</p>
-                </b-col>
-                <b-col align-h="center">
-                  <img
-                    alt=""
-                    class="ellipse-1"
-                    src="https://static.overlay-tech.com/assets/8d6a979d-04d4-43e3-beec-a2509426b3a0.png"
-                  />
-                  <p class="name">
-                    Some Long Name to Test
-                  </p>
+                  <p class="name" style="font-size: 1.5vh">Club President</p>
                 </b-col>
               </b-row>
             <b-row align-h="center" class="flex-wrapper-six">
@@ -174,17 +107,19 @@
                   <img
                     alt=""
                     class="ellipse-1"
-                    src="https://static.overlay-tech.com/assets/1f19bd6a-c2af-4680-8b42-42c3858c0443.png"
+                    :src=memberPics.kourosh_sharifi
                   />
-                  <p class="name">Person 3</p>
+                  <p class="name">Kourosh Sharifi</p>
+                  <p class="name" style="font-size: 1.5vh; margin-bottom: 10%">Vice President</p>
                 </b-col>
               <b-col align-h="center">
                 <img
                   alt=""
                   class="ellipse-1"
-                  src="https://static.overlay-tech.com/assets/6fa02e6d-5b79-4e88-a2ca-a21c8e3f03bb.png"
+                  :src=memberPics.sadiq_qara
                 />
-                <p class="name">Random Joe</p>
+                <p class="name">Sadiq Qara</p>
+                <p class="name" style="font-size: 1.5vh; margin-bottom: 10%">Web Developer</p>
               </b-col> 
             </b-row>
             <b-row align-h="center" class="flex-wrapper-six">
@@ -192,19 +127,73 @@
                 <img
                   alt=""
                   class="ellipse-1"
-                  src="https://static.overlay-tech.com/assets/95622fa4-461a-4d80-a209-49cbf270dbdf.png"
+                  :src=memberPics.furkan_eris
                 />
-                <p class="name">
-                  ABCDEFG
-                </p>
+                <p class="name">Furkan Eris</p>
+                <p class="name" style="font-size: 1.5vh">Student Advisor</p>
               </b-col>
               <b-col align-h="center">
                 <img
                   alt=""
                   class="ellipse-1"
-                  src="https://static.overlay-tech.com/assets/c9145e30-25f7-40d8-a000-64097fec986b.png"
+                  :src=memberPics.ege_kaan_okalp
                 />
-                <p class="name">hello!</p>
+                <p class="name">Ege Kaan Okalp</p>
+                <p class="name" style="font-size: 1.5vh">Student Advisor</p>
+              </b-col>
+            </b-row> 
+        </div><!--For wide view-->
+        <div class="m-members">
+            <b-row class="flex-wrapper-four">
+                <b-col>
+                  <img
+                  alt=""
+                  style="width: 40%"
+                  class="ellipse-1"
+                  :src=memberPics.serhan_yilmaz
+                  />
+                  <p class="name">Serhan Yilmaz</p>
+                  <p class="name" style="font-size: 1.5vw">Club President</p>
+                </b-col>
+              </b-row>
+            <b-row align-h="center" class="flex-wrapper-six">
+                <b-col align-h="center">
+                  <img
+                    alt=""
+                    class="ellipse-1"
+                    :src=memberPics.kourosh_sharifi
+                  />
+                  <p class="name">Kourosh Sharifi</p>
+                  <p class="name" style="font-size: 1.5vw; margin-bottom: 10%">Vice President</p>
+                </b-col>
+              <b-col align-h="center">
+                <img
+                  alt=""
+                  class="ellipse-1"
+                  :src=memberPics.sadiq_qara
+                />
+                <p class="name">Sadiq Qara</p>
+                <p class="name" style="font-size: 1.5vw; margin-bottom: 10%">Web Developer</p>
+              </b-col> 
+            </b-row>
+            <b-row align-h="center" class="flex-wrapper-six">
+              <b-col align-h="center">  
+                <img
+                  alt=""
+                  class="ellipse-1"
+                  :src=memberPics.furkan_eris
+                />
+                <p class="name">Furkan Eris</p>
+                <p class="name" style="font-size: 1.5vw">Student Advisor</p>
+              </b-col>
+              <b-col align-h="center">
+                <img
+                  alt=""
+                  class="ellipse-1"
+                  :src=memberPics.ege_kaan_okalp
+                />
+                <p class="name">Ege Kaan Okalp</p>
+                <p class="name" style="font-size: 1.5vw">Student Advisor</p>
               </b-col>
             </b-row> 
         </div><!--For mobile view-->
@@ -281,35 +270,35 @@
       <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Cinzel">
       <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
       <b-container style="margin-top: 3%" class="flex-wrapper-three">
-        <div style="width: 100%">
+        <div style="margin-left: 5%">
           <p class="d-our-team-two">Our Team</p>
           <div style="width: 80%; margin-left: 10%; margin-right: 10%">
             <div class="frame">
-              <img
+              <!--<img
                 alt=""
                 style="margin: 0; display:inline;"
                 class="back-to-top-arrow"
                 src="https://static.overlay-tech.com/assets/6c07ba1d-0e46-4f7c-bed6-7fa69e6d7515.svg"
                 @click="flipBackward()"
-              />
+              />-->
               <img
                 alt=""
-                style="display:inline;"
+                style="display:inline; margin-left: 5%"
                 class="rectangle-32"
                 :src=currentImg
               />
-              <img
+              <!--<img
                 alt=""
                 style="margin: 0; display:inline;"
                 class="back-to-top-arrow"
                 src="https://static.overlay-tech.com/assets/1a565dfe-3cde-4e60-93b1-3b242ecbf376.svg"
                 @click="flipForward()"
-              />
+              />-->
             </div>
           </div>
         </div>
       </b-container>
-      <b-container class="flex-wrapper-one">
+      <!--<b-container class="flex-wrapper-one">
         <b-row>
           <div class="rectangle-49">
             <img
@@ -353,7 +342,7 @@
             <div @click="currentImg=images[4]" class="rectangle-56"></div>
           </div>
       </b-row>
-      </b-container>
+      </b-container>-->
       <b-container fluid><b-row align-h="center"><div class="d-line-12"></div></b-row></b-container>
       <b-container>
         <p class="d-who-are-we">Who are We?</p>
@@ -366,60 +355,55 @@
       <b-container>
         <p class="d-meet-the-members">Meet the Members</p>
         <div class="members">
-            <b-row align-H="center" class="flex-wrapper-four">
-                <b-col align-h="center">
+            <b-row class="flex-wrapper-four">
+                <b-col>
                   <img
                   alt=""
                   class="ellipse-1"
-                  src="https://static.overlay-tech.com/assets/060f10d0-b40f-40f6-865d-bf529beefec7.png"
+                  :src=memberPics.serhan_yilmaz
                   />
                   <p class="d-name">Serhan Yilmaz</p>
+                  <p class="d-name" style="font-size: 1.5vh">Club President</p>
                 </b-col>
-                <b-col align-h="center">
-                  <img
-                    alt=""
-                    class="ellipse-1"
-                    src="https://static.overlay-tech.com/assets/8d6a979d-04d4-43e3-beec-a2509426b3a0.png"
-                  />
-                  <p class="d-name">
-                    Some Long Name to Test
-                  </p>
-                </b-col>
-                <b-col align-h="center">
-                  <img
-                    alt=""
-                    class="ellipse-1"
-                    src="https://static.overlay-tech.com/assets/1f19bd6a-c2af-4680-8b42-42c3858c0443.png"
-                  />
-                  <p class="d-name">Person 3</p>
-                </b-col>
-            </b-row>
+              </b-row>
             <b-row align-h="center" class="flex-wrapper-six">
+                <b-col align-h="center">
+                  <img
+                    alt=""
+                    class="ellipse-1"
+                    :src=memberPics.kourosh_sharifi
+                  />
+                  <p class="d-name">Kourosh Sharifi</p>
+                  <p class="d-name" style="font-size: 1.5vh; margin-bottom: 10%">Vice President</p>
+                </b-col>
               <b-col align-h="center">
                 <img
                   alt=""
                   class="ellipse-1"
-                  src="https://static.overlay-tech.com/assets/6fa02e6d-5b79-4e88-a2ca-a21c8e3f03bb.png"
+                  :src=memberPics.sadiq_qara
                 />
-                <p class="d-name">Random Joe</p>
+                <p class="d-name">Sadiq Qara</p>
+                <p class="d-name" style="font-size: 1.5vh; margin-bottom: 10%">Web Developer</p>
               </b-col> 
+            </b-row>
+            <b-row align-h="center" class="flex-wrapper-six">
               <b-col align-h="center">  
                 <img
                   alt=""
                   class="ellipse-1"
-                  src="https://static.overlay-tech.com/assets/95622fa4-461a-4d80-a209-49cbf270dbdf.png"
+                  :src=memberPics.furkan_eris
                 />
-                <p class="d-name">
-                  ABCDEFG
-                </p>
+                <p class="d-name">Furkan Eris</p>
+                <p class="d-name" style="font-size: 1.5vh">Student Advisor</p>
               </b-col>
               <b-col align-h="center">
                 <img
                   alt=""
                   class="ellipse-1"
-                  src="https://static.overlay-tech.com/assets/c9145e30-25f7-40d8-a000-64097fec986b.png"
+                  :src=memberPics.ege_kaan_okalp
                 />
-                <p class="d-name">hello!</p>
+                <p class="d-name">Ege Kaan Okalp</p>
+                <p class="d-name" style="font-size: 1.5vh">Student Advisor</p>
               </b-col>
             </b-row> 
         </div><!--For wide view-->
@@ -428,20 +412,12 @@
                 <b-col>
                   <img
                   alt=""
+                  style="width: 40%"
                   class="ellipse-1"
-                  src="https://static.overlay-tech.com/assets/060f10d0-b40f-40f6-865d-bf529beefec7.png"
+                  :src=memberPics.serhan_yilmaz
                   />
                   <p class="d-name">Serhan Yilmaz</p>
-                </b-col>
-                <b-col>
-                  <img
-                    alt=""
-                    class="ellipse-1"
-                    src="https://static.overlay-tech.com/assets/8d6a979d-04d4-43e3-beec-a2509426b3a0.png"
-                  />
-                  <p class="d-name">
-                    Some Long Name to Test
-                  </p>
+                  <p class="d-name" style="font-size: 1.5vw">Club President</p>
                 </b-col>
               </b-row>
             <b-row align-h="center" class="flex-wrapper-six">
@@ -449,17 +425,19 @@
                   <img
                     alt=""
                     class="ellipse-1"
-                    src="https://static.overlay-tech.com/assets/1f19bd6a-c2af-4680-8b42-42c3858c0443.png"
+                    :src=memberPics.kourosh_sharifi
                   />
-                  <p class="d-name">Person 3</p>
+                  <p class="d-name">Kourosh Sharifi</p>
+                  <p class="d-name" style="font-size: 1.5vw; margin-bottom: 30%">Vice President</p>
                 </b-col>
               <b-col align-h="center">
                 <img
                   alt=""
                   class="ellipse-1"
-                  src="https://static.overlay-tech.com/assets/6fa02e6d-5b79-4e88-a2ca-a21c8e3f03bb.png"
+                  :src=memberPics.sadiq_qara
                 />
-                <p class="d-name">Random Joe</p>
+                <p class="d-name">Sadiq Qara</p>
+                <p class="d-name" style="font-size: 1.5vw; margin-bottom: 30%">Web Developer</p>
               </b-col> 
             </b-row>
             <b-row align-h="center" class="flex-wrapper-six">
@@ -467,19 +445,19 @@
                 <img
                   alt=""
                   class="ellipse-1"
-                  src="https://static.overlay-tech.com/assets/95622fa4-461a-4d80-a209-49cbf270dbdf.png"
+                  :src=memberPics.furkan_eris
                 />
-                <p class="d-name">
-                  ABCDEFG
-                </p>
+                <p class="d-name">Furkan Eris</p>
+                <p class="d-name" style="font-size: 1.5vw">Student Advisor</p>
               </b-col>
               <b-col align-h="center">
                 <img
                   alt=""
                   class="ellipse-1"
-                  src="https://static.overlay-tech.com/assets/c9145e30-25f7-40d8-a000-64097fec986b.png"
+                  :src=memberPics.ege_kaan_okalp
                 />
-                <p class="d-name">hello!</p>
+                <p class="d-name">Ege Kaan Okalp</p>
+                <p class="d-name" style="font-size: 1.5vw">Student Advisor</p>
               </b-col>
             </b-row> 
         </div><!--For mobile view-->
@@ -565,16 +543,25 @@
   </template>
   
   <script>
+  const groupImage = require('../assets/group image.jpeg')
   export default {
     name: "OurTeam",
     data(){
         return{
-            images: ["https://www.english.com/blog/wp-content/uploads/2019/12/digital-literacy-post.jpg",
+            images: [ groupImage,
+                     "https://www.english.com/blog/wp-content/uploads/2019/12/digital-literacy-post.jpg",
                      "https://static.overlay-tech.com/assets/6bdae15c-7548-442c-8b45-8cd815939497.png",
                      "https://cdn.theatlantic.com/media/img/photo/2020/08/minnesota-photos/a01_1538737424-1/original.jpg",
                      "https://1.bp.blogspot.com/-kK7Fxm7U9o0/YN0bSIwSLvI/AAAAAAAACFk/aF4EI7XU_ashruTzTIpifBfNzb4thUivACLcBGAsYHQ/s1280/222.jpg",
                      "https://www.english.com/4aJpzQe5ynumrv3j/assets/2018/10/academic-1132x670.jpg"
                     ],
+            memberPics: {
+              serhan_yilmaz: require('../assets/Serhan YILMAZ profile.jpg'),
+              kourosh_sharifi: require('../assets/Kourosh Sharifi.jpg'),
+              sadiq_qara: require('../assets/Sadiq Qara.jpg'),
+              furkan_eris: '',
+              ege_kaan_okalp: require('../assets/Ege Kaan Ozalp.jpg'),
+            },
             currentImg: "",
             currentImgIdx: 0,
         }
@@ -939,7 +926,7 @@
     }
     .a-group-of-sabanci-university-students {
       height: 0%;
-      width: 100%;
+      width: auto;
       margin-bottom: 5%;
       font-family: "Inter";
       font-size: 2vh;
@@ -978,6 +965,7 @@
       max-height: 198px;
       border-radius: 50%;
       margin: auto; 
+      margin-bottom: 2%;
       display: block;
     }
     .flex-wrapper-five {
@@ -1182,6 +1170,7 @@
       max-height: 198px;
       border-radius: 50%;
       margin: auto; 
+      margin-bottom: 2%;
       display: block;
     }
     .flex-wrapper-five {

@@ -162,10 +162,10 @@
                   <p class="clear-chats">❓&nbsp;&nbsp;&nbsp;</p>
                   <p class="clear-chats">FAQs</p>
               </div>
-              <div class="clear-chats-two">
+              <router-link to="/contactUs" class="clear-chats-two">
                   <p class="clear-chats">📬&nbsp;</p>
                   <p class="clear-chats">Contact Us</p>
-              </div>
+              </router-link>
             </b-container>
           </div>
           <div v-if="showMenu" class="m-flex-wrapper-two" style="position:fixed">
@@ -180,7 +180,7 @@
                 <p class="new-chat">&#43; New Chat</p>
               </b-container>
               <div v-for="i in historyTitles.length" :key="i" class="relative-wrapper-three">
-                <div class="flex-wrapper-five" style="width: 100%; cursor: pointer;" @click="currentHistory=i-1">
+                <div class="flex-wrapper-five" style="width: 100%; cursor: pointer;" @click="$state.commit('setCurrentHistory', i-1)">
                   <div class="flex-wrapper-six">
                     <img
                       v-if="historyTitles[i-1]" 
@@ -207,10 +207,10 @@
                   <p class="clear-chats">❓&nbsp;&nbsp;&nbsp;</p>
                   <p class="clear-chats">FAQs</p>
               </div>
-              <div class="clear-chats-two">
+              <router-link to="/contactUs" class="clear-chats-two">
                   <p class="clear-chats">📬&nbsp;</p>
                   <p class="clear-chats">Contact Us</p>
-              </div>
+              </router-link>
             </b-container>
           </div>
           <b-container class="chat" style="width: 70%">
@@ -391,12 +391,12 @@
             src="../assets/menu button (1).png"
           >
           <div class="d-flex-wrapper-two" style="position:fixed; background-color: #282828;">
-            <b-container @click="newChat()" style="z-index: 1; width: 80%; margin-right: 15%" fluid class="d-flex-wrapper-three">
+            <b-container @click="newChat()" style="z-index: 1; width: 80%; margin-right: 15%; height: auto" fluid class="flex-wrapper-three">
                 <p class="d-new-chat">&#43; New Chat</p>
             </b-container>
             <b-container fluid style="width: 15%; position: fixed; height: 80%; overflow-y: auto; padding-top: 5%; background-color: #282828">
               <div v-for="i in historyTitles.length" :key="i" class="relative-wrapper-three">
-                <div class="d-flex-wrapper-five" style="width: 100%; cursor: pointer;" @click="$state.commit('setCurrentHistory', i-1)">
+                <div style="width: 100%; cursor: pointer;" @click="$state.commit('setCurrentHistory', i-1)">
                   <div class="d-flex-wrapper-six">
                     <img
                       v-if="historyTitles[i-1]" 
@@ -423,10 +423,10 @@
                   <p class="d-clear-chats">❓&nbsp;&nbsp;&nbsp;</p>
                   <p class="d-clear-chats">FAQs</p>
               </div>
-              <div class="clear-chats-two">
+              <router-link to="/contactUs" class="clear-chats-two">
                   <p class="d-clear-chats">📬&nbsp;</p>
                   <p class="d-clear-chats">Contact Us</p>
-              </div>
+              </router-link>
             </b-container>
           </div>
           <div v-if="showMenu" class="d-m-flex-wrapper-two" style="position:fixed">
@@ -442,12 +442,12 @@
               </b-container>
               <div v-for="i in historyTitles.length" :key="i" class="relative-wrapper-three">
                 <div class="d-flex-wrapper-five" style="width: 100%; cursor: pointer;" @click="currentHistory=i-1">
-                  <div class="d-flex-wrapper-six">
+                  <div class="flex-wrapper-six">
                     <img
                       v-if="historyTitles[i-1]" 
                       alt=""
                       class="vector-5"
-                      src="https://static.overlay-tech.com/assets/bec070a2-32be-494f-8efb-c9c72322c75e.svg"
+                      src="../assets/Vector 7 (1).png"
                     />
                     <p style="width:100%" class="d-python-code">{{ historyTitles[i-1] }}</p>
                   </div>
@@ -468,10 +468,10 @@
                   <p class="d-clear-chats">❓&nbsp;&nbsp;&nbsp;</p>
                   <p class="d-clear-chats">FAQs</p>
               </div>
-              <div class="clear-chats-two">
+              <router-link to="/contactUs" class="clear-chats-two">
                   <p class="d-clear-chats">📬&nbsp;</p>
                   <p class="d-clear-chats">Contact Us</p>
-              </div>
+              </router-link>
             </b-container>
           </div>
           <b-container class="chat" style="width: 70%">
@@ -630,8 +630,14 @@
 </template>
 
 <script>
+import "firebase/functions";
+
+
+// Get a reference to your Firebase Function
+const myFunction = firebase.functions().httpsCallable("myFunction");
+
+
 const OPENAI_API_KEY = process.env.VUE_APP_OPENAI_API_KEY
-console.log(OPENAI_API_KEY)
 const ORG_ID = process.env.VUE_APP_ORG_ID;
 const axios = require('axios');
 const dotenv = require("dotenv")
@@ -694,7 +700,7 @@ export default {
                 this.$store.commit('setCurrentHistory', 0)
                 this.$store.commit('addHistoryTitle', 'New Chat');
               }
-              if(this.history[this.currentHistory].length==1){
+              if(this.history[this.currentHistory].length==0){
                 if(this.prompt.length<16){this.$store.commit('changeHistoryTitle', this.prompt)}
                 else{
                   this.$store.commit('changeHistoryTitle', this.prompt.slice(0, 14)+"...")
@@ -711,7 +717,7 @@ export default {
                   let strMessages = ""
                   this.$store.commit('addPrompt', this.prompt);
                   this.prompt=""
-                  for (let i = 0; i < this.history[this.currentHistory].length && i < 6; i+=2){
+                  for (let i = 0; i < this.history[this.currentHistory].length; i+=2){
                     strMessages+= "user^&*()"+this.history[this.currentHistory][i].content+"!@#$%";
                     if(i+1<this.history[this.currentHistory].length){strMessages+= "assistant^&*()"+this.history[this.currentHistory][i+1].content+"!@#$%";}
                     messages.push({ role: "user", content: this.history[this.currentHistory][i].content });
@@ -2179,6 +2185,16 @@ html {
     border-radius: 10px;
     padding: 14px 0px 15px 21px;
     display: flex;
+    align-items: center;
+  }
+  .flex-wrapper-six:hover {
+    margin-bottom: 0%;
+    width: 100%;
+    height: 50%;
+    border-radius: 10px;
+    padding: 14px 0px 15px 21px;
+    display: flex;
+    background-color: #E1E1E1;
     align-items: center;
   }
   .vector-5 {
