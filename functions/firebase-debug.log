@@ -1,0 +1,121 @@
+[debug] [2023-03-21T20:19:12.318Z] ----------------------------------------------------------------------
+[debug] [2023-03-21T20:19:12.319Z] Command:       C:\Program Files\nodejs\node.exe C:\Program Files\nodejs\node_modules\firebase-tools\lib\bin\firebase.js deploy
+[debug] [2023-03-21T20:19:12.320Z] CLI Version:   11.24.1
+[debug] [2023-03-21T20:19:12.320Z] Platform:      win32
+[debug] [2023-03-21T20:19:12.320Z] Node Version:  v16.13.0
+[debug] [2023-03-21T20:19:12.321Z] Time:          Wed Mar 22 2023 00:19:12 GMT+0400 (Azerbaijan Standard Time)
+[debug] [2023-03-21T20:19:12.321Z] ----------------------------------------------------------------------
+[debug] 
+[debug] [2023-03-21T20:19:12.406Z] > command requires scopes: ["email","openid","https://www.googleapis.com/auth/cloudplatformprojects.readonly","https://www.googleapis.com/auth/firebase","https://www.googleapis.com/auth/cloud-platform"]
+[debug] [2023-03-21T20:19:12.407Z] > authorizing via signed-in user (sadig.gara@sabanciuniv.edu)
+[debug] [2023-03-21T20:19:12.407Z] [iam] checking project ai-club-website for permissions ["cloudfunctions.functions.create","cloudfunctions.functions.delete","cloudfunctions.functions.get","cloudfunctions.functions.list","cloudfunctions.functions.update","cloudfunctions.operations.get","datastore.indexes.create","datastore.indexes.delete","datastore.indexes.list","datastore.indexes.update","firebase.projects.get","firebasehosting.sites.update","firebaserules.releases.create","firebaserules.releases.update","firebaserules.rulesets.create"]
+[debug] [2023-03-21T20:19:12.410Z] >>> [apiv2][query] POST https://cloudresourcemanager.googleapis.com/v1/projects/ai-club-website:testIamPermissions [none]
+[debug] [2023-03-21T20:19:12.410Z] >>> [apiv2][(partial)header] POST https://cloudresourcemanager.googleapis.com/v1/projects/ai-club-website:testIamPermissions x-goog-quota-user=projects/ai-club-website
+[debug] [2023-03-21T20:19:12.410Z] >>> [apiv2][body] POST https://cloudresourcemanager.googleapis.com/v1/projects/ai-club-website:testIamPermissions {"permissions":["cloudfunctions.functions.create","cloudfunctions.functions.delete","cloudfunctions.functions.get","cloudfunctions.functions.list","cloudfunctions.functions.update","cloudfunctions.operations.get","datastore.indexes.create","datastore.indexes.delete","datastore.indexes.list","datastore.indexes.update","firebase.projects.get","firebasehosting.sites.update","firebaserules.releases.create","firebaserules.releases.update","firebaserules.rulesets.create"]}
+[debug] [2023-03-21T20:19:12.928Z] <<< [apiv2][status] POST https://cloudresourcemanager.googleapis.com/v1/projects/ai-club-website:testIamPermissions 200
+[debug] [2023-03-21T20:19:12.928Z] <<< [apiv2][body] POST https://cloudresourcemanager.googleapis.com/v1/projects/ai-club-website:testIamPermissions {"permissions":["cloudfunctions.functions.create","cloudfunctions.functions.delete","cloudfunctions.functions.get","cloudfunctions.functions.list","cloudfunctions.functions.update","cloudfunctions.operations.get","datastore.indexes.create","datastore.indexes.delete","datastore.indexes.list","datastore.indexes.update","firebase.projects.get","firebasehosting.sites.update","firebaserules.releases.create","firebaserules.releases.update","firebaserules.rulesets.create"]}
+[debug] [2023-03-21T20:19:12.929Z] >>> [apiv2][query] POST https://iam.googleapis.com/v1/projects/ai-club-website/serviceAccounts/ai-club-website@appspot.gserviceaccount.com:testIamPermissions [none]
+[debug] [2023-03-21T20:19:12.929Z] >>> [apiv2][body] POST https://iam.googleapis.com/v1/projects/ai-club-website/serviceAccounts/ai-club-website@appspot.gserviceaccount.com:testIamPermissions {"permissions":["iam.serviceAccounts.actAs"]}
+[debug] [2023-03-21T20:19:13.606Z] <<< [apiv2][status] POST https://iam.googleapis.com/v1/projects/ai-club-website/serviceAccounts/ai-club-website@appspot.gserviceaccount.com:testIamPermissions 200
+[debug] [2023-03-21T20:19:13.606Z] <<< [apiv2][body] POST https://iam.googleapis.com/v1/projects/ai-club-website/serviceAccounts/ai-club-website@appspot.gserviceaccount.com:testIamPermissions {"permissions":["iam.serviceAccounts.actAs"]}
+[debug] [2023-03-21T20:19:13.607Z] >>> [apiv2][query] GET https://firebase.googleapis.com/v1beta1/projects/ai-club-website [none]
+[debug] [2023-03-21T20:19:14.201Z] <<< [apiv2][status] GET https://firebase.googleapis.com/v1beta1/projects/ai-club-website 200
+[debug] [2023-03-21T20:19:14.201Z] <<< [apiv2][body] GET https://firebase.googleapis.com/v1beta1/projects/ai-club-website {"projectId":"ai-club-website","projectNumber":"295864976747","displayName":"AI Club Website","name":"projects/ai-club-website","resources":{"hostingSite":"ai-club-website","storageBucket":"ai-club-website.appspot.com","locationId":"us-central"},"state":"ACTIVE","etag":"1_273754a8-9579-4f37-9d89-591b172323db"}
+[info] 
+[info] === Deploying to 'ai-club-website'...
+[info] 
+[info] i  deploying storage, firestore, functions, hosting 
+[info] Running command: npm --prefix "$RESOURCE_DIR" run build
+[info] +  functions: Finished running predeploy script. 
+[debug] [2023-03-21T20:19:20.173Z] >>> [apiv2][query] GET https://appengine.googleapis.com/v1/apps/ai-club-website [none]
+[debug] [2023-03-21T20:19:21.001Z] <<< [apiv2][status] GET https://appengine.googleapis.com/v1/apps/ai-club-website 200
+[debug] [2023-03-21T20:19:21.001Z] <<< [apiv2][body] GET https://appengine.googleapis.com/v1/apps/ai-club-website {"name":"apps/ai-club-website","id":"ai-club-website","authDomain":"gmail.com","locationId":"us-central","codeBucket":"staging.ai-club-website.appspot.com","servingStatus":"SERVING","defaultHostname":"ai-club-website.uc.r.appspot.com","defaultBucket":"ai-club-website.appspot.com","serviceAccount":"ai-club-website@appspot.gserviceaccount.com","gcrDomain":"us.gcr.io","databaseType":"CLOUD_FIRESTORE","featureSettings":{"splitHealthChecks":true,"useContainerOptimizedOs":true}}
+[info] i  firebase.storage: checking storage.rules for compilation errors... 
+[debug] [2023-03-21T20:19:21.003Z] >>> [apiv2][query] POST https://firebaserules.googleapis.com/v1/projects/ai-club-website:test [none]
+[debug] [2023-03-21T20:19:21.003Z] >>> [apiv2][body] POST https://firebaserules.googleapis.com/v1/projects/ai-club-website:test [omitted]
+[debug] [2023-03-21T20:19:22.187Z] <<< [apiv2][status] POST https://firebaserules.googleapis.com/v1/projects/ai-club-website:test 200
+[debug] [2023-03-21T20:19:22.187Z] <<< [apiv2][body] POST https://firebaserules.googleapis.com/v1/projects/ai-club-website:test {}
+[info] +  firebase.storage: rules file storage.rules compiled successfully 
+[info] i  firestore: reading indexes from firestore.indexes.json... 
+[info] i  cloud.firestore: checking firestore.rules for compilation errors... 
+[debug] [2023-03-21T20:19:22.189Z] >>> [apiv2][query] POST https://firebaserules.googleapis.com/v1/projects/ai-club-website:test [none]
+[debug] [2023-03-21T20:19:22.189Z] >>> [apiv2][body] POST https://firebaserules.googleapis.com/v1/projects/ai-club-website:test [omitted]
+[debug] [2023-03-21T20:19:23.246Z] <<< [apiv2][status] POST https://firebaserules.googleapis.com/v1/projects/ai-club-website:test 200
+[debug] [2023-03-21T20:19:23.246Z] <<< [apiv2][body] POST https://firebaserules.googleapis.com/v1/projects/ai-club-website:test {}
+[info] +  cloud.firestore: rules file firestore.rules compiled successfully 
+[debug] [2023-03-21T20:19:23.248Z] >>> [apiv2][query] GET https://firebase.googleapis.com/v1beta1/projects/ai-club-website [none]
+[debug] [2023-03-21T20:19:23.772Z] <<< [apiv2][status] GET https://firebase.googleapis.com/v1beta1/projects/ai-club-website 200
+[debug] [2023-03-21T20:19:23.772Z] <<< [apiv2][body] GET https://firebase.googleapis.com/v1beta1/projects/ai-club-website {"projectId":"ai-club-website","projectNumber":"295864976747","displayName":"AI Club Website","name":"projects/ai-club-website","resources":{"hostingSite":"ai-club-website","storageBucket":"ai-club-website.appspot.com","locationId":"us-central"},"state":"ACTIVE","etag":"1_273754a8-9579-4f37-9d89-591b172323db"}
+[info] i  functions: preparing codebase default for deployment 
+[info] i  functions: ensuring required API cloudfunctions.googleapis.com is enabled... 
+[info] i  functions: ensuring required API cloudbuild.googleapis.com is enabled... 
+[info] i  artifactregistry: ensuring required API artifactregistry.googleapis.com is enabled... 
+[debug] [2023-03-21T20:19:23.775Z] >>> [apiv2][query] GET https://serviceusage.googleapis.com/v1/projects/ai-club-website/services/cloudfunctions.googleapis.com [none]
+[debug] [2023-03-21T20:19:23.775Z] >>> [apiv2][(partial)header] GET https://serviceusage.googleapis.com/v1/projects/ai-club-website/services/cloudfunctions.googleapis.com x-goog-quota-user=projects/ai-club-website
+[debug] [2023-03-21T20:19:23.776Z] >>> [apiv2][query] GET https://serviceusage.googleapis.com/v1/projects/ai-club-website/services/runtimeconfig.googleapis.com [none]
+[debug] [2023-03-21T20:19:23.776Z] >>> [apiv2][(partial)header] GET https://serviceusage.googleapis.com/v1/projects/ai-club-website/services/runtimeconfig.googleapis.com x-goog-quota-user=projects/ai-club-website
+[debug] [2023-03-21T20:19:23.776Z] >>> [apiv2][query] GET https://serviceusage.googleapis.com/v1/projects/ai-club-website/services/cloudbuild.googleapis.com [none]
+[debug] [2023-03-21T20:19:23.776Z] >>> [apiv2][(partial)header] GET https://serviceusage.googleapis.com/v1/projects/ai-club-website/services/cloudbuild.googleapis.com x-goog-quota-user=projects/ai-club-website
+[debug] [2023-03-21T20:19:23.777Z] >>> [apiv2][query] GET https://serviceusage.googleapis.com/v1/projects/ai-club-website/services/artifactregistry.googleapis.com [none]
+[debug] [2023-03-21T20:19:23.777Z] >>> [apiv2][(partial)header] GET https://serviceusage.googleapis.com/v1/projects/ai-club-website/services/artifactregistry.googleapis.com x-goog-quota-user=projects/ai-club-website
+[debug] [2023-03-21T20:19:24.610Z] <<< [apiv2][status] GET https://serviceusage.googleapis.com/v1/projects/ai-club-website/services/artifactregistry.googleapis.com 200
+[debug] [2023-03-21T20:19:24.610Z] <<< [apiv2][body] GET https://serviceusage.googleapis.com/v1/projects/ai-club-website/services/artifactregistry.googleapis.com [omitted]
+[info] +  artifactregistry: required API artifactregistry.googleapis.com is enabled 
+[debug] [2023-03-21T20:19:25.028Z] <<< [apiv2][status] GET https://serviceusage.googleapis.com/v1/projects/ai-club-website/services/cloudfunctions.googleapis.com 200
+[debug] [2023-03-21T20:19:25.028Z] <<< [apiv2][body] GET https://serviceusage.googleapis.com/v1/projects/ai-club-website/services/cloudfunctions.googleapis.com [omitted]
+[info] +  functions: required API cloudfunctions.googleapis.com is enabled 
+[debug] [2023-03-21T20:19:25.043Z] <<< [apiv2][status] GET https://serviceusage.googleapis.com/v1/projects/ai-club-website/services/cloudbuild.googleapis.com 200
+[debug] [2023-03-21T20:19:25.044Z] <<< [apiv2][body] GET https://serviceusage.googleapis.com/v1/projects/ai-club-website/services/cloudbuild.googleapis.com [omitted]
+[info] +  functions: required API cloudbuild.googleapis.com is enabled 
+[debug] [2023-03-21T20:19:25.114Z] <<< [apiv2][status] GET https://serviceusage.googleapis.com/v1/projects/ai-club-website/services/runtimeconfig.googleapis.com 200
+[debug] [2023-03-21T20:19:25.114Z] <<< [apiv2][body] GET https://serviceusage.googleapis.com/v1/projects/ai-club-website/services/runtimeconfig.googleapis.com [omitted]
+[debug] [2023-03-21T20:19:25.114Z] >>> [apiv2][query] GET https://firebase.googleapis.com/v1beta1/projects/ai-club-website/adminSdkConfig [none]
+[debug] [2023-03-21T20:19:25.632Z] <<< [apiv2][status] GET https://firebase.googleapis.com/v1beta1/projects/ai-club-website/adminSdkConfig 200
+[debug] [2023-03-21T20:19:25.632Z] <<< [apiv2][body] GET https://firebase.googleapis.com/v1beta1/projects/ai-club-website/adminSdkConfig {"projectId":"ai-club-website","storageBucket":"ai-club-website.appspot.com","locationId":"us-central"}
+[debug] [2023-03-21T20:19:25.633Z] >>> [apiv2][query] GET https://runtimeconfig.googleapis.com/v1beta1/projects/ai-club-website/configs [none]
+[debug] [2023-03-21T20:19:26.393Z] <<< [apiv2][status] GET https://runtimeconfig.googleapis.com/v1beta1/projects/ai-club-website/configs 200
+[debug] [2023-03-21T20:19:26.393Z] <<< [apiv2][body] GET https://runtimeconfig.googleapis.com/v1beta1/projects/ai-club-website/configs {}
+[debug] [2023-03-21T20:19:26.394Z] Validating nodejs source
+[debug] [2023-03-21T20:19:27.627Z] > [functions] package.json contents: {
+  "name": "functions",
+  "scripts": {
+    "build": "tsc",
+    "build:watch": "tsc --watch",
+    "serve": "npm run build && firebase emulators:start --only functions",
+    "shell": "npm run build && firebase functions:shell",
+    "start": "npm run shell",
+    "deploy": "firebase deploy --only functions",
+    "logs": "firebase functions:log"
+  },
+  "engines": {
+    "node": "16"
+  },
+  "main": "lib/index.js",
+  "dependencies": {
+    "firebase-admin": "^11.5.0",
+    "firebase-functions": "^4.2.0",
+    "ws": "^8.13.0"
+  },
+  "devDependencies": {
+    "firebase-functions-test": "^3.0.0",
+    "typescript": "^4.9.0"
+  },
+  "private": true
+}
+[debug] [2023-03-21T20:19:27.627Z] Building nodejs source
+[debug] [2023-03-21T20:19:27.628Z] Could not find functions.yaml. Must use http discovery
+[debug] [2023-03-21T20:19:27.634Z] Found firebase-functions binary at 'C:\Users\sadiq\aiwebsite\functions\node_modules\.bin\firebase-functions'
+[debug] [2023-03-21T20:19:27.798Z] Serving at port 8072
+
+[debug] [2023-03-21T20:19:28.120Z] FetchError: request to http://localhost:8072/__/quitquitquit failed, reason: connect ECONNREFUSED 127.0.0.1:8072
+    at ClientRequest.<anonymous> (C:\Users\sadiq\AppData\Roaming\nvm\v16.13.0\node_modules\firebase-tools\node_modules\node-fetch\lib\index.js:1491:11)
+    at ClientRequest.emit (node:events:390:28)
+    at ClientRequest.emit (node:domain:475:12)
+    at Socket.socketErrorListener (node:_http_client:447:9)
+    at Socket.emit (node:events:390:28)
+    at Socket.emit (node:domain:475:12)
+    at emitErrorNT (node:internal/streams/destroy:157:8)
+    at emitErrorCloseNT (node:internal/streams/destroy:122:3)
+    at processTicksAndRejections (node:internal/process/task_queues:83:21)
+[error] 
+[error] Error: An unexpected error has occurred.

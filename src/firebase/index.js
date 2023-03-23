@@ -2,6 +2,8 @@
 import { initializeApp } from "firebase/app";
 import { getAuth } from "firebase/auth"
 import { getFirestore } from "firebase/firestore";
+import "firebase/functions";
+
 // TODO: Add SDKs for Firebase products that you want to use
 // https://firebase.google.com/docs/web/setup#available-libraries
 
@@ -12,11 +14,13 @@ const firebaseConfig = {
   projectId: "ai-club-website",
   storageBucket: "ai-club-website.appspot.com",
   messagingSenderId: "295864976747",
-  appId: "1:295864976747:web:55715fffd4759e5ce6782e"
+  appId: "1:295864976747:web:55715fffd4759e5ce6782e",
+  storageBucket: ''
 };
 
 // Initialize Firebase
 const app = initializeApp(firebaseConfig);
+export {app}
 const auth = getAuth(app)
 export { auth }
 const db = getFirestore(app);

@@ -1,5 +1,6 @@
 // eslint-disable-next-line @typescript-eslint/ban-ts-comment
 /* @ts-ignore */
+//@ts-nocheck
 import Vue from 'vue'
 import Vuex from 'vuex'
 import VuexPersist from 'vuex-persist';
@@ -27,9 +28,15 @@ const vuexLocalStorage = new VuexPersist({
   // filter: mutation => (true)
 })
 
+type hist = {
+  role: string;
+  content: string;
+};
+
 
 Vue.use(Vuex)
 export default new Vuex.Store({
+  
   //plugins: [vuexLocalStorage.plugin],
   state: {
     user: null,
@@ -40,6 +47,10 @@ export default new Vuex.Store({
     currentProjects,
     pastProjects,
     backupCurrentProjects,
+    darkMode: false,
+    currentHistory: -1,
+    history: [],
+    historyTitles: [],
   },
   getters: {
     members(state){return state.members;},
@@ -49,6 +60,10 @@ export default new Vuex.Store({
     pastProjects(state){return state.pastProjects;},
     isAdmin(state){return state.isAdmin;},
     user(state){return state.user;},
+    darkMode(state){return state.darkMode;},
+    currentHistory(state){return state.currentHistory;},
+    history(state){return state.history},
+    historyTitles(state){return state.historyTitles}
   },
   mutations: {
     addProject(state, newProject) {
@@ -142,10 +157,27 @@ export default new Vuex.Store({
       })
       state.currentProjects.splice(project[0], 1)
     },
+
+    addHistory(state){state.history.unshift([])},
+    addPrompt(state, prompt){state.history[state.currentHistory].push({role: 'user', content: prompt})},
+    addMessage(state, message){state.history[state.currentHistory].push(message)},
+    initResponse(state){state.history[state.currentHistory].push({role: 'assistant', content: ''})},
+    appendResponse(state, content){state.history[state.currentHistory][state.history[state.currentHistory].length-1].content+=content;},
+    addHistoryTitle(state, title){state.historyTitles.unshift(title)},
+    changeHistoryTitle(state, title){state.historyTitles[state.currentHistory]=title},
+    setCurrentHistory(state, currHist){state.currentHistory=currHist;},
+    clearChats(state){
+      state.history=[],
+      state.historyTitles=[],
+      state.currentHistory=-1
+    },
+    
+    toggleDarkMode(state){state.darkMode=!state.darkMode},
     makeAdmin(state){state.isAdmin=true;},
     setRegistered(state, i){state.members[i].registered=true},
     SET_USER (state, user) {state.user = user},
     CLEAR_USER (state) {state.user = null},
+    
   },
   actions: {
     async login ({ commit }, details) {

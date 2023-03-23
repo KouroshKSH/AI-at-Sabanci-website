@@ -1,35 +1,97 @@
 <template>
-    <div class="specific-event">
+  <div :id="event">
+    <div v-if="!darkMode" class="specific-event" style="min-height: 90vh; overflow-y:hidden">
       <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Michroma">
       <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Inter">
       <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Cinzel">
       <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
-      <p class="events">Events</p>
-      <img
-        alt=""
-        class="rectangle-76"
-        :src=events[index].img
-      />
-      <p class="dl-in-real-life">{{events[index].name}}</p>
-      <div class="relative-wrapper-one">
-        <div class="rectangle-35"></div>
-        <p class="deep-learning-has-become-increasingly-po">
-          {{events[index].description}}
-        </p>
-      </div>
-      <p class="time-place">Time &amp; Place</p>
-      <p class="saturday-march-18th-2023-1730-1900">
-        {{events[index].date}}<br />
-        {{events[index].time}}<br />
-        {{events[index].location}}
-      </p>
-      <p class="sounds-interesting-to-you">
-        Sounds interesting to you?
-      </p>
-      <div class="submit-button">
-        <p class="join-event">Join Event</p>
+      <div>
+        <b-container style="margin-top: 3%">
+          <b-row>
+            <b-col><p class="events-two">Events</p></b-col>
+          </b-row>
+        </b-container>
+        <b-container fluid class="events">  
+          <img
+            alt=""
+            class="rectangle-76"
+            :src=events[index].img
+          />
+          <p class="dl-in-real-life">{{events[index].name}}</p>
+          <div class="relative-wrapper-one">
+            <div class="rectangle-35"></div>
+            <p class="deep-learning-has-become-increasingly-po">
+              {{events[index].description}}
+            </p>
+          </div>
+          <p class="time-place">Time &amp; Place</p>
+          <p class="saturday-march-18th-2023-1730-1900">
+            {{events[index].date}}<br />
+            {{events[index].time}}<br />
+            {{events[index].location}}
+          </p>
+          <p class="sounds-interesting-to-you">
+            Sounds interesting to you?
+          </p>
+          <div style="margin-bottom: 5%" class="submit-button">
+            <p class="click-here">Join Event</p>
+          </div>
+        </b-container>
       </div>
     </div>
+    <div v-else class="d-specific-event" style="min-height: 90vh; overflow-y: disabled; background-color: #242424;">
+      <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Michroma">
+      <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Inter">
+      <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Cinzel">
+      <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+      <div>
+        <b-container style="padding-top: 3%">
+          <b-row>
+            <b-col><p class="d-events-two">Events</p></b-col>
+          </b-row>
+        </b-container>
+        <b-container fluid class="events">  
+          <img
+            alt=""
+            class="rectangle-76"
+            :src=events[index].img
+          />
+          <p class="d-dl-in-real-life">{{events[index].name}}</p>
+          <div class="d-relative-wrapper-one">
+            <div class="rectangle-35"></div>
+            <p class="d-deep-learning-has-become-increasingly-po">
+              {{events[index].description}}
+            </p>
+          </div>
+          <p class="d-time-place">Time &amp; Place</p>
+          <p class="d-saturday-march-18th-2023-1730-1900">
+            {{events[index].date}}<br />
+            {{events[index].time}}<br />
+            {{events[index].location}}
+          </p>
+          <p class="d-sounds-interesting-to-you">
+            Sounds interesting to you?
+          </p>
+          <div style="padding-bottom: 5%">
+            <div class="d-submit-button">
+              <p class="d-click-here">Join Event</p>
+            </div>
+          </div>
+        </b-container>
+      </div>
+    </div>
+    <b-container style="padding-bottom: 0%" fluid class="bottom-bar">
+        <div class="flex-wrapper-seven">
+              <router-link to="/contactUs"><div style="width: 100%; padding-top: 15%"><p class="contact-us">Contact Us</p></div></router-link>
+        </div>
+        <a :href=event>  
+          <img
+            style="max-width:5%; position: absolute; right: 5%; cursor: pointer;"
+            src="../assets/back to top.png"
+          >
+        </a>
+    </b-container>
+  </div>
   </template>
   
   <script>
@@ -38,6 +100,7 @@
     data(){
         return{
             index: this.$route.params.id,
+            event: `event/${this.$route.params.id}`,
             page: 1,
             events: [
                 {
@@ -79,11 +142,669 @@
                 
             ]
         }
-    }
+    },
+    computed: {
+      darkMode: function() {
+        return this.$store.state.darkMode;
+      }
+    },
   };
   </script>
   
-  <style scoped>
+<style scoped>
+@media (min-aspect-ratio: 1/1){
+  .contact-us {
+    font-family: "Inter";
+    font-size: 4vh;
+    font-weight: 200;
+    line-height: normal;
+    color: rgba(255, 255, 255, 1);
+    text-align: center;
+  }
+  .flex-wrapper-seven {
+      margin-right: 0px;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+  }
+  .bottom-bar {
+    background-color: rgba(0, 0, 0, 1);
+    height: 20vh;
+    margin-bottom: 0%;
+    padding-left: 30%;
+    padding-right: 30%;
+    position: relative;
+  }
+}
+@media (max-aspect-ratio: 1/1){
+  .contact-us {
+    font-family: "Inter";
+    font-size: 4vw;
+    font-weight: 200;
+    line-height: normal;
+    color: rgba(255, 255, 255, 1);
+    margin-bottom: 0%;
+    text-align: center;
+  }
+  .flex-wrapper-seven {
+      margin-right: 0px;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+  }
+  .bottom-bar {
+    background-color: rgba(0, 0, 0, 1);
+    height: 20vw;
+    margin-bottom: 0;
+    padding-left: 30%;
+    padding-right: 30%;
+    position: relative;
+  }
+}
+
+
+@media (min-aspect-ratio: 8/5){
+  .d-submit-button {
+    border-radius: 5px;
+    padding: 1% 0.5% 1% 0.5%;
+    box-shadow: 0 4px 4px 0 rgba(0, 0, 0, 0.25);
+    color: white;
+    align-items: center;
+    position: relative;
+    border: 2px solid rgba(255, 255, 255, 1);
+    width: 6%;
+    margin-left: 47%;
+    margin-right: 47%;
+  }
+  .d-submit-button:hover {
+    border-radius: 5px;
+    padding: 1% 0.5% 1% 0.5%;
+    box-shadow: 0 4px 4px 0 rgba(0, 0, 0, 0.25);
+    align-items: center;
+    position: relative;
+    border: 2px solid rgba(255, 255, 255, 1);
+    transition: background-color 0.5s, color 0.5s;
+    color: black;
+    background-color: white;
+    border: 2px solid black;
+    width: 6%;
+    margin-left: 47%;
+    margin-right: 47%;
+    
+  }
+  .d-click-here {
+    font-family: "Inter";
+    font-size: 1.5vh;
+    font-weight: 400;
+    line-height: normal;
+    text-align: center;
+    margin: auto;
+    text-shadow: 0 4px 4px rgba(0, 0, 0, 0.25);
+  }
+}
+@media (max-aspect-ratio: 8/5) and (min-aspect-ratio: 6/5){
+  .d-submit-button {
+    border-radius: 5px;
+    padding: 1% 0.5% 1% 0.5%;
+    box-shadow: 0 4px 4px 0 rgba(0, 0, 0, 0.25);
+    color: white;
+    align-items: center;
+    position: relative;
+    border: 2px solid rgba(255, 255, 255, 1);
+    width: 8%;
+    margin-left: 46%;
+    margin-right: 46%;
+  }
+  .d-submit-button:hover {
+    border-radius: 5px;
+    padding: 1% 0.5% 1% 0.5%;
+    box-shadow: 0 4px 4px 0 rgba(0, 0, 0, 0.25);
+    align-items: center;
+    position: relative;
+    border: 2px solid rgba(255, 255, 255, 1);
+    transition: background-color 0.5s, color 0.5s;
+    color: black;
+    background-color: white;
+    border: 2px solid black;
+    width: 8%;
+    margin-left: 46%;
+    margin-right: 46%;
+    
+  }
+  .d-click-here {
+    font-family: "Inter";
+    font-size: 1.5vh;
+    font-weight: 400;
+    line-height: normal;
+    text-align: center;
+    margin: auto;
+    text-shadow: 0 4px 4px rgba(0, 0, 0, 0.25);
+  }
+}
+@media (max-aspect-ratio: 6/5) and (min-aspect-ratio: 1/1){
+  .d-submit-button {
+    border-radius: 5px;
+    padding: 1% 0.5% 1% 0.5%;
+    box-shadow: 0 4px 4px 0 rgba(0, 0, 0, 0.25);
+    color: white;
+    align-items: center;
+    position: relative;
+    border: 2px solid rgba(255, 255, 255, 1);
+    width: 10%;
+    margin-left: 45%;
+    margin-right: 45%;
+  }
+  .d-submit-button:hover {
+    border-radius: 5px;
+    padding: 1% 0.5% 1% 0.5%;
+    box-shadow: 0 4px 4px 0 rgba(0, 0, 0, 0.25);
+    align-items: center;
+    position: relative;
+    border: 2px solid rgba(255, 255, 255, 1);
+    transition: background-color 0.5s, color 0.5s;
+    color: black;
+    background-color: white;
+    border: 2px solid black;
+    width: 10%;
+    margin-left: 45%;
+    margin-right: 45%;
+    
+  }
+  .d-click-here {
+    font-family: "Inter";
+    font-size: 1.5vh;
+    font-weight: 400;
+    line-height: normal;
+    text-align: center;
+    margin: auto;
+    text-shadow: 0 4px 4px rgba(0, 0, 0, 0.25);
+  }
+}
+@media (max-aspect-ratio: 1/1) and (min-aspect-ratio: 3/5){
+    .d-submit-button {
+      border-radius: 5px;
+      padding: 1% 0.5% 1% 0.5%;
+      box-shadow: 0 4px 4px 0 rgba(0, 0, 0, 0.25);
+      color: white;
+      align-items: center;
+      position: relative;
+      border: 2px solid rgba(255, 255, 255, 1);
+      width: 12%;
+      margin-left: 44%;
+      margin-right: 44%;
+    }
+    .d-submit-button:hover {
+      border-radius: 5px;
+      padding: 1% 0.5% 1% 0.5%;
+      box-shadow: 0 4px 4px 0 rgba(0, 0, 0, 0.25);
+      align-items: center;
+      position: relative;
+      border: 2px solid rgba(255, 255, 255, 1);
+      transition: background-color 0.5s, color 0.5s;
+      color: black;
+      background-color: white;
+      border: 2px solid black;
+      width: 12%;
+      margin-left: 44%;
+      margin-right: 44%;
+      
+    }
+    .d-click-here {
+      font-family: "Inter";
+      font-size: 1.5vw;
+      font-weight: 400;
+      line-height: normal;
+      text-align: center;
+      margin: auto;
+      text-shadow: 0 4px 4px rgba(0, 0, 0, 0.25);
+    }
+}
+@media (max-aspect-ratio: 3/5) and (min-aspect-ratio: 2/5){
+  .d-submit-button {
+    border-radius: 5px;
+    padding: 1% 0.5% 1% 0.5%;
+    box-shadow: 0 4px 4px 0 rgba(0, 0, 0, 0.25);
+    color: white;
+    align-items: center;
+    position: relative;
+    border: 2px solid rgba(255, 255, 255, 1);
+    width: 15%;
+    margin-left: 42.5%;
+    margin-right: 42.5%;
+  }
+  .d-submit-button:hover {
+    border-radius: 5px;
+    padding: 1% 0.5% 1% 0.5%;
+    box-shadow: 0 4px 4px 0 rgba(0, 0, 0, 0.25);
+    align-items: center;
+    position: relative;
+    border: 2px solid rgba(255, 255, 255, 1);
+    transition: background-color 0.5s, color 0.5s;
+    color: black;
+    background-color: white;
+    border: 2px solid black;
+    width: 15%;
+    margin-left: 42.5%;
+    margin-right: 42.5%;
+    
+  }
+  .d-click-here {
+    font-family: "Inter";
+    font-size: 1.5vw;
+    font-weight: 400;
+    line-height: normal;
+    text-align: center;
+    margin: auto;
+    text-shadow: 0 4px 4px rgba(0, 0, 0, 0.25);
+  }
+}
+@media (max-aspect-ratio: 2/5){
+  .d-submit-button {
+    border-radius: 5px;
+    padding: 1% 0.5% 1% 0.5%;
+    box-shadow: 0 4px 4px 0 rgba(0, 0, 0, 0.25);
+    color: white;
+    align-items: center;
+    position: relative;
+    border: 2px solid rgba(255, 255, 255, 1);
+    width: 15%;
+    margin-left: 42.5%;
+    margin-right: 42.5%;
+  }
+  .d-submit-button:hover {
+    border-radius: 5px;
+    padding: 1% 0.5% 1% 0.5%;
+    box-shadow: 0 4px 4px 0 rgba(0, 0, 0, 0.25);
+    align-items: center;
+    position: relative;
+    border: 2px solid rgba(255, 255, 255, 1);
+    transition: background-color 0.5s, color 0.5s;
+    color: black;
+    background-color: white;
+    border: 2px solid black;
+    width: 15%;
+    margin-left: 42.5%;
+    margin-right: 42.5%;
+    
+  }
+  .d-click-here {
+    font-family: "Inter";
+    font-size: 1.5vw;
+    font-weight: 400;
+    line-height: normal;
+    text-align: center;
+    margin: auto;
+    text-shadow: 0 4px 4px rgba(0, 0, 0, 0.25);
+  }
+}
+
+@media (min-aspect-ratio: 8/5){
+  .submit-button {
+    border-radius: 5px;
+    padding: 1% 0.5% 1% 0.5%;
+    box-shadow: 0 4px 4px 0 rgba(0, 0, 0, 0.25);
+    color: black;
+    align-items: center;
+    position: relative;
+    border: 2px solid black;
+    width: 6%;
+    margin-left: 47%;
+    margin-right: 47%;
+  }
+  .submit-button:hover {
+    border-radius: 5px;
+    padding: 1% 0.5% 1% 0.5%;
+    box-shadow: 0 4px 4px 0 rgba(0, 0, 0, 0.25);
+    align-items: center;
+    position: relative;
+    transition: background-color 0.5s, color 0.5s;
+    color: white;
+    background-color: black;
+    border: 2px solid black;
+    width: 6%;
+    margin-left: 47%;
+    margin-right: 47%;
+    
+  }
+  .click-here {
+    font-family: "Inter";
+    font-size: 1.5vh;
+    font-weight: 400;
+    line-height: normal;
+    text-align: center;
+    margin: auto;
+    text-shadow: 0 4px 4px rgba(0, 0, 0, 0.25);
+  }
+}
+@media (max-aspect-ratio: 8/5) and (min-aspect-ratio: 6/5){
+  .submit-button {
+    border-radius: 5px;
+    padding: 1% 0.5% 1% 0.5%;
+    box-shadow: 0 4px 4px 0 rgba(0, 0, 0, 0.25);
+    color: black;
+    align-items: center;
+    position: relative;
+    border: 2px solid black;
+    width: 8%;
+    margin-left: 46%;
+    margin-right: 46%;
+  }
+  .submit-button:hover {
+    border-radius: 5px;
+    padding: 1% 0.5% 1% 0.5%;
+    box-shadow: 0 4px 4px 0 rgba(0, 0, 0, 0.25);
+    align-items: center;
+    position: relative;
+    transition: background-color 0.5s, color 0.5s;
+    color: white;
+    background-color: black;
+    border: 2px solid black;
+    width: 8%;
+    margin-left: 46%;
+    margin-right: 46%;
+    
+  }
+  .click-here {
+    font-family: "Inter";
+    font-size: 1.5vh;
+    font-weight: 400;
+    line-height: normal;
+    color: black;
+    text-align: center;
+    margin: auto;
+    text-shadow: 0 4px 4px rgba(0, 0, 0, 0.25);
+  }
+}
+@media (max-aspect-ratio: 6/5) and (min-aspect-ratio: 1/1){
+  .submit-button {
+    border-radius: 5px;
+    padding: 1% 0.5% 1% 0.5%;
+    box-shadow: 0 4px 4px 0 rgba(0, 0, 0, 0.25);
+    color: white;
+    align-items: center;
+    position: relative;
+    border: 2px solid black;
+    width: 10%;
+    margin-left: 45%;
+    margin-right: 45%;
+  }
+  .submit-button:hover {
+    border-radius: 5px;
+    padding: 1% 0.5% 1% 0.5%;
+    box-shadow: 0 4px 4px 0 rgba(0, 0, 0, 0.25);
+    align-items: center;
+    position: relative;
+    transition: background-color 0.5s, color 0.5s;
+    color: white;
+    background-color: black;
+    border: 2px solid black;
+    width: 10%;
+    margin-left: 45%;
+    margin-right: 45%;
+    
+  }
+  .click-here {
+    font-family: "Inter";
+    font-size: 1.5vh;
+    font-weight: 400;
+    line-height: normal;
+    color: black;
+    text-align: center;
+    margin: auto;
+    text-shadow: 0 4px 4px rgba(0, 0, 0, 0.25);
+  }
+}
+@media (max-aspect-ratio: 1/1) and (min-aspect-ratio: 3/5){
+  .submit-button {
+    border-radius: 5px;
+    padding: 1% 0.5% 1% 0.5%;
+    box-shadow: 0 4px 4px 0 rgba(0, 0, 0, 0.25);
+    color: black;
+    align-items: center;
+    position: relative;
+    border: 2px solid black;
+    width: 12%;
+    margin-left: 44%;
+    margin-right: 44%;
+  }
+  .submit-button:hover {
+    border-radius: 5px;
+    padding: 1% 0.5% 1% 0.5%;
+    box-shadow: 0 4px 4px 0 rgba(0, 0, 0, 0.25);
+    align-items: center;
+    position: relative;
+    transition: background-color 0.5s, color 0.5s;
+    color: white;
+    background-color: black;
+    border: 2px solid black;
+    width: 12%;
+    margin-left: 44%;
+    margin-right: 44%;
+    
+  }
+  .click-here {
+    font-family: "Inter";
+    font-size: 1.5vw;
+    font-weight: 400;
+    line-height: normal;
+    text-align: center;
+    margin: auto;
+    text-shadow: 0 4px 4px rgba(0, 0, 0, 0.25);
+  }
+}
+@media (max-aspect-ratio: 3/5) and (min-aspect-ratio: 2/5){
+  .submit-button {
+    border-radius: 5px;
+    padding: 1% 0.5% 1% 0.5%;
+    box-shadow: 0 4px 4px 0 rgba(0, 0, 0, 0.25);
+    color: black;
+    border: 2px solid black;
+    align-items: center;
+    position: relative;
+    width: 15%;
+    margin-left: 42.5%;
+    margin-right: 42.5%;
+  }
+  .submit-button:hover {
+    border-radius: 5px;
+    padding: 1% 0.5% 1% 0.5%;
+    box-shadow: 0 4px 4px 0 rgba(0, 0, 0, 0.25);
+    align-items: center;
+    position: relative;
+    transition: background-color 0.5s, color 0.5s;
+    color: white;
+    background-color: black;
+    border: 2px solid black;
+    width: 15%;
+    margin-left: 42.5%;
+    margin-right: 42.5%;
+    
+  }
+  .click-here {
+    font-family: "Inter";
+    font-size: 1.5vw;
+    font-weight: 400;
+    line-height: normal;
+    text-align: center;
+    margin: auto;
+    text-shadow: 0 4px 4px rgba(0, 0, 0, 0.25);
+  }
+}
+@media (max-aspect-ratio: 2/5){
+  .submit-button {
+    border-radius: 5px;
+    padding: 1% 0.5% 1% 0.5%;
+    box-shadow: 0 4px 4px 0 rgba(0, 0, 0, 0.25);
+    color: black;
+    align-items: center;
+    position: relative;
+    border: 2px solid black;
+    width: 15%;
+    margin-left: 42.5%;
+    margin-right: 42.5%;
+  }
+  .submit-button:hover {
+    border-radius: 5px;
+    padding: 1% 0.5% 1% 0.5%;
+    box-shadow: 0 4px 4px 0 rgba(0, 0, 0, 0.25);
+    align-items: center;
+    position: relative;
+    transition: background-color 0.5s, color 0.5s;
+    color: white;
+    background-color: black;
+    border: 2px solid black;
+    width: 15%;
+    margin-left: 42.5%;
+    margin-right: 42.5%;
+    
+  }
+  .click-here {
+    font-family: "Inter";
+    font-size: 1.5vw;
+    font-weight: 400;
+    line-height: normal;
+    text-align: center;
+    margin: auto;
+    text-shadow: 0 4px 4px rgba(0, 0, 0, 0.25);
+  }
+}
+
+
+@media (min-aspect-ratio: 1/1){
+  .d-events-two {
+      font-family: "Cinzel";
+      font-size: 4vh;
+      font-weight: 400;
+      line-height: normal;
+      color: white;
+      text-align: center;
+      width: 60%;
+      margin-left: 20%;
+      margin-right: 20%;
+    }
+  .d-specific-event {
+    background-color: #242424;
+    padding: 32px 0 0;
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+  }
+  .d-dl-in-real-life {
+    font-size: 4vh;
+    color: white;
+    margin-top: 5%;
+    width: 60%;
+    margin-left: 20%;
+    margin-right: 20%;
+  }
+  .d-deep-learning-has-become-increasingly-po {
+    font-family: "Inter";
+    font-size: 2vh;
+    font-weight: 100;
+    line-height: normal;
+    color: white;
+    position: relative;
+    width: 60%;
+    margin-left: 20%;
+    margin-right: 20%;
+  }
+  .d-time-place {
+    color: white;
+    font-size: 3vh;
+    width: 60%;
+    margin-left: 20%;
+    margin-right: 20%;
+  }
+  .d-saturday-march-18th-2023-1730-1900 {
+    font-family: "Inter";
+    font-size: 2vh;
+    font-weight: 200;
+    line-height: normal;
+    color: white;
+    display: flex;
+    width: 60%;
+    margin-left: 20%;
+    margin-right: 20%;
+  }
+  .d-sounds-interesting-to-you {
+    color: white;
+    text-align: center;
+    font-size: 3vh;
+    width: 60%;
+    margin-left: 20%;
+    margin-right: 20%;
+  }
+}
+@media (max-aspect-ratio: 1/1){
+  .d-events-two{
+    font-family: "Cinzel";
+    font-size: 7vw;
+    font-weight: 400;
+    line-height: normal;
+    color: white;
+    text-align: center;
+    margin-top: 20%;
+  }
+  .d-specific-event {
+    width: 100%;
+    background-color: #242424;
+    padding: 0 0 0 0;
+  }
+  .d-dl-in-real-life {
+    font-size: 5vw;
+    color: white;
+    margin-left: 10%;
+    margin-top: 10%;
+  }
+  .d-deep-learning-has-become-increasingly-po {
+    font-family: "Inter";
+    font-size: 3.5vw;
+    width: 80%;
+    margin-left: 10%;
+    margin-right: 10%;
+    font-weight: 200;
+    line-height: normal;
+    color: white;
+    position: relative;
+  }
+  .d-time-place {
+    color: white;
+    font-size: 5vw;
+    margin-left: 10%;
+  }
+  .d-saturday-march-18th-2023-1730-1900 {
+    font-family: "Inter";
+    font-size: 3.5vw;
+    margin-left: 10%;
+    font-weight: 200;
+    line-height: normal;
+    color: white;
+    display: flex;
+  }
+  .d-sounds-interesting-to-you {
+    color: white;
+    text-align: center;
+    font-size: 5vw;
+  }
+
+}
+
+@media (min-aspect-ratio: 1/1){
+  .events{
+    width: 100%;  
+    margin-top: 0%;
+  }
+  .events-two {
+    font-family: "Cinzel";
+    font-size: 4vh;
+    font-weight: 400;
+    line-height: normal;
+    color: gray;
+    text-align: center;
+    width: 60%;
+    margin-left: 20%;
+    margin-right: 20%;
+  }
   .specific-event {
     background-color: white;
     padding: 32px 0 0;
@@ -91,206 +812,134 @@
     flex-direction: column;
     align-items: flex-start;
   }
-  .flex-wrapper-one {
-    margin-bottom: 65px;
-    padding: 0 0 0 50px;
-    display: flex;
-    align-items: flex-start;
-  }
-  .logo-two {
-    margin-right: 1084px;
-    position: relative;
-    border: 3px solid black;
-  }
-  .logo {
-    height: 40.73px;
-    width: 72.12px;
-    font-family: "Inter";
-    font-size: 30px;
-    font-weight: 400;
-    line-height: normal;
-    color: black;
-    display: flex;
-    align-items: center;
-    text-align: center;
-    position: absolute;
-    left: 0.94px;
-    top: -1px;
-  }
-  .profile {
-    font-family: "Inter";
-    font-size: 18px;
-    font-weight: 300;
-    line-height: normal;
-    color: black;
-    text-align: center;
-    margin-top: 13px;
-    margin-right: 48px;
-  }
-  .header {
-    margin-top: 13px;
-    display: flex;
-    align-items: flex-start;
-  }
-  .workshops {
-    font-family: "Inter";
-    font-size: 18px;
-    font-weight: 300;
-    line-height: normal;
-    color: black;
-    text-align: center;
-    margin-right: 48px;
-  }
-  .join-us {
-    font-family: "Inter";
-    font-size: 18px;
-    font-weight: 300;
-    line-height: normal;
-    color: black;
-    text-align: center;
-    text-decoration: underline;
-  }
-  .events {
-    font-family: "Cinzel";
-    font-size: 60px;
-    font-weight: 400;
-    line-height: normal;
-    color: gray;
-    text-align: center;
-    margin-bottom: 46px;
-    margin-left: 855px;
-  }
   .rectangle-76 {
+    float: center;
+    width: 100%;
     max-width: 1148px;
-    max-height: 646px;
-    margin-bottom: 64px;
-    margin-left: 380px;
+    max-height: 500px;
+    object-fit: contain;
+    width: 60%;
+    margin-left: 20%;
+    margin-right: 20%;
   }
   .dl-in-real-life {
-    color: gray;
-    margin-bottom: 94px;
-    margin-left: 380px;
+    font-size: 4vh;
+    color: black;
+    margin-top: 5%;
+    width: 60%;
+    margin-left: 20%;
+    margin-right: 20%;
   }
   .relative-wrapper-one {
-    margin-bottom: 4px;
-    margin-left: 352px;
     position: relative;
   }
   .rectangle-35 {
-    width: 1302px;
-    height: 249px;
     position: relative;
   }
   .deep-learning-has-become-increasingly-po {
-    height: 267px;
-    width: 1140px;
     font-family: "Inter";
-    font-size: 24px;
-    font-weight: 200;
+    font-size: 2vh;
+    font-weight: 100;
     line-height: normal;
     color: gray;
-    display: flex;
-    position: absolute;
-    left: 28px;
-    top: -62px;
+    position: relative;
+    width: 60%;
+    margin-left: 20%;
+    margin-right: 20%;
   }
   .time-place {
     color: gray;
-    margin-bottom: 32px;
-    margin-left: 380px;
+    font-size: 3vh;
+    width: 60%;
+    margin-left: 20%;
+    margin-right: 20%;
   }
   .saturday-march-18th-2023-1730-1900 {
-    height: 91px;
-    width: 843px;
     font-family: "Inter";
-    font-size: 24px;
+    font-size: 2vh;
     font-weight: 200;
     line-height: normal;
     color: gray;
     display: flex;
-    margin-bottom: 106px;
-    margin-left: 380px;
+    width: 60%;
+    margin-left: 20%;
+    margin-right: 20%;
   }
   .sounds-interesting-to-you {
     color: gray;
     text-align: center;
-    margin-bottom: 30px;
-    margin-left: 864px;
+    font-size: 3vh;
+    width: 60%;
+    margin-left: 20%;
+    margin-right: 20%;
   }
-  .submit-button {
-    margin-bottom: 160px;
-    margin-left: 878px;
-    border-radius: 5px;
-    padding: 8px 19.59px 9px 19px;
-    display: flex;
-    align-items: center;
-    border: 3px solid rgba(84, 84, 84, 1);
-  }
-  .submit-button:hover {
-    margin-bottom: 160px;
-    margin-left: 878px;
-    border-radius: 5px;
-    padding: 8px 19.59px 9px 19px;
-    display: flex;
-    align-items: center;
-    color: white;
-    transition: background-color 0.5s, color 0.5s;
-    background-color: black;
-    border: 3px solid black;
-  }
-  .join-event {
-    width: 120.41px;
-    font-family: "Inter";
-    font-size: 22px;
+}
+@media (max-aspect-ratio: 1/1){
+  .events-two{
+    font-family: "Cinzel";
+    font-size: 7vw;
     font-weight: 400;
     line-height: normal;
-    color: rgba(84, 84, 84, 1);
+    color: gray;
     text-align: center;
+    margin-top: 20%;
   }
-  .bottom-bar {
-    background-color: black;
-    padding: 55px 67px 48px 844px;
-    display: flex;
-    align-items: flex-start;
+  .events{
+    width: 100%; 
+    padding: 0 0 0 0;
+    margin-top: 0%;
   }
-  .flex-wrapper-two {
-    margin-right: 683px;
-    display: flex;
-    flex-direction: column;
-    align-items: center;
+  .specific-event {
+    width: 100%;
+    background-color: white;
+    padding: 0 0 0 0;
   }
-  .contact-us {
+  .rectangle-76 {
+    padding: 0 0 0 0;
+    width: 100%;
+  }
+  .dl-in-real-life {
+    font-size: 5vw;
+    color: black;
+    margin-left: 10%;
+    margin-top: 10%;
+  }
+  .relative-wrapper-one {
+    position: relative;
+  }
+  .rectangle-35 {
+    position: relative;
+  }
+  .deep-learning-has-become-increasingly-po {
     font-family: "Inter";
-    font-size: 24px;
+    font-size: 3.5vw;
+    width: 80%;
+    margin-left: 10%;
+    margin-right: 10%;
     font-weight: 200;
     line-height: normal;
-    color: white;
-    margin-bottom: 26px;
+    color: gray;
+    position: relative;
   }
-  .powered-by-squared-space {
+  .time-place {
+    color: black;
+    font-size: 5vw;
+    margin-left: 10%;
+  }
+  .saturday-march-18th-2023-1730-1900 {
     font-family: "Inter";
-    font-size: 18px;
-    font-weight: 400;
+    font-size: 3.5vw;
+    margin-left: 10%;
+    font-weight: 200;
     line-height: normal;
-    color: white;
-  }
-  .back-to-top-two {
-    margin-top: 8px;
+    color: gray;
     display: flex;
-    flex-direction: column;
-    align-items: center;
   }
-  .back-to-top-arrow {
-    width: 36px;
-    height: 18px;
-    margin-bottom: 14px;
-  }
-  .back-to-top {
-    font-family: "Inter";
-    font-size: 18px;
-    font-weight: 300;
-    line-height: normal;
-    color: white;
+  .sounds-interesting-to-you {
+    color: gray;
     text-align: center;
+    font-size: 5vw;
   }
-  </style>
+
+}
+</style>
