@@ -116,21 +116,17 @@
                     src="https://static.overlay-tech.com/assets/e4f8f188-1cd5-4217-b708-c1d16238e956.png"
                 />
                 <div class="flex-wrapper-four">
-                    <p class="d-ai-aided-tomography">
-                    AI Aided Tomography
+                  <p class="d-ai-aided-tomography">
+                      SpeechAI Implementation
                     </p>
                     <p class="d-our-team-has-developed-a-new-approach-to">
-                    Our team has developed a new approach to
-                    tomography that utilizes advanced deep learning
-                    algorithms to assist with image reconstruction.
-                    Our system is able to analyze raw tomography data
-                    and automatically identify features and structures
-                    in the image, leading to faster and more accurate
-                    image reconstruction.
+                      Our speech AI implementation project aims to develop a state-of-the-art speech recognition system using artificial intelligence. The system will leverage cutting-edge deep learning algorithms and natural language processing techniques to accurately transcribe spoken words into text. <br> <br>
+
+                      The project will involve designing and training a neural network model using large datasets of audio recordings and their corresponding transcriptions. We will also explore different feature extraction techniques, such as Mel-frequency cepstral coefficients (MFCCs), to improve the accuracy of our model.
                     </p>
                 </div>
             </b-container>
-            <b-container class="num-1st-event-two">
+            <!--<b-container class="num-1st-event-two">
             <img
                 alt=""
                 class="rectangle-34"
@@ -169,7 +165,7 @@
                         accurate weather precitions.
                     </p>
                 </div>
-            </b-container>
+            </b-container>-->
             <b-container fluid>
               <b-row align-h="center">
                 <p class="d-interested-in-future-projects">

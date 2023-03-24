@@ -184,7 +184,7 @@
                 @click="page--"
               />
             </div>
-            <p style="margin-top: 0.5%; width: 0%">{{ page }}</p>
+            <p v-if="events.length>3" style="margin-top: 0.5%; width: 0%">{{ page }}</p>
             <div style="width: 36px; height: 18px">
               <img
                 v-if="Math.ceil(events.length/3)>page"
@@ -381,7 +381,7 @@
                 @click="page--"
               />
             </div>
-            <p style="margin-top: 0.5%; width: 0%; color: white">{{ page }}</p>
+            <p v-if="events.length>3" style="margin-top: 0.5%; width: 0%; color: white">{{ page }}</p>
             <div style="width: 36px; height: 18px">
               <img
                 v-if="Math.ceil(events.length/3)>page"
@@ -424,7 +424,7 @@
                     location: "FENS G077",
                     img: "https://static.overlay-tech.com/assets/2de6e4c5-a258-4c5d-8f34-004fcd00fc3a.png",
                 },
-                {
+                /*{
                     name: "DL in Real Life",
                     abstract: "In this workshop, we will implement the various Deep Learning techniques on real life projects.",
                     date: "Saturday, March 18th, 2023",
@@ -480,7 +480,7 @@
                     location: "FMAN1099",
                     img: "https://s3.ap-south-1.amazonaws.com/techleer/31.jpg",
                 },
-                
+                */
             ]
         }
     },

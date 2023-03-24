@@ -9,13 +9,7 @@ import "firebase/functions";
 
 // Your web app's Firebase configuration
 const firebaseConfig = {
-  apiKey: "AIzaSyBn4LhKuIqLHii0V-5RSKLB6LcLSqCzU14",
-  authDomain: "ai-club-website.firebaseapp.com",
-  projectId: "ai-club-website",
-  storageBucket: "ai-club-website.appspot.com",
-  messagingSenderId: "295864976747",
-  appId: "1:295864976747:web:55715fffd4759e5ce6782e",
-  storageBucket: ''
+
 };
 
 // Initialize Firebase

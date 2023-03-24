@@ -60,9 +60,16 @@
         </div>-->
       <div id="">
         <div v-if="!darkMode" class="landing-page" style="width: 100%; z-index: 1;">
-            <b-container fluid class="flex-wrapper-five" >
-              <b-row align-h="center" style="width: 100%; margin-left: 0;">
-                    <div class="ai-sabanci-wrapper">
+            <b-container fluid class="flex-wrapper-five" style="height: auto">
+              <b-row align-h="" style="width: 100%; margin-left: 0;">
+                <div class="AIatSabancihas"> 
+                      AI at Sabancı has been selected as 
+                      one of the pilot members of
+                      <br><div class="nvidias">NVIDIA’s</div> Student Network initiative!
+                </div><br>
+                <a class="announcements" href="https://developer.nvidia.com/student-network" target="blank">Read More</a>
+                <router-link class="wantToTryChatSU" to="/aiChatbox">Want to try ChatSU?</router-link>
+                    <!--<div class="ai-sabanci-wrapper">
                         <a>
                           <img
                             src="../assets/Vector.png"
@@ -72,7 +79,7 @@
                         <div class="where-dreams-come-true-baby" style="text-align: center;">
                           <router-link style="text-decoration: none" to="/aiChatBox"><p style="color: black; margin: 0; display:inline;">Want to try out our&nbsp;</p><p style="color: black; margin: 0; display:inline; text-decoration: underline;">chat-bot</p><p style="color: black; margin: 0; display:inline;">?</p></router-link>
                         </div>
-                    </div>
+                    </div>-->
               </b-row>
             </b-container>
             <div class="rectangle-92"></div>
@@ -168,19 +175,26 @@
             <meta name="viewport" content="width=device-width, initial-scale=1.0">
         </div>
         <div v-else class="d-landing-page" style="width: 100%; z-index: 1;">
-            <b-container fluid class="d-flex-wrapper-five" >
-              <b-row align-h="center" style="width: 100%; margin-left: 0;">
-                    <div class="ai-sabanci-wrapper">
+            <b-container fluid class="flex-wrapper-five" style="background-color: black;">
+              <b-row align-h="" style="width: 100%; margin-left: 0;">
+                <div class="AIatSabancihas"> 
+                      AI at Sabancı has been selected as 
+                      one of the pilot members of
+                      <br><div class="nvidias">NVIDIA’s</div> Student Network initiative!
+                </div><br>
+                <a class="announcements" href="https://developer.nvidia.com/student-network" target="blank">Read More</a>
+                <router-link class="wantToTryChatSU" to="/aiChatbox">Want to try ChatSU?</router-link>
+                    <!--<div class="ai-sabanci-wrapper">
                         <a>
                           <img
-                            src="../assets/Vector (1).png"
-                            class="d-ai-sabanci"
+                            src="../assets/Vector.png"
+                            class="ai-sabanci"
                           >
                         </a>
-                        <div class="where-dreams-come-true-baby" style="text-align: center; color: white">
-                          <router-link style="text-decoration: none" to="/aiChatBox"><p style="color: white; margin: 0; display:inline;">Want to try out our&nbsp;</p><p style="color: white; margin: 0; display:inline; text-decoration: underline;">chat-bot</p><p style="color: white; margin: 0; display:inline;">?</p></router-link>
+                        <div class="where-dreams-come-true-baby" style="text-align: center;">
+                          <router-link style="text-decoration: none" to="/aiChatBox"><p style="color: black; margin: 0; display:inline;">Want to try out our&nbsp;</p><p style="color: black; margin: 0; display:inline; text-decoration: underline;">chat-bot</p><p style="color: black; margin: 0; display:inline;">?</p></router-link>
                         </div>
-                    </div>
+                    </div>-->
               </b-row>
             </b-container>
             <div class="d-rectangle-92"></div>
@@ -883,13 +897,14 @@ export default {
     margin-left: 0%;
   }
   .d-flex-wrapper-two {
+    width: 100%;
     background-size: 100%;
     background-position: center;
     background-image: url("../assets/image\ 122.png");
-    padding: 0 0 0%;
+    padding: 0% 0 0%;
     position: relative;
     background-repeat: no-repeat;
-    background-color: rgb(8, 8, 8);
+    background-color: rgb(15, 15, 15);
     z-index: 2;
   }
   .d-flex-wrapper-three {
@@ -1102,9 +1117,11 @@ export default {
     position: relative;
     background: linear-gradient(
       360deg,
-      rgb(0, 0, 0) 50%,
-      rgb(15, 15, 15) 100%
+      rgb(0, 0, 0) 10%,
+      rgb(15, 15, 15) 50%
     );
+    margin-top: 0%;
+    margin-bottom: -2%;
   }
   .d-first-student-club-in-tuerk-iye {
     font-family: "Cinzel";
@@ -1543,6 +1560,7 @@ border-radius: 20px;
       rgb(0, 0, 0) 50%,
       rgb(15, 15, 15) 100%
     );
+    padding-top: 10%;
   }
   .d-first-student-club-in-tuerk-iye {
     font-family: "Cinzel";
@@ -1610,13 +1628,63 @@ border-radius: 20px;
     align-items: flex-start;
     width: 100%;
   }
+  .AIatSabancihas{
+    font-family: 'Inter';
+    font-style: normal;
+    font-weight: 400;
+    font-size: 5vh;
+    color: white;
+    margin: 15% 35% 0% 15%;
+    width: 50%;
+  }
+  .nvidias{
+    display: inline;
+    background: linear-gradient(90deg, #76B900 0%, rgba(118, 185, 0, 0) 100%);
+  }
+  .announcements{
+    text-decoration: underline;
+    color: white;
+    font-size: 2vh;
+    margin-left: 15%;
+    margin-top: 2%;
+    margin-bottom: 20%;
+    width: 15%;
+    margin-right: 2%;
+    float: left;
+    cursor: pointer;
+  }
+  .wantToTryChatSU{
+    color: white;
+    font-size: 2vh;
+    display: inline;
+    border: 1px solid #FFFFFF;
+    width: 25vh;
+    margin-top: 2%;
+    margin-bottom: 20%;
+    text-align: center;
+    cursor: pointer;
+  }
+  .wantToTryChatSU:hover{
+    font-size: 2vh;
+    display: inline;
+    border: 1px solid #FFFFFF;
+    width: 25vh;
+    margin-top: 2%;
+    margin-bottom: 20%;
+    text-align: center;
+    transition: background-color 0.5s, color 0.5s;
+    color: black;
+    background-color: white;
+    cursor: pointer;
+  }
+  
   .ai-sabanci-wrapper{
     margin-top: 20%; margin-bottom: 20%; width: 80%; margin-left: 10%; margin-right: 10%
   }
   .flex-wrapper-five {
     background-size: 100%;
     background-position: center;
-    background-image: url("https://storage.googleapis.com/luciaai-assets/img/1423.webp");
+    background-image: url("../assets/gradient\ with\ pillars\ landing\ background\ -\ desktop.png");
     /*padding: 32px 0 0;*/
     background-repeat: no-repeat;
     width: 100%;
@@ -1628,21 +1696,21 @@ border-radius: 20px;
     margin-bottom: 18.15%;
     margin-left: 94.9%;
   }
-    .ai-sabanci {
-      width: 60%;
-      margin-left: 20%;
-      margin-right: 20%;
-      font-family: "Michroma";
-      font-size: 6vh;
-      font-weight: 400;
-      line-height: normal;
-      color: rgba(255, 255, 255, 1);
-      text-align: center;
-      text-shadow: 0 4px 7px rgba(0, 0, 0, 0.4);
-      font-family: 'Michroma';
-      font-style: normal;
-      line-height: 114px;
-    }
+  .ai-sabanci {
+    width: 60%;
+    margin-left: 20%;
+    margin-right: 20%;
+    font-family: "Michroma";
+    font-size: 6vh;
+    font-weight: 400;
+    line-height: normal;
+    color: rgba(255, 255, 255, 1);
+    text-align: center;
+    text-shadow: 0 4px 7px rgba(0, 0, 0, 0.4);
+    font-family: 'Michroma';
+    font-style: normal;
+    line-height: 114px;
+  }
   .rectangle-92 {
     width: 100%;
     height: 100%;
@@ -1972,9 +2040,11 @@ border-radius: 20px;
     position: relative;
     background: linear-gradient(
       360deg,
-      rgba(255,255,255,1) 50%,
-      rgba(229,229,229,1) 100%
+      rgba(255,255,255,1) 10%,
+      rgba(229,229,229,1) 50%
     );
+    margin-top: 0%;
+    margin-bottom: -2%;
   }
   .first-student-club-in-tuerk-iye {
     font-family: "Cinzel";
@@ -2087,11 +2157,60 @@ border-radius: 20px;
     margin-left: 10%; 
     margin-right: 10%
   }
-  
+  .AIatSabancihas{
+    font-family: 'Inter';
+    font-style: normal;
+    font-weight: 400;
+    font-size: 5vw;
+    color: white;
+    margin: 20% 0 0% 15%;
+    width: 85%;
+  }
+  .nvidias{
+    display: inline;
+    background: linear-gradient(90deg, #76B900 0%, rgba(118, 185, 0, 0) 100%);
+  }
+  .announcements{
+    text-decoration: underline;
+    color: white;
+    font-size: 2vw;
+    margin-left: 15%;
+    margin-top: 2%;
+    margin-bottom: 20%;
+    width: 20%;
+    margin-right: 2%;
+    float: left;
+    cursor: pointer;
+  }
+  .wantToTryChatSU{
+    color: white;
+    font-size: 2vw;
+    display: inline;
+    border: 1px solid #FFFFFF;
+    width: 25vw;
+    margin-top: 2%;
+    margin-bottom: 20%;
+    text-align: center;
+    cursor: pointer;
+  }
+  .wantToTryChatSU:hover{
+    font-size: 2vw;
+    display: inline;
+    border: 1px solid #FFFFFF;
+    width: 25vw;
+    margin-top: 2%;
+    margin-bottom: 20%;
+    text-align: center;
+    transition: background-color 0.5s, color 0.5s;
+    color: black;
+    background-color: white;
+    cursor: pointer;
+  }
   .flex-wrapper-five {
-    background-size: 100%;
+    background-size: cover;
     background-position: center;
-    background-image: url("https://storage.googleapis.com/luciaai-assets/img/1423.webp");
+    background-image: url("../assets/gradient\ with\ pillars\ landing\ background\ -\ desktop.png");
+    
     /*padding: 32px 0 0;*/
     background-repeat: no-repeat;
     width: 100%;
@@ -2530,6 +2649,7 @@ border-radius: 20px;
       rgba(255,255,255,1) 50%,
       rgba(229,229,229,1) 100%
     );
+    padding-top: 10%;
   }
   .first-student-club-in-tuerk-iye {
     font-family: "Cinzel";

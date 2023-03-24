@@ -6,7 +6,7 @@
       <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
       <div v-if="!darkMode">
         <div class="wide-nav">  
-          <div class="flex-wrapper-eight" style="backdrop-filter: blur(10px);">
+          <div class="flex-wrapper-eight" style="background: rgba(255, 255, 255, 0.3); backdrop-filter: blur(10px);">
               <div class="logo-two"><router-link to="/"><a class="logo">
                 <img
                   src="./assets/fresh logo (1).png"
@@ -45,6 +45,7 @@
               >
             </a></router-link></div>
                 <img
+                  v-if="!isHome"
                   class="AI"
                   src="./assets/Vector (4).png"
                   style="max-width: 30%; position: fixed; margin-left: 35%; margin-right: 35%; margin-top: 5%;"
@@ -132,8 +133,8 @@
         </div>
       </div>
       <div v-else>
-        <div class="wide-nav">  
-          <div class="flex-wrapper-eight" style="backdrop-filter: blur(10px);">
+        <div class="wide-nav" :class="{ hidden: isNavHidden }">  
+          <div class="flex-wrapper-eight" style="backdrop-filter: blur(10px)">
               <div class="logo-two"><router-link to="/"><a class="logo">
                 <img
                   src="./assets/dark logo.png"
@@ -172,6 +173,7 @@
               >
             </a></router-link></div>
               <img
+                v-if="!isHome"
                 class="AI"
                 src="./assets/Vector (5).png"
                 style="max-width: 30%; position: fixed; margin-left: 35%; margin-right: 35%; margin-top: 5%;"
@@ -268,15 +270,37 @@ export default {
   data(){
     return{
       showNav: false,
+      prevScrollPos: window.pageYOffset,
+      isNavHidden: false
     }
   },
+  /*created() {
+    window.addEventListener('scroll', this.handleScroll);
+  },
+  destroyed() {
+    window.removeEventListener('scroll', this.handleScroll);
+  },*/
   computed: {
     darkMode: function() {
       return this.$store.state.darkMode;
     },
     isHome: function() {
-      return this.$route.name == "/#/"
+      return this.$route.name === "Home"
     } 
+  },
+  methods: {
+    handleScroll() {
+      let currentScrollPos = window.pageYOffset;
+      let navHeight = this.$refs.nav.offsetHeight;
+      if (this.prevScrollPos > currentScrollPos && currentScrollPos > navHeight) {
+        this.isNavHidden = false;
+      } else if (currentScrollPos <= navHeight) {
+        this.isNavHidden = true;
+      } else {
+        this.isNavHidden = true;
+      }
+      this.prevScrollPos = currentScrollPos;
+    }
   }
 }
 </script>
@@ -364,6 +388,11 @@ export default {
   .hamburger{
     display: none;
   }
+  .wide-nav{
+    transition: transform 0.3s ease-in-out;}
+  .wide-nav.hidden {
+    transform: translateY(-100%);
+}
 }
 @media (max-aspect-ratio: 1/1){
   .notwide-nav{

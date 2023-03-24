@@ -135,7 +135,7 @@
             </b-container>
             <b-container fluid style="width: 15%; position: fixed; height: 80%; overflow-y: auto; padding-top: 5%; background-color: rgba(244, 244, 244, 1);">
               <div v-for="i in historyTitles.length" :key="i" class="relative-wrapper-three">
-                <div class="flex-wrapper-five" style="width: 100%; cursor: pointer;" @click="currentHistory=i-1">
+                <div class="flex-wrapper-five" style="width: 100%; cursor: pointer;" @click="$store.commit('setCurrentHistory', i-1)">
                   <div class="flex-wrapper-six">
                     <img
                       v-if="historyTitles[i-1]" 
@@ -179,23 +179,25 @@
               <b-container @click="newChat()" style="z-index: 1; width: 60%; height: auto; float: left; position: fixed;" fluid class="flex-wrapper-three">
                 <p class="new-chat">&#43; New Chat</p>
               </b-container>
-              <div v-for="i in historyTitles.length" :key="i" class="relative-wrapper-three">
-                <div class="flex-wrapper-five" style="width: 100%; cursor: pointer;" @click="$state.commit('setCurrentHistory', i-1)">
-                  <div class="flex-wrapper-six">
-                    <img
-                      v-if="historyTitles[i-1]" 
-                      alt=""
-                      class="vector-5"
-                      src="https://static.overlay-tech.com/assets/bec070a2-32be-494f-8efb-c9c72322c75e.svg"
-                    />
-                    <p style="width:100%" class="python-code">{{ historyTitles[i-1] }}</p>
+              <div style="margin-top: 35%;">
+                <div v-for="i in historyTitles.length" :key="i" class="relative-wrapper-three">
+                  <div class="flex-wrapper-five" style="width: 100%; cursor: pointer; z-index: 2;" @click="$store.commit('setCurrentHistory', i-1)">
+                    <div class="flex-wrapper-six">
+                      <img
+                        v-if="historyTitles[i-1]" 
+                        alt=""
+                        class="vector-5"
+                        src="https://static.overlay-tech.com/assets/bec070a2-32be-494f-8efb-c9c72322c75e.svg"
+                      />
+                      <p style="width:100%" class="python-code">{{ historyTitles[i-1] }}</p>
+                    </div>
                   </div>
                 </div>
               </div>
             </b-container>
             <b-container fluid style="position: fixed; bottom: 0; background-color: rgba(244, 244, 244, 1); width: 70%; height: 30%">
               <div class="split-line"></div>
-              <div @click="$state.commit('clearChats')" class="clear-chats-two">
+              <div @click="$store.commit('clearChats')" class="clear-chats-two">
                   <p class="clear-chats">🚮&nbsp;</p>
                   <p class="clear-chats">Clear chats</p>
               </div>
@@ -215,7 +217,7 @@
           </div>
           <b-container class="chat" style="width: 70%">
             <b-container v-if="currentHistory==-1 || history[currentHistory].length==0" fluid class="group-38">
-                <b-row align-h="center"><p class="su-chat">SU Chat</p></b-row>
+                <b-row align-h="center"><p class="su-chat">ChatSU</p></b-row>
                 <b-row>
                     <div class="group-25">
                         <p class="capabilities">Capabilities</p>
@@ -262,14 +264,14 @@
                     src="../assets/user-icon.png"
                     style="max-width: 3%; height: 3%; margin-right: 3%"
                   >
-                  <div>{{ message.content }}</div>
+                  <div style="white-space: pre-line">{{ message.content }}</div>
                 </div>
                 <div v-else style="display: flex; width: 100%;">
                   <img
                     src="../assets/avatar.png"
                     style="max-width: 3%; height: 3%; margin-right: 3%"
                   >
-                  <div>{{ message.content }}</div>
+                  <div style="white-space: pre-line">{{ message.content }}</div>
                 </div>
                 <div v-if="i!=history[currentHistory].length-1" style="border: 1px solid rgba(22, 22, 22, 0.5); width: 100%; margin-top: 5%"></div>
               </div>
@@ -292,7 +294,7 @@
           </b-container>
           <b-container class="m-chat" style="width: 100%">
             <b-container v-if="currentHistory==-1 || history[currentHistory].length==0" fluid class="group-38">
-                <p class="su-chat" style="margin-bottom: 0;">SU Chat</p>
+                <p class="su-chat" style="margin-bottom: 0;">ChatSU</p>
                 <b-row>
                     <div class="group-25">
                           <p class="capabilities">💪 Capabilities</p>
@@ -336,14 +338,14 @@
                     src="../assets/user-icon.png"
                     style="max-width: 9%; height: 3%; margin-right: 3%"
                   >
-                  <div>{{ message.content }}</div>
+                  <div style="white-space: pre-line">{{ message.content }}</div>
                 </div>
                 <div v-else style="display: flex; width: 100%;">
                   <img
                     src="../assets/avatar.png"
                     style="max-width: 9%; height: 3%; margin-right: 3%"
                   >
-                  <div>{{ message.content }}</div>
+                  <div style="white-space: pre-line">{{ message.content }}</div>
                 </div>
                 <div v-if="i!=history[currentHistory].length-1" style="border: 1px solid rgba(22, 22, 22, 0.5); width: 100%; margin-top: 5%"></div>
               </div>
@@ -396,7 +398,7 @@
             </b-container>
             <b-container fluid style="width: 15%; position: fixed; height: 80%; overflow-y: auto; padding-top: 5%; background-color: #282828">
               <div v-for="i in historyTitles.length" :key="i" class="relative-wrapper-three">
-                <div style="width: 100%; cursor: pointer;" @click="$state.commit('setCurrentHistory', i-1)">
+                <div style="width: 100%; cursor: pointer;" @click="$store.commit('setCurrentHistory', i-1)">
                   <div class="d-flex-wrapper-six">
                     <img
                       v-if="historyTitles[i-1]" 
@@ -411,7 +413,7 @@
             </b-container>
             <b-container fluid style="position: fixed; bottom: 0; background-color: #282828; width: 10%; max-height: 40%">
               <div class="d-split-line"></div>
-              <div @click="$state.commit('clearChats')" class="clear-chats-two">
+              <div @click="$store.commit('clearChats')" class="clear-chats-two">
                   <p class="d-clear-chats">🚮&nbsp;</p>
                   <p class="d-clear-chats">Clear chats</p>
               </div>
@@ -440,23 +442,25 @@
               <b-container @click="newChat()" style="z-index: 1; width: 60%; height: auto; float: left; position: fixed;" fluid class="d-flex-wrapper-three">
                 <p class="d-new-chat">&#43; New Chat</p>
               </b-container>
-              <div v-for="i in historyTitles.length" :key="i" class="relative-wrapper-three">
-                <div class="d-flex-wrapper-five" style="width: 100%; cursor: pointer;" @click="currentHistory=i-1">
-                  <div class="flex-wrapper-six">
-                    <img
-                      v-if="historyTitles[i-1]" 
-                      alt=""
-                      class="vector-5"
-                      src="../assets/Vector 7 (1).png"
-                    />
-                    <p style="width:100%" class="d-python-code">{{ historyTitles[i-1] }}</p>
+              <div style="margin-top: 35%;">
+                <div v-for="i in historyTitles.length" :key="i" class="relative-wrapper-three">
+                  <div class="d-flex-wrapper-five" style="width: 100%; cursor: pointer;" @click="$store.commit('setCurrentHistory', i-1)">
+                    <div class="flex-wrapper-six">
+                      <img
+                        v-if="historyTitles[i-1]" 
+                        alt=""
+                        class="vector-5"
+                        src="../assets/Vector 7 (1).png"
+                      />
+                      <p style="width:100%" class="d-python-code">{{ historyTitles[i-1] }}</p>
+                    </div>
                   </div>
                 </div>
               </div>
             </b-container>
             <b-container fluid style="position: fixed; bottom: 0; background-color: #242424; width: 70%; height: 30%">
               <div class="split-line"></div>
-              <div @click="clearChats()" class="clear-chats-two">
+              <div @click="$store.commit('clearChats')" class="clear-chats-two">
                   <p class="d-clear-chats">🚮&nbsp;</p>
                   <p class="d-clear-chats">Clear chats</p>
               </div>
@@ -476,7 +480,7 @@
           </div>
           <b-container class="chat" style="width: 70%">
             <b-container v-if="currentHistory==-1 || history[currentHistory].length==0" fluid class="group-38">
-                <b-row align-h="center"><p class="d-su-chat">SU Chat</p></b-row>
+                <b-row align-h="center"><p class="d-su-chat">ChatSU</p></b-row>
                 <b-row>
                     <div class="group-25">
                         <p class="d-capabilities">Capabilities</p>
@@ -523,14 +527,14 @@
                     src="../assets/user-icon.png"
                     style="max-width: 3%; height: 3%; margin-right: 3%"
                   >
-                  <div style="color: white">{{ message.content }}</div>
+                  <div style="color: white; white-space: pre-line">{{ message.content }}</div>
                 </div>
                 <div v-else style="display: flex; width: 100%;">
                   <img
                     src="../assets/avatar.png"
                     style="max-width: 3%; height: 3%; margin-right: 3%"
                   >
-                  <div style="color: white">{{ message.content }}</div>
+                  <div style="color: white; white-space: pre-line">{{ message.content }}</div>
                 </div>
                 <div v-if="i!=history[currentHistory].length-1" style="border: 1px solid rgba(255, 255, 255 0.5); width: 100%; margin-top: 5%"></div>
               </div>
@@ -552,7 +556,7 @@
           </b-container>
           <b-container class="m-chat" style="width: 100%">
             <b-container v-if="currentHistory==-1 || history[currentHistory].length==0" fluid class="group-38">
-                <p class="d-su-chat" style="margin-bottom: 0;">SU Chat</p>
+                <p class="d-su-chat" style="margin-bottom: 0;">ChatSU</p>
                 <b-row>
                     <div class="group-25">
                           <p class="d-capabilities">💪 Capabilities</p>
@@ -596,14 +600,14 @@
                     src="../assets/user-icon.png"
                     style="max-width: 9%; height: 3%; margin-right: 3%"
                   >
-                  <div style="color: white">{{ message.content }}</div>
+                  <div style="color: white; white-space: pre-line">{{ message.content }}</div>
                 </div>
                 <div v-else style="display: flex; width: 100%;">
                   <img
                     src="../assets/avatar.png"
                     style="max-width: 9%; height: 3%; margin-right: 3%"
                   >
-                  <div style="color: white">{{ message.content }}</div>
+                  <div style="color: white; white-space: pre-line">{{ message.content }}</div>
                 </div>
                 <div v-if="i!=history[currentHistory].length-1" style="border: 1px solid rgba(22, 22, 22, 0.5); width: 100%; margin-top: 5%"></div>
               </div>
@@ -630,13 +634,12 @@
 </template>
 
 <script>
-import "firebase/functions";
+//import "firebase/functions";
 
 
 // Get a reference to your Firebase Function
-const myFunction = firebase.functions().httpsCallable("myFunction");
-
-
+//const myFunction = firebase.functions().httpsCallable("myFunction");
+const http = require('http');
 const OPENAI_API_KEY = process.env.VUE_APP_OPENAI_API_KEY
 const ORG_ID = process.env.VUE_APP_ORG_ID;
 const axios = require('axios');
@@ -701,9 +704,9 @@ export default {
                 this.$store.commit('addHistoryTitle', 'New Chat');
               }
               if(this.history[this.currentHistory].length==0){
-                if(this.prompt.length<16){this.$store.commit('changeHistoryTitle', this.prompt)}
+                if(this.prompt.length){this.$store.commit('changeHistoryTitle', this.prompt)}
                 else{
-                  this.$store.commit('changeHistoryTitle', this.prompt.slice(0, 14)+"...")
+                  this.$store.commit('changeHistoryTitle', this.prompt.slice(0, 20)+"...")
                 }
               }
               
@@ -724,7 +727,7 @@ export default {
                     if(i+1<this.history[this.currentHistory].length){messages.push({ role: "assistant", content: this.history[this.currentHistory][i+1].content });}
                   }
                   this.$store.commit('initResponse')
-                  console.log(this.history[this.currentHistory])
+                  //console.log(this.history[this.currentHistory])
                   /*const socket = new WebSocket('127.0.0.1:4400');
 
                   socket.addEventListener('open', (event) => {
@@ -766,18 +769,74 @@ export default {
                   this.prompt="";
                   */
                   //console.log(messages)
-                  try {
+                  /*try {
                     console.log("aaaa")
-                    const completion = await openai.createChatCompletion({
-                      model: "gpt-3.5-turbo",
-                      messages: messages,
-                      temperature: 1,
-                    });
-
-                    const completion_text = completion.data.choices[0].message.content;
-                    console.log(completion_text)
+                    const response = openai.createChatCompletion({
+                        model: "gpt-3.5-turbo",
+                        messages: messages,
+                        stream: true,
+                    }, { responseType: 'stream' });
+                    //console.log(response+ "1")
+                    response.then((resp) => {
+                        resp.data.on('data', data => {
+                            const lines = data.toString().split('\n').filter(line => line.trim() !== '');
+                            for (const line of lines) {
+                                const message = line.replace(/^data: /, '');
+                                if (message === '[DONE]') {
+                                    //ws.send(JSON.stringify({ done: true }));
+                                    return;
+                                }
+                                const parsed = JSON.parse(message);
+                                //ws.send(JSON.stringify(parsed.choices[0].delta.content));
+                                console.log(parsed);
+                                this.$store.commit('appendResponse', JSON.stringify(parsed.choices[0].delta.content))
+                            }
+                        });
+                    });*/
+                    
+                    //const completion_text = completion.data.choices[0].message.content;
+                    //console.log(completion_text)
                     //this.history[this.currentHistory].push({message: completion_text, isUser: false})
-                    this.$store.commit('appendResponse', completion_text)
+                    //this.$store.commit('appendResponse', completion_text)
+                    try {
+                        const url = 'https://api.openai.com/v1/chat/completions';
+                        const requestBody = {
+                          model: 'gpt-3.5-turbo',
+                          //model_name: "ChatSU",
+                          messages: messages,
+                          stream: true,
+                        };
+                        const headers = {
+                          'Content-Type': 'application/json',
+                          'Authorization': `Bearer ${OPENAI_API_KEY}`
+                        };
+                        const response = await fetch(url, {
+                          method: 'POST',
+                          headers,
+                          body: JSON.stringify(requestBody)
+                        })
+                        if (!response.ok) {
+                          throw new Error(`Failed to fetch API: ${response.statusText}`);
+                        }
+                        const reader = response.body.getReader();
+                        const decoder = new TextDecoder();
+                        let result = '';
+                        while (true) {
+                          const { done, value } = await reader.read();
+                          if (done) {
+                            break;
+                          }
+                          result += decoder.decode(value);
+                          let output = decoder.decode(value);
+                          //output = output.replaceAll('data: {"id":"chatcmpl-6xLRrywJwIieJ71Bfkw0MaAzRvzZB","object":"chat.completion.chunk","created":1679601819,"model":"gpt-3.5-turbo-0301","choices":[{"delta":{"content"', "")
+                          /*let startI = output.indexOf("{\"content\":\"")+"{\"content\":\"".length;
+                          let endI = output.lastIndexOf("\"},\"index\":0,\"finish_reason\":null}]}") 
+                          */
+                          // Process the response in chunks here
+                          //const parsed = JSON.parse(decoder.decode(value).data);
+                          this.addToResponse(output);
+                          //this.$store.commit('appendResponse', JSON.stringify(decoder.decode(value).choices[0].delta.content))
+                        }
                   } catch (error) {
                     if (error.response) {
                       console.log(error.response.status);
@@ -801,11 +860,24 @@ export default {
                   });
                   let beginning = this.prompt;
                   this.result = beginning + " " + gptResponse.data.choices[0].text;
-                  this.history[this.currentHistory].push({message: this.result, isUser: false})*/
+                  this.history[this.currentHistory].push({message: this.result, isUser: false})
+                  */
                   
                   this.canSendPrompt=true
               })();
           }
+        },
+        addToResponse(output){
+            let outputs = output.split("data: ")
+            outputs.shift();
+            for(let i = 0; i < outputs.length; i++){
+              outputs[i] = JSON.parse(outputs[i])
+            }
+            for(let i = 0; i < outputs.length; i++){
+              if(outputs[i].choices[0].delta.content=="```"){outputs[i].choices[0].delta.content="\n"}
+              console.log(outputs[i].choices[0].delta.content)
+              if(outputs[i].choices[0].delta.content!=undefined){this.$store.commit('appendResponse', outputs[i].choices[0].delta.content)}
+            }
         },
     }
 }

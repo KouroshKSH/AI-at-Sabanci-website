@@ -23,7 +23,7 @@
                         <h3 v-if="showFirstNameAlert" class="warning" style="margin-left: 0%; width:50%">Please enter your first name.</h3>
                         <h3 v-if="showLastNameAlert" class="warning" style="margin-left: 3%; width:45%">Please enter your last name.</h3>
                     </b-row>
-                    <input class="group-16" v-model="email" placeholder="Sabanci Email" />
+                    <input class="group-16" v-model="email" placeholder="Email" />
                     <h3 v-if="showEmailAlert" class="warning">Please enter your email address.</h3>
                     <input class="group-17" v-model="subject" placeholder="Subject" />
                     <textarea cols="140" rows="5" v-model="message" class="flex-wrapper-four" placeholder="Message"></textarea>
@@ -60,7 +60,7 @@
                         <h3 v-if="showFirstNameAlert" class="warning" style="margin-left: 0%; width:50%">Please enter your first name.</h3>
                         <h3 v-if="showLastNameAlert" class="warning" style="margin-left: 3%; width:45%">Please enter your last name.</h3>
                     </b-row>
-                    <input class="d-group-16" v-model="email" placeholder="Sabanci Email" />
+                    <input class="d-group-16" v-model="email" placeholder="Email" />
                     <h3 v-if="showEmailAlert" class="warning">Please enter your email address.</h3>
                     <input class="d-group-17" v-model="subject" placeholder="Subject" />
                     <textarea cols="140" rows="5" v-model="message" class="d-flex-wrapper-four" placeholder="Message"></textarea>
@@ -78,6 +78,8 @@
 </template>
 
 <script>
+import { collection, addDoc, getDoc, setDoc, getFirestore, doc } from "firebase/firestore"; 
+import { db } from '../firebase'
 export default {
     data(){
         return{
@@ -100,12 +102,21 @@ export default {
             else{this.showFirstNameAlert=false}
             if(this.lastName==""){this.showLastNameAlert=true; valid=false}
             else{this.showLastNameAlert=false}
-            if(!this.email.includes(".com") || !this.email.includes("@")){this.showEmailAlert=true; valid=false}
+            if(!this.email.includes(".") || !this.email.includes("@")){this.showEmailAlert=true; valid=false}
             else{this.showEmailAlert=false}
             if(this.message==""){this.showMessageAlert=true; valid=false}
             else{this.showMessageAlert=false}
             if(valid){
-                this.inquiries.push({firstName: this.firstName, lastName: this.lastName, email: this.email, subject: this.subject, message: this.message})
+              const firestore = getFirestore()
+              try {
+                const collectionRef = db.collection('contactUsEnquiries');
+                const snapshot = collectionRef.count().get();
+                console.log(snapshot.data().count);
+                  const applicationDoc = doc(firestore, `contactUsEnquiries/${this.email}`)
+                  setDoc(applicationDoc, {firstName: this.firstName, lastName: this.lastName, email: this.email, subject: this.subject, message: this.message})
+              } catch (e) {
+                  console.error("Error adding document: ", e);
+              }
             }
         }
     },
