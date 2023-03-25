@@ -35,7 +35,9 @@ wss.on('connection', (ws) => {
         messages: messages,
         stream: true,
     }, { responseType: 'stream' });
+    console.log(response)
     response.then((resp) => {
+      
         resp.data.on('data', data => {
             const lines = data.toString().split('\n').filter(line => line.trim() !== '');
             for (const line of lines) {

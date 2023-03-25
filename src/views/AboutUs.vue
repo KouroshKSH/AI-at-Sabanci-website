@@ -80,7 +80,7 @@
       </b-row>
       </b-container>-->
       <b-container fluid><b-row align-h="center"><div class="line-12"></div></b-row></b-container>
-      <b-container>
+      <b-container fluid>
         <p class="who-are-we">Who are We?</p>
         <p class="a-group-of-sabanci-university-students">
           A group of Sabanci University students, who are
@@ -136,9 +136,9 @@
                 <img
                   alt=""
                   class="ellipse-1"
-                  :src=memberPics.ege_kaan_okalp
+                  :src=memberPics.ege_kaan_ozalp
                 />
-                <p class="name">Ege Kaan Okalp</p>
+                <p class="name">Ege Kaan Ozalp</p>
                 <p class="name" style="font-size: 1.5vh">Student Advisor</p>
               </b-col>
             </b-row> 
@@ -190,9 +190,9 @@
                 <img
                   alt=""
                   class="ellipse-1"
-                  :src=memberPics.ege_kaan_okalp
+                  :src=memberPics.ege_kaan_ozalp
                 />
-                <p class="name">Ege Kaan Okalp</p>
+                <p class="name">Ege Kaan Ozalp</p>
                 <p class="name" style="font-size: 1.5vw">Student Advisor</p>
               </b-col>
             </b-row> 
@@ -400,9 +400,9 @@
                 <img
                   alt=""
                   class="ellipse-1"
-                  :src=memberPics.ege_kaan_okalp
+                  :src=memberPics.ege_kaan_ozalp
                 />
-                <p class="d-name">Ege Kaan Okalp</p>
+                <p class="d-name">Ege Kaan Ozalp</p>
                 <p class="d-name" style="font-size: 1.5vh">Student Advisor</p>
               </b-col>
             </b-row> 
@@ -454,9 +454,9 @@
                 <img
                   alt=""
                   class="ellipse-1"
-                  :src=memberPics.ege_kaan_okalp
+                  :src=memberPics.ege_kaan_ozalp
                 />
-                <p class="d-name">Ege Kaan Okalp</p>
+                <p class="d-name">Ege Kaan Ozalp</p>
                 <p class="d-name" style="font-size: 1.5vw">Student Advisor</p>
               </b-col>
             </b-row> 
@@ -559,8 +559,8 @@
               serhan_yilmaz: require('../assets/Serhan YILMAZ profile.jpg'),
               kourosh_sharifi: require('../assets/Kourosh Sharifi.jpg'),
               sadiq_qara: require('../assets/Sadiq Qara.jpg'),
-              furkan_eris: '',
-              ege_kaan_okalp: require('../assets/Ege Kaan Ozalp.jpg'),
+              furkan_eris: require('../assets/Furkan Eris.jpeg'),
+              ege_kaan_ozalp: require('../assets/Ege Kaan Ozalp.jpg'),
             },
             currentImg: "",
             currentImgIdx: 0,
@@ -925,9 +925,11 @@
       text-align: center;
     }
     .a-group-of-sabanci-university-students {
-      height: 0%;
+      height: auto;
       width: auto;
       margin-bottom: 5%;
+      width: 70%;
+      margin-left: 15%;
       font-family: "Inter";
       font-size: 2vh;
       font-weight: 200;

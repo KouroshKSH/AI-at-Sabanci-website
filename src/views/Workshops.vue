@@ -170,6 +170,7 @@
                           <div class="flex-wrapper-two">
                               <p class="d-deep-learning">{{ workshop.name }}</p>
                               <p
+                              style="white-space: pre-line"
                               class="d-lorem-ipsum-dolor-sit-amet-consectetur-two"
                               >
                                   {{ message[i] }}
@@ -210,7 +211,8 @@
                               {{ workshop.name }}
                           </p>
                           <p
-                              class="d-lorem-ipsum-dolor-sit-amet-consectetur-three"
+                            style="white-space: pre-line"
+                            class="d-lorem-ipsum-dolor-sit-amet-consectetur-three"
                           >
                               {{ message[i] }}
                           </p>
@@ -306,13 +308,13 @@
                 name: "Speech AI",
                 shortText: "Speech AI, also known as automatic speech recognition (ASR), is a technology that enables machines to recognize and understand human speech. This technology uses complex algorithms and statistical models to analyze audio signals and convert them into text, which can then be processed and analyzed by computers",
                 longText: "Speech AI, also known as automatic speech recognition (ASR), is a technology that enables machines to recognize and understand human speech. This technology uses complex algorithms and statistical models to analyze audio signals and convert them into text, which can then be processed and analyzed by computers.\n\nComputer speech AI has a wide range of applications, from speech-to-text transcription services and virtual assistants to automated customer service systems and speech-enabled smart home devices. With the advancements in artificial intelligence, computer speech AI has become more accurate and efficient, making it an essential technology in today's digital world.\n\nIn this workshop, you will learn about the various techniques and tools used in computer speech AI, such as deep learning, neural networks, and natural language processing. You will also learn how to build and train your own speech recognition models using popular frameworks such as TensorFlow and PyTorch.\n\nWhether you're a software developer, data scientist, or just interested in exploring the fascinating world of artificial intelligence, this workshop will provide you with a comprehensive understanding of computer speech AI and its applications. You'll gain practical skills that you can apply to real-world projects, and you'll leave the workshop with a deeper understanding of how this technology is transforming the way we interact with machines.",
-                img: "https://static.overlay-tech.com/assets/43e9cdb2-2490-4cb4-9d83-74053ce78ead.png"
+                img: "https://developer-blogs.nvidia.com/wp-content/uploads/2022/06/ai-for-dev-blog-green-neon-wave-1600x950-2.jpg"
 
             }, {
                 name: "Computer Vision",
                 shortText: "Step into the captivating world of computer vision with our immersive workshop designed to introduce you to the fascinating interplay between algorithms and visual data. Over the course of this workshop, you'll learn the basics of computer vision, explore cutting-edge techniques and dive deep into hands-on labs that will sharpen your skills and enhance your knowledge.",
                 longText: "Step into the captivating world of computer vision with our immersive workshop designed to introduce you to the fascinating interplay between algorithms and visual data. Over the course of this workshop, you'll learn the basics of computer vision, explore cutting-edge techniques and dive deep into hands-on labs that will sharpen your skills and enhance your knowledge.\n\nOur workshop is crafted to provide a comprehensive overview of the field, starting with the fundamentals of image processing and building up to the latest deep learning algorithms.\nYou'll delve into the core concepts of feature detection, object recognition, and segmentation, and gain an understanding of how these methods are used in real-world applications like self-driving cars, facial recognition systems, and robotics.\n\nIn this workshop, we put a strong emphasis on experiential learning.\nYou'll work with industry-standard tools and techniques, like OpenCV, TensorFlow, Keras, and PyTorch, to train and test machine learning models on various datasets.\n\nBy the end of this workshop, you'll have the knowledge and confidence to create exciting computer vision applications and solutions that make an impact in your industry.\nExperience the thrill of diving into the fascinating field of computer vision with our workshop, which promises to leave you enriched, empowered, and inspired to take on the next big challenge." ,
-                img: "https://static.overlay-tech.com/assets/8db0f7af-a599-4535-af6b-d7e9167b4b49.png",
+                img: "https://i.pcmag.com/imagery/articles/061CyMCZV6G2sXUmreKHvXS-1..v1581020108.jpg",
             },], 
         }
     },
