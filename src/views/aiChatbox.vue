@@ -1,109 +1,4 @@
 <template>
-    <!--<div>
-        <label style="margin-top: 3%" for="prompt">Enter your prompt </label><span style="color: red">*</span><span>:</span>
-        <input type="text" id="prompt" v-model="prompt" /><br>
-        <b-button @click="submitPrompt()">Submit</b-button>
-        <h1 v-if="result!=''">Result: {{ result }}</h1>
-    </div> -->
-    <!--<div class="chat-box-page">
-        <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Michroma">
-        <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Inter">
-        <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Cinzel">
-        <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
-        <b-container style="margin-top: 3%">
-            <p class="su-chat">SU Chat</p>
-        </b-container>
-        <b-container fluid class="relative-wrapper-one">
-            <b-row align-h="center">
-                <b-col align-h="center">
-                    <div style="width: 60%; margin-left: 20%; margin-right: 20%;">
-                        <p class="arm">💪</p>
-                        <div class="group-25">
-                            <p class="capabilities">Capabilities</p>
-                            <p class="lorem-ipsum-dolor-sit-amet-consectetur"> 
-                                GPT-3.5-Turbo can perform a wide range of language tasks, including language translation, summarization, question-answering, and content creation. 
-                                It can also generate creative writing, poetry, and even code.
-                            </p>
-                        </div>
-                    </div>
-                </b-col>
-                <b-col align-h="center">
-                    <div style="width: 60%; margin-left: 20%; margin-right: 20%;">
-                        <p class="chat">💬</p>
-                        <div class="group-27">
-                            <p class="examples">Examples</p>
-                            <p
-                                @click="prompt='Write a song about the passage of time.'; submitPrompt()"
-                                class="lorem-ipsum-dolor-sit-amet-consectetur-two"
-                            >
-                                Write a song about the passage of time.
-                            </p>
-                            <p
-                                @click="prompt='What is the optimal way to solve a rubik\'s cube?'; submitPrompt()"
-                                class="lorem-ipsum-dolor-sit-amet-consectetur-two"
-                            >
-                                What is the optimal way to solve a rubik's cube?
-                            </p>
-                            <p
-                                @click="prompt='Write a program that takes the height, width, length and shape of the figure and calculates the volume.'; submitPrompt()"
-                                class="lorem-ipsum-dolor-sit-amet-consectetur-two"
-                            >
-                                Write a program that takes the height, width, length and shape of the figure and calculates the volume.
-                            </p>
-                            <p
-                                @click='prompt="Translate \"Hey, how are you?\" to french."; submitPrompt()'
-                                class="lorem-ipsum-dolor-sit-amet-consectetur-two"
-                            >
-                                Translate "Hey, how are you?" to french.
-                            </p>
-                        </div>
-                    </div>
-                </b-col>
-                <b-col align-h="center">
-                    <div style="width: 60%; margin-left: 20%; margin-right: 20%;">
-                        <p class="alert">⚠️</p>
-                        <div class="group-28">
-                            <p class="limitations">Limitations</p>
-                            <p
-                            class="lorem-ipsum-dolor-sit-amet-consectetur-three"
-                            >
-                            While GPT-3 API is an incredibly powerful language model that can generate coherent text, it still has some limitations. 
-                            One of the main limitations is that it is not capable of true understanding or reasoning, and can sometimes produce nonsensical or inaccurate responses. 
-                            </p>
-                        </div>
-                    </div>
-                </b-col>
-            </b-row>
-        </b-container>
-        <b-container fluid class="flex-wrapper-one" style="margin-top: 5%;">
-            <input type="text" v-model="prompt" class="the-i-thingy-flashing-character" />
-            <img
-                @click="submitPrompt()"
-                alt=""
-                class="polygon-1"
-                src="https://static.overlay-tech.com/assets/2589b0fe-03a3-4694-9b00-04e2d21bbe50.svg"
-            />
-        </b-container>
-        <b-container v-if="result!=''" fluid class="flex-wrapper-one" style="margin-top: 5%;">
-            {{ result }}
-        </b-container>
-        <b-container>
-            <p style="text-align:left; margin-top: 5%; text-decoration: underline; cursor: pointer" @click="showMore=true; window.scrollTo('0', '100%')" class="some-disclaimers-and-such-legal-stuff">
-                Regarding the usage of GPT-3.
-            </p>
-            <p v-if="showMore" style="text-align:left; margin-top: 5%" class="some-disclaimers-and-such-legal-stuff">
-                Accuracy and Reliability: While GPT-3 can generate text that may appear to be accurate, it should not be relied upon as a source of truth or factual information. The accuracy and reliability of the generated text can vary based on a number of factors, including the quality and relevance of the input provided to the model.<br><br>
-
-                Ownership and Liability: The ownership and liability of the generated text may be a complex legal issue. It is important to consider who owns the intellectual property rights to the text generated by the model and who is responsible for any legal consequences that may arise from its use.<br><br>
-
-                Misuse and Abuse: GPT-3 can be used to generate a wide range of content, including fake news, misinformation, and propaganda. It is important to use the tool responsibly and ethically, and to be aware of the potential for misuse and abuse.<br><br>
-
-                Privacy and Security: When using GPT-3, it is important to be aware of the privacy and security implications of the data that is being provided to the model. GPT-3 may have access to sensitive information, and there is a risk of data breaches or other security vulnerabilities.<br><br>
-
-                Regulatory Compliance: Depending on the context in which GPT-3 is being used, there may be regulatory requirements or legal obligations that need to be met. It is important to be aware of these requirements and to ensure that they are being met.<br><br>
-            </p>
-        </b-container>
-    </div>-->
   <div>
     <div v-if="!darkMode" class="chat-box-page">
         <div class="bg-blur" v-if="showLegalStuff">
@@ -150,18 +45,34 @@
             </b-container>
             <b-container fluid style="position: fixed; bottom: 0; background-color: rgba(244, 244, 244, 1); width: 15%; max-height: 40%">
               <div class="split-line"></div>
-              <div @click="clearChats()" class="clear-chats-two">
+              <div @click="$store.commit('clearChats')" class="clear-chats-two">
                   <p class="clear-chats">🚮&nbsp;</p>
                   <p class="clear-chats">Clear chats</p>
               </div>
-              <div class="flex-wrapper-fifteen">
+              <div v-if="chatHornyMode" @click="$store.commit('toggleHornyMode')" style="cursor: pointer;" class="flex-wrapper-fifteen">
+                  <p class="clear-chats">🛫&nbsp;</p>
+                  <p class="clear-chats">Turn off flirty mode</p>
+              </div>
+              <div v-if="!chatHornyMode" @click="$store.commit('toggleHornyMode')" style="cursor: pointer;" class="flex-wrapper-fifteen">
+                  <p class="clear-chats">🛫&nbsp;</p>
+                  <p class="clear-chats">Turn on flirty mode</p>
+              </div>
+              <div v-if="isGPT4" @click="$store.commit('toggleGPT4')" style="cursor: pointer;" class="flex-wrapper-sixteen">
+                  <p class="clear-chats">❓&nbsp;&nbsp;&nbsp;</p>
+                  <p class="clear-chats">Switch to GPT-3.5</p>
+              </div>
+              <div v-if="!isGPT4" @click="$store.commit('toggleGPT4')" style="cursor: pointer;" class="flex-wrapper-sixteen">
+                  <p class="clear-chats">❓&nbsp;&nbsp;&nbsp;</p>
+                  <p class="clear-chats">Switch to GPT-4</p>
+              </div>
+              <!--<div class="flex-wrapper-fifteen">
                   <p class="clear-chats">🛫&nbsp;</p>
                   <p class="clear-chats">Upgrade</p>
               </div>
               <div class="flex-wrapper-sixteen">
                   <p class="clear-chats">❓&nbsp;&nbsp;&nbsp;</p>
                   <p class="clear-chats">FAQs</p>
-              </div>
+              </div>-->
               <router-link to="/contactUs" class="clear-chats-two">
                   <p class="clear-chats">📬&nbsp;</p>
                   <p class="clear-chats">Contact Us</p>
@@ -201,14 +112,30 @@
                   <p class="clear-chats">🚮&nbsp;</p>
                   <p class="clear-chats">Clear chats</p>
               </div>
-              <div class="flex-wrapper-fifteen">
+              <div v-if="chatHornyMode" @click="$store.commit('toggleHornyMode')" style="cursor: pointer;" class="flex-wrapper-fifteen">
+                  <p class="clear-chats">🛫&nbsp;</p>
+                  <p class="clear-chats">Turn off flirty mode</p>
+              </div>
+              <div v-if="!chatHornyMode" @click="$store.commit('toggleHornyMode')" style="cursor: pointer;" class="flex-wrapper-fifteen">
+                  <p class="clear-chats">🛫&nbsp;</p>
+                  <p class="clear-chats">Turn on flirty mode</p>
+              </div>
+              <div v-if="isGPT4" @click="$store.commit('toggleGPT4')" style="cursor: pointer;" class="flex-wrapper-sixteen">
+                  <p class="clear-chats">❓&nbsp;&nbsp;&nbsp;</p>
+                  <p class="clear-chats">Switch to GPT-3.5</p>
+              </div>
+              <div v-if="!isGPT4" @click="$store.commit('toggleGPT4')" style="cursor: pointer;" class="flex-wrapper-sixteen">
+                  <p class="clear-chats">❓&nbsp;&nbsp;&nbsp;</p>
+                  <p class="clear-chats">Switch to GPT-4</p>
+              </div>
+              <!--<div class="flex-wrapper-fifteen">
                   <p class="clear-chats">🛫&nbsp;</p>
                   <p class="clear-chats">Upgrade</p>
               </div>
               <div class="flex-wrapper-sixteen">
                   <p class="clear-chats">❓&nbsp;&nbsp;&nbsp;</p>
                   <p class="clear-chats">FAQs</p>
-              </div>
+              </div>-->
               <router-link to="/contactUs" class="clear-chats-two">
                   <p class="clear-chats">📬&nbsp;</p>
                   <p class="clear-chats">Contact Us</p>
@@ -216,7 +143,7 @@
             </b-container>
           </div>
           <b-container class="chat" style="width: 70%">
-            <b-container v-if="currentHistory==-1 || history[currentHistory].length==0" fluid class="group-38">
+            <b-container v-if="currentHistory==-1 || history[currentHistory].length==1" fluid class="group-38">
                 <b-row align-h="center"><p class="su-chat">ChatSU</p></b-row>
                 <b-row>
                     <div class="group-25">
@@ -257,8 +184,8 @@
                 </b-row>
                 
             </b-container>
-            <b-container v-else fluid class="chatbox">
-              <div v-for="(message, i) in history[currentHistory]" :key="message" style="margin-top: 5%">
+            <b-container v-else fluid class="chatbox" ref="message" @scroll="onScroll">
+              <div class="message" v-for="(message, i) in history[currentHistory]" :key="message" style="margin-top: 5%" vue-smooth-scroll>
                 <div v-if="message.role=='user'" style="display: flex; width: 100%;">
                   <img
                     src="../assets/user-icon.png"
@@ -266,15 +193,16 @@
                   >
                   <div style="white-space: pre-line">{{ message.content }}</div>
                 </div>
-                <div v-else style="display: flex; width: 100%;">
+                <div v-if="message.role=='assistant'" style="display: flex; width: 100%;">
                   <img
                     src="../assets/avatar.png"
                     style="max-width: 3%; height: 3%; margin-right: 3%"
                   >
                   <div style="white-space: pre-line">{{ message.content }}</div>
                 </div>
-                <div v-if="i!=history[currentHistory].length-1" style="border: 1px solid rgba(22, 22, 22, 0.5); width: 100%; margin-top: 5%"></div>
+                <div v-if="i!=history[currentHistory].length-1 && i" style="border: 1px solid rgba(22, 22, 22, 0.5); width: 100%; margin-top: 5%"></div>
               </div>
+              <div ref="bottom"></div>
             </b-container>
             <b-container fluid>
               <div style="width: 100%; margin-left: 10%">
@@ -293,7 +221,7 @@
             
           </b-container>
           <b-container class="m-chat" style="width: 100%">
-            <b-container v-if="currentHistory==-1 || history[currentHistory].length==0" fluid class="group-38">
+            <b-container v-if="currentHistory==-1 || history[currentHistory].length==1" fluid class="group-38">
                 <p class="su-chat" style="margin-bottom: 0;">ChatSU</p>
                 <b-row>
                     <div class="group-25">
@@ -331,8 +259,8 @@
                 </b-row>
                 
             </b-container>
-            <b-container v-else fluid class="chatbox">
-              <div v-for="(message, i) in history[currentHistory]" :key="message" style="margin-top: 5%">
+            <b-container v-else fluid class="chatbox" ref="message2" @scroll="onScroll">
+              <div v-for="(message, i) in history[currentHistory]" :key="message" style="margin-top: 5%; overflow-anchor: auto; bottom: 1px">
                 <div v-if="message.role=='user'" style="display: flex; width: 100%;">
                   <img
                     src="../assets/user-icon.png"
@@ -340,14 +268,14 @@
                   >
                   <div style="white-space: pre-line">{{ message.content }}</div>
                 </div>
-                <div v-else style="display: flex; width: 100%;">
+                <div v-if="message.role=='assistant'" style="display: flex; width: 100%;">
                   <img
                     src="../assets/avatar.png"
                     style="max-width: 9%; height: 3%; margin-right: 3%"
                   >
                   <div style="white-space: pre-line">{{ message.content }}</div>
                 </div>
-                <div v-if="i!=history[currentHistory].length-1" style="border: 1px solid rgba(22, 22, 22, 0.5); width: 100%; margin-top: 5%"></div>
+                <div v-if="i!=history[currentHistory].length-1 && i" style="border: 1px solid rgba(22, 22, 22, 0.5); width: 100%; margin-top: 5%"></div>
               </div>
             </b-container>
             <b-container fluid style="bottom: 10%; position: fixed; padding: 0 0 0 0">
@@ -411,20 +339,36 @@
                 </div>
               </div>
             </b-container>
-            <b-container fluid style="position: fixed; bottom: 0; background-color: #282828; width: 10%; max-height: 40%">
+            <b-container fluid style="position: fixed; bottom: 0; background-color: #282828; width: 15%; max-height: 40%">
               <div class="d-split-line"></div>
               <div @click="$store.commit('clearChats')" class="clear-chats-two">
                   <p class="d-clear-chats">🚮&nbsp;</p>
                   <p class="d-clear-chats">Clear chats</p>
               </div>
-              <div class="flex-wrapper-fifteen">
+              <div v-if="chatHornyMode" @click="$store.commit('toggleHornyMode')" style="cursor: pointer;" class="flex-wrapper-fifteen">
+                  <p class="d-clear-chats">🛫&nbsp;</p>
+                  <p class="d-clear-chats">Turn off flirty mode</p>
+              </div>
+              <div v-if="!chatHornyMode" @click="$store.commit('toggleHornyMode')" style="cursor: pointer;" class="flex-wrapper-fifteen">
+                  <p class="d-clear-chats">🛫&nbsp;</p>
+                  <p class="d-clear-chats">Turn on flirty mode</p>
+              </div>
+              <div v-if="isGPT4" @click="$store.commit('toggleGPT4')" style="cursor: pointer;" class="flex-wrapper-sixteen">
+                  <p class="d-clear-chats">❓&nbsp;&nbsp;&nbsp;</p>
+                  <p class="d-clear-chats">Switch to GPT-3.5</p>
+              </div>
+              <div v-if="!isGPT4" @click="$store.commit('toggleGPT4')" style="cursor: pointer;" class="flex-wrapper-sixteen">
+                  <p class="d-clear-chats">❓&nbsp;&nbsp;&nbsp;</p>
+                  <p class="d-clear-chats">Switch to GPT-4</p>
+              </div>
+              <!--<div class="flex-wrapper-fifteen">
                   <p class="d-clear-chats">🛫&nbsp;</p>
                   <p class="d-clear-chats">Upgrade</p>
               </div>
               <div class="flex-wrapper-sixteen">
                   <p class="d-clear-chats">❓&nbsp;&nbsp;&nbsp;</p>
                   <p class="d-clear-chats">FAQs</p>
-              </div>
+              </div>-->
               <router-link to="/contactUs" class="clear-chats-two">
                   <p class="d-clear-chats">📬&nbsp;</p>
                   <p class="d-clear-chats">Contact Us</p>
@@ -464,14 +408,30 @@
                   <p class="d-clear-chats">🚮&nbsp;</p>
                   <p class="d-clear-chats">Clear chats</p>
               </div>
-              <div class="flex-wrapper-fifteen">
+              <div v-if="chatHornyMode" @click="$store.commit('toggleHornyMode')" style="cursor: pointer;" class="flex-wrapper-fifteen">
+                  <p class="d-clear-chats">🛫&nbsp;</p>
+                  <p class="d-clear-chats">Turn off flirty mode</p>
+              </div>
+              <div v-if="!chatHornyMode" @click="$store.commit('toggleHornyMode')" style="cursor: pointer;" class="flex-wrapper-fifteen">
+                  <p class="d-clear-chats">🛫&nbsp;</p>
+                  <p class="d-clear-chats">Turn on flirty mode</p>
+              </div>
+              <div v-if="isGPT4" @click="$store.commit('toggleGPT4')" style="cursor: pointer;" class="flex-wrapper-sixteen">
+                  <p class="d-clear-chats">❓&nbsp;&nbsp;&nbsp;</p>
+                  <p class="d-clear-chats">Switch to GPT-3.5</p>
+              </div>
+              <div v-if="!isGPT4" @click="$store.commit('toggleGPT4')" style="cursor: pointer;" class="flex-wrapper-sixteen">
+                  <p class="d-clear-chats">❓&nbsp;&nbsp;&nbsp;</p>
+                  <p class="d-clear-chats">Switch to GPT-4</p>
+              </div>
+              <!--<div class="flex-wrapper-fifteen">
                   <p class="d-clear-chats">🛫&nbsp;</p>
                   <p class="d-clear-chats">Upgrade</p>
               </div>
               <div class="flex-wrapper-sixteen">
                   <p class="d-clear-chats">❓&nbsp;&nbsp;&nbsp;</p>
                   <p class="d-clear-chats">FAQs</p>
-              </div>
+              </div>-->
               <router-link to="/contactUs" class="clear-chats-two">
                   <p class="d-clear-chats">📬&nbsp;</p>
                   <p class="d-clear-chats">Contact Us</p>
@@ -479,7 +439,7 @@
             </b-container>
           </div>
           <b-container class="chat" style="width: 70%">
-            <b-container v-if="currentHistory==-1 || history[currentHistory].length==0" fluid class="group-38">
+            <b-container v-if="currentHistory==-1 || history[currentHistory].length==1" fluid class="group-38">
                 <b-row align-h="center"><p class="d-su-chat">ChatSU</p></b-row>
                 <b-row>
                     <div class="group-25">
@@ -520,7 +480,7 @@
                 </b-row>
                 
             </b-container>
-            <b-container v-else fluid class="chatbox">
+            <b-container v-else fluid class="chatbox" ref="message3" @scroll="onScroll">
               <div v-for="(message, i) in history[currentHistory]" :key="message" style="margin-top: 5%">
                 <div v-if="message.role=='user'" style="display: flex; width: 100%;">
                   <img
@@ -529,14 +489,14 @@
                   >
                   <div style="color: white; white-space: pre-line">{{ message.content }}</div>
                 </div>
-                <div v-else style="display: flex; width: 100%;">
+                <div v-if="message.role=='assistant'" style="display: flex; width: 100%;">
                   <img
                     src="../assets/avatar.png"
                     style="max-width: 3%; height: 3%; margin-right: 3%"
                   >
                   <div style="color: white; white-space: pre-line">{{ message.content }}</div>
                 </div>
-                <div v-if="i!=history[currentHistory].length-1" style="border: 1px solid rgba(255, 255, 255 0.5); width: 100%; margin-top: 5%"></div>
+                <div v-if="i!=history[currentHistory].length-1 && i" style="border: 1px solid rgba(255, 255, 255 0.5); width: 100%; margin-top: 5%"></div>
               </div>
             </b-container>
             <b-container fluid>
@@ -555,7 +515,7 @@
             </b-container>
           </b-container>
           <b-container class="m-chat" style="width: 100%">
-            <b-container v-if="currentHistory==-1 || history[currentHistory].length==0" fluid class="group-38">
+            <b-container v-if="currentHistory==-1 || history[currentHistory].length==1" fluid class="group-38">
                 <p class="d-su-chat" style="margin-bottom: 0;">ChatSU</p>
                 <b-row>
                     <div class="group-25">
@@ -593,7 +553,7 @@
                 </b-row>
                 
             </b-container>
-            <b-container v-else fluid class="chatbox">
+            <b-container v-else fluid class="chatbox" ref="message4" @scroll="onScroll">
               <div v-for="(message, i) in history[currentHistory]" :key="message" style="margin-top: 5%">
                 <div v-if="message.role=='user'" style="display: flex; width: 100%;">
                   <img
@@ -602,14 +562,14 @@
                   >
                   <div style="color: white; white-space: pre-line">{{ message.content }}</div>
                 </div>
-                <div v-else style="display: flex; width: 100%;">
+                <div v-if="message.role=='assistant'" style="display: flex; width: 100%;">
                   <img
                     src="../assets/avatar.png"
                     style="max-width: 9%; height: 3%; margin-right: 3%"
                   >
                   <div style="color: white; white-space: pre-line">{{ message.content }}</div>
                 </div>
-                <div v-if="i!=history[currentHistory].length-1" style="border: 1px solid rgba(22, 22, 22, 0.5); width: 100%; margin-top: 5%"></div>
+                <div v-if="i!=history[currentHistory].length-1 && i" style="border: 1px solid rgba(22, 22, 22, 0.5); width: 100%; margin-top: 5%"></div>
               </div>
             </b-container>
             <b-container fluid style="bottom: 10%; position: fixed; padding: 0 0 0 0; background-color: #242424;">
@@ -648,8 +608,35 @@ dotenv.config()
 const OpenAI = require('openai-api');
 const { Configuration, OpenAIApi } = require("openai");
 require('dotenv').config()
+import { ref, onMounted, nextTick, defineExpose, reactive } from 'vue';
+//let messagesRef = ref(null);
+const configuration = new Configuration({
+  apiKey: OPENAI_API_KEY,
+});
+
+const openai = new OpenAIApi(configuration);
+const fixedElement = document.querySelector('.fixed-element');
+const scrollToElement = document.querySelector('.scroll-to-element');
+
+
 
 export default {
+    setup() {
+      const fixedElementScrollTop = ref(0);
+
+      const scrollToElement = () => {
+        // get reference to the element to scroll to
+        const scrollToElement = ref.value.scrollToElement;
+
+        // get the offset of the element to scroll to relative to the top of the page
+        const offsetTop = scrollToElement.value.offsetTop;
+
+        // update the scrollTop property of the fixed element
+        fixedElementScrollTop.value = offsetTop;
+      }
+
+      return { fixedElementScrollTop, scrollToElement };
+    },
     data(){
         return{
             prompt: "",
@@ -657,7 +644,16 @@ export default {
             showLegalStuff: true,
             canSendPrompt: true,
             showMenu: false,
+            lastScrollTop: 0,
+            autoScroll: true,
+            aspectRatio: window.innerWidth / window.innerHeight,
         }
+    },
+    mounted() {
+      window.addEventListener('resize', this.handleResize);
+    },
+    beforeDestroy() {
+      window.removeEventListener('resize', this.handleResize);
     },
     computed: {
       darkMode: function() {
@@ -672,50 +668,58 @@ export default {
       currentHistory: function() {
         return this.$store.state.currentHistory;
       },
+      chatHornyMode: function() {
+        return this.$store.state.chatHornyMode;
+      },
+      isGPT4: function() {
+        return this.$store.state.isGPT4;
+      },
     },
-    /*
-    addHistory(state){state.history.unshift([])},
-    addPrompt(state, prompt){state.history[state.currentHistory].unshift({role: 'user', content: prompt})},
-    initResponse(state){state.history[state.currentHistory].unshift({role: 'assistant', content: ''})},
-    appendResponse(state, content){state.history[state.currentHistory][state.history[state.currentHistory].length-1].content+=content;},
-    addHistoryTitle(state, title){state.historyTitles.unshift(title)},
-    changeHistoryTitle(state, title){state.historyTitles[state.currentHistory]=title},
-    setCurrentHistory(state, currHist){state.currentHistory=currHist;},
-    clearChats(state){
-      state.history=[],
-      state.historyTitles=[],
-      state.currentHistory=-1
-    },
-    */
     methods: {
         newChat(){
-          if(this.history[this.currentHistory].length && this.history[0].length){ 
+          if(this.history[this.currentHistory].length>1 && this.history[0].length>1){ 
             this.$store.commit('addHistory')
             this.$store.commit('setCurrentHistory', 0)
             this.$store.commit('addHistoryTitle', 'New Chat') 
-          } else if (!this.history[0].length){this.$store.commit('setCurrentHistory', 0)}
+          } else if (this.history[0].length==1){this.$store.commit('setCurrentHistory', 0)}
         },
         submitPrompt(){
           if(this.prompt && this.canSendPrompt){
+              
               this.canSendPrompt=false;
               if(this.currentHistory==-1){
                 this.$store.commit('addHistory')
                 this.$store.commit('setCurrentHistory', 0)
                 this.$store.commit('addHistoryTitle', 'New Chat');
               }
-              if(this.history[this.currentHistory].length==0){
-                if(this.prompt.length){this.$store.commit('changeHistoryTitle', this.prompt)}
-                else{
-                  this.$store.commit('changeHistoryTitle', this.prompt.slice(0, 20)+"...")
-                }
+              if(this.history[this.currentHistory].length==1){
+                  
+                  (async () => {try {
+                      let promptCopy = this.prompt
+                      //console.log("aaaa")
+                      while(this.historyTitles[this.currentHistory] == "New Chat"){
+                        const completion = await openai.createChatCompletion({
+                          model: "gpt-3.5-turbo",
+                          messages: [{role: "user", content: "Summarize the following in a single sentence '" + promptCopy + "', only respond with the summary."}],
+                          temperature: 1,
+                        });
+                        const completion_text = completion.data.choices[0].message.content;
+                        //console.log(completion_text.length)
+                        if(completion_text.length < 60){this.$store.commit('changeHistoryTitle', completion_text)}
+                      }} catch (error) {
+                        if (error.response) {
+                          console.log(error.response.status);
+                          console.log(error.response.data);
+                        } else {
+                          console.log(error.message);
+                        }
+                    }
+                  })() 
               }
               
-              const configuration = new Configuration({
-                apiKey: OPENAI_API_KEY,
-              });
-              const openai = new OpenAIApi(configuration);
               
               (async () => {
+                  const currHistory = this.currentHistory;
                   const messages = []
                   let strMessages = ""
                   this.$store.commit('addPrompt', this.prompt);
@@ -726,6 +730,7 @@ export default {
                     messages.push({ role: "user", content: this.history[this.currentHistory][i].content });
                     if(i+1<this.history[this.currentHistory].length){messages.push({ role: "assistant", content: this.history[this.currentHistory][i+1].content });}
                   }
+                  console.log(this.history)
                   this.$store.commit('initResponse')
                   //console.log(this.history[this.currentHistory])
                   /*const socket = new WebSocket('127.0.0.1:4400');
@@ -800,12 +805,23 @@ export default {
                     //this.$store.commit('appendResponse', completion_text)
                     try {
                         const url = 'https://api.openai.com/v1/chat/completions';
-                        const requestBody = {
-                          model: 'gpt-3.5-turbo',
-                          //model_name: "ChatSU",
-                          messages: messages,
-                          stream: true,
-                        };
+                        let requestBody;
+                        if(this.isGPT4){
+                          requestBody = {
+                            model: 'gpt-4',
+                            //model_name: "ChatSU",
+                            messages: messages,
+                            stream: true,
+                          }
+                        }
+                        else{
+                          requestBody = {
+                            model: 'gpt-3.5-turbo',
+                            //model_name: "ChatSU",
+                            messages: messages,
+                            stream: true,
+                          }
+                        }
                         const headers = {
                           'Content-Type': 'application/json',
                           'Authorization': `Bearer ${OPENAI_API_KEY}`
@@ -834,7 +850,7 @@ export default {
                           */
                           // Process the response in chunks here
                           //const parsed = JSON.parse(decoder.decode(value).data);
-                          this.addToResponse(output);
+                          this.addToResponse(output, currHistory);
                           //this.$store.commit('appendResponse', JSON.stringify(decoder.decode(value).choices[0].delta.content))
                         }
                   } catch (error) {
@@ -864,10 +880,11 @@ export default {
                   */
                   
                   this.canSendPrompt=true
+                  this.autoScroll = true
               })();
           }
         },
-        addToResponse(output){
+        addToResponse(output, currHistory){
             let outputs = output.split("data: ")
             outputs.shift();
             for(let i = 0; i < outputs.length; i++){
@@ -875,9 +892,81 @@ export default {
             }
             for(let i = 0; i < outputs.length; i++){
               if(outputs[i].choices[0].delta.content=="```"){outputs[i].choices[0].delta.content="\n"}
-              console.log(outputs[i].choices[0].delta.content)
-              if(outputs[i].choices[0].delta.content!=undefined){this.$store.commit('appendResponse', outputs[i].choices[0].delta.content)}
+              if(outputs[i].choices[0].delta.content!=undefined){this.$store.commit('appendResponse', [outputs[i].choices[0].delta.content, currHistory])}
             }
+            this.scrollElement();
+        },
+        scrollElement: function() {
+          let myElement;
+          if(!this.darkMode)
+            if(this.aspectRatio>1){
+              myElement = this.$refs.message
+              if(this.autoScroll){myElement.scrollTop += 10000}
+            }
+            else{
+              myElement = this.$refs.message2
+              if(this.autoScroll){myElement.scrollTop += 10000}
+            }
+          else{
+            if(this.aspectRatio>1){
+              myElement = this.$refs.message3
+              if(this.autoScroll){myElement.scrollTop += 10000}
+            }
+            else{
+              myElement = this.$refs.message4
+              if(this.autoScroll){myElement.scrollTop += 10000}
+            }
+          }
+        },
+        onScroll() {
+          let el;
+          if(!this.darkMode){
+            if(this.aspectRatio>1){
+              el = this.$refs.message;
+              if (el.scrollHeight - el.scrollTop - el.clientHeight <= 100) {
+                this.autoScroll = true;
+              }
+              if (el.scrollTop < this.lastScrollTop) {
+                this.autoScroll = false;
+              }
+              this.lastScrollTop = el.scrollTop;
+            }
+            else{
+              el = this.$refs.message2;
+              if (el.scrollHeight - el.scrollTop - el.clientHeight <= 100) {
+                this.autoScroll = true;
+              }
+              if (el.scrollTop < this.lastScrollTop) {
+                this.autoScroll = false;
+              }
+              this.lastScrollTop = el.scrollTop;
+            }
+          }
+          else{
+            if(this.aspectRatio>1){
+              el = this.$refs.message3;
+              if (el.scrollHeight - el.scrollTop - el.clientHeight <= 100) {
+                this.autoScroll = true;
+              }
+              if (el.scrollTop < this.lastScrollTop) {
+                this.autoScroll = false;
+              }
+              this.lastScrollTop = el.scrollTop;
+            }
+            else{
+              el = this.$refs.message4;
+              if (el.scrollHeight - el.scrollTop - el.clientHeight <= 100) {
+                this.autoScroll = true;
+              }
+              if (el.scrollTop < this.lastScrollTop) {
+                this.autoScroll = false;
+              }
+              this.lastScrollTop = el.scrollTop;
+            }
+          }
+        },
+        handleResize() {
+          this.aspectRatio = window.innerWidth / window.innerHeight;
         },
     }
 }
@@ -889,403 +978,52 @@ input:focus {outline:none!important;}
 html { 
     scroll-behavior: smooth;
     overflow-y: hidden; /* Hide vertical scrollbar */
-    overflow-x: hidden; /* Hide horizontal scrollbar */}
-.btn { text-transform: unset !important; }
-/*
-@media (min-aspect-ratio: 1/1){
-    .chat-box-page {
-    background-color: white;
-    padding: 0 0 0;
-    display: flex;
-    flex-direction: column;
-    align-items: flex-start;
-    }
-    .su-chat {
-    font-family: "Cinzel";
-    font-size: 6vh;
-    font-weight: 400;
-    line-height: normal;
-    color: gray;
-    text-align: center;
-    }
-    .flex-wrapper-four {
-    display: flex;
-    align-items: flex-start;
-    }
-    .arm {
-    font-family: "Alata";
-    font-size: 8vh;
-    font-weight: 400;
-    line-height: normal;
-    color: black;
-    text-align: center;
-    text-shadow: 0 5px 8px rgba(0, 0, 0, 0.25);
-    }
-    .chat {
-    font-family: "Alata";
-    font-size: 8vh;
-    font-weight: 400;
-    line-height: normal;
-    color: black;
-    text-align: center;
-    text-shadow: 0 5px 8px rgba(0, 0, 0, 0.25);
-    }
-    .alert {
-    font-family: "Alata";
-    font-size: 8vh;
-    font-weight: 400;
-    line-height: normal;
-    color: black;
-    text-align: center;
-    text-shadow: 0 5px 8px rgba(0, 0, 0, 0.25);
-    padding: 0 0 0 0;
-    }
-    .relative-wrapper-one {
-    position: relative;
-    width: 70%;
-    margin-right: 15%;
-    margin-left: 15%;
-    }
-    .flex-wrapper-two {
-    display: flex;
-    align-items: flex-start;
-    position: relative;
-    }
-    .group-25 {
-    background: linear-gradient(
-        221deg,
-        rgba(119, 146, 236, 1) 0%,
-        rgba(253, 69, 204, 1) 96%
-    );
-    border-radius: 30px;
-    padding: 41px 51px 37.72px;
-    box-shadow: 1px 1px 7px 0 rgba(0, 0, 0, 0.25) inset;
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    width: 100%;
-    height: 100%;
-    margin-right: 0%;
-    }
-    .capabilities {
-    margin-top: 15%;
-    font-family: "Inter";
-    font-size: 2vh;
-    font-weight: 400;
-    line-height: normal;
-    color: white;
-    display: flex;
-    text-align: center;
-    }
-    .lorem-ipsum-dolor-sit-amet-consectetur {
-    height: 80%;
-    width: 80%;
-    font-family: "Inter";
-    font-size: 2vh;
-    font-weight: 200;
-    line-height: normal;
-    color: white;
-    display: flex;
-    }
-    .group-27 {
-    background: linear-gradient(
-        222deg,
-        rgba(79, 168, 245, 1) 3%,
-        rgba(213, 92, 214, 1) 96%
-    );
-    border-radius: 30px;
-    box-shadow: 0 0 7px 0 rgba(0, 0, 0, 0.25) inset;
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    width: 100%;
-    height: 100%;
-    }
-    .examples {
-    margin-top: 15%;
-    font-family: "Inter";
-    font-size: 2vh;
-    font-weight: 400;
-    line-height: normal;
-    color: white;
-    text-align: center;
-    }
-    .lorem-ipsum-dolor-sit-amet-consectetur-two {
-    height: 80%;
-    width: 80%;
-    font-family: "Inter";
-    font-size: 2vh;
-    font-weight: 200;
-    line-height: normal;
-    color: white;
-    display: flex;
-    }
-    .group-28 {
-    background: linear-gradient(
-        221deg,
-        rgba(39, 191, 255, 1) 3%,
-        rgba(171, 116, 224, 1) 96%
-    );
-    border-radius: 30px;
-    box-shadow: -1px 1px 7px 0 rgba(0, 0, 0, 0.25) inset;
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    width: 100%;
-    height: 100%;
-    }
-    .limitations {
-    margin-top: 15%;
-    font-family: "Inter";
-    font-size: 2vh;
-    font-weight: 400;
-    line-height: normal;
-    color: white;
-    display: flex;
-    text-align: center;
-    }
-    .lorem-ipsum-dolor-sit-amet-consectetur-three {
-    height: 80%;
-    width: 80%;
-    font-family: "Inter";
-    font-size: 2vh;
-    font-weight: 200;
-    line-height: normal;
-    color: white;
-    display: flex;
-    }
-    .flex-wrapper-one {
-        padding: 0% 0% 0% 0%;
-        display: flex;
-        align-items: center;
-        border: 2px solid rgba(225, 225, 225, 1);
-        margin-top: 2%;
-        max-width: 70%;
-        margin-left: 15%;
-        margin-right: 15%;
-        height: 10vh;
-    }
-    .the-i-thingy-flashing-character {
-    width: 100%;
-    height: 9.5vh;
-    font-family: "Inter";
-    font-size: 2vh;
-    font-weight: 200;
-    line-height: normal;
-    color: rgba(0, 0, 0, 0.75);
-    text-align: center;
-    }
-    .polygon-1 {
-    cursor: pointer;
-    }
-    .some-disclaimers-and-such-legal-stuff {
-    text-align: center;
-    font-family: "Inter";
-    font-size: 2vh;
-    font-weight: 400;
-    line-height: normal;
-    color: black;
-    }
+    overflow-x: hidden; /* Hide horizontal scrollbar */
 }
-@media (max-aspect-ratio: 1/1){
-    .chat-box-page {
-    background-color: white;
-    padding: 0 0 0;
-    display: flex;
-    flex-direction: column;
-    align-items: flex-start;
-    }
-    .su-chat {
-    font-family: "Cinzel";
-    font-size: 6vw;
-    font-weight: 400;
-    line-height: normal;
-    color: gray;
-    text-align: center;
-    }
-    .flex-wrapper-four {
-    display: flex;
-    align-items: flex-start;
-    }
-    .arm {
-    font-family: "Alata";
-    font-size: 8vw;
-    font-weight: 400;
-    line-height: normal;
-    color: black;
-    text-align: center;
-    text-shadow: 0 5px 8px rgba(0, 0, 0, 0.25);
-    }
-    .chat {
-    font-family: "Alata";
-    font-size: 8vw;
-    font-weight: 400;
-    line-height: normal;
-    color: black;
-    text-align: center;
-    text-shadow: 0 5px 8px rgba(0, 0, 0, 0.25);
-    }
-    .alert {
-    font-family: "Alata";
-    font-size: 8vw;
-    font-weight: 400;
-    line-height: normal;
-    color: black;
-    text-align: center;
-    text-shadow: 0 5px 8px rgba(0, 0, 0, 0.25);
-    padding: 0 0 0 0;
-    }
-    .relative-wrapper-one {
-    position: relative;
-    width: 70%;
-    margin-right: 15%;
-    margin-left: 15%;
-    }
-    .flex-wrapper-two {
-    display: flex;
-    align-items: flex-start;
-    position: relative;
-    }
-    .group-25 {
-    background: linear-gradient(
-        221deg,
-        rgba(119, 146, 236, 1) 0%,
-        rgba(253, 69, 204, 1) 96%
-    );
-    border-radius: 30px;
-    padding: 41px 51px 37.72px;
-    box-shadow: 1px 1px 7px 0 rgba(0, 0, 0, 0.25) inset;
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    width: 100%;
-    height: 100%;
-    margin-right: 0%;
-    }
-    .capabilities {
-    margin-top: 15%;
-    font-family: "Inter";
-    font-size: 2vw;
-    font-weight: 400;
-    line-height: normal;
-    color: white;
-    display: flex;
-    text-align: center;
-    }
-    .lorem-ipsum-dolor-sit-amet-consectetur {
-    height: 80%;
-    width: 80%;
-    font-family: "Inter";
-    font-size: 2vw;
-    font-weight: 200;
-    line-height: normal;
-    color: white;
-    display: flex;
-    }
-    .group-27 {
-    background: linear-gradient(
-        222deg,
-        rgba(79, 168, 245, 1) 3%,
-        rgba(213, 92, 214, 1) 96%
-    );
-    border-radius: 30px;
-    box-shadow: 0 0 7px 0 rgba(0, 0, 0, 0.25) inset;
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    width: 100%;
-    height: 100%;
-    }
-    .examples {
-    margin-top: 15%;
-    font-family: "Inter";
-    font-size: 2vw;
-    font-weight: 400;
-    line-height: normal;
-    color: white;
-    text-align: center;
-    }
-    .lorem-ipsum-dolor-sit-amet-consectetur-two {
-    height: 80%;
-    width: 80%;
-    font-family: "Inter";
-    font-size: 2vw;
-    font-weight: 200;
-    line-height: normal;
-    color: white;
-    display: flex;
-    }
-    .group-28 {
-    background: linear-gradient(
-        221deg,
-        rgba(39, 191, 255, 1) 3%,
-        rgba(171, 116, 224, 1) 96%
-    );
-    border-radius: 30px;
-    box-shadow: -1px 1px 7px 0 rgba(0, 0, 0, 0.25) inset;
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    width: 100%;
-    height: 100%;
-    }
-    .limitations {
-    margin-top: 15%;
-    font-family: "Inter";
-    font-size: 2vw;
-    font-weight: 400;
-    line-height: normal;
-    color: white;
-    display: flex;
-    text-align: center;
-    }
-    .lorem-ipsum-dolor-sit-amet-consectetur-three {
-    height: 80%;
-    width: 80%;
-    font-family: "Inter";
-    font-size: 2vw;
-    font-weight: 200;
-    line-height: normal;
-    color: white;
-    display: flex;
-    }
-    .flex-wrapper-one {
-        padding: 0% 0% 0% 0%;
-        display: flex;
-        align-items: center;
-        border: 2px solid rgba(225, 225, 225, 1);
-        margin-top: 2%;
-        max-width: 70%;
-        margin-left: 15%;
-        margin-right: 15%;
-        height: 10vw;
-    }
-    .the-i-thingy-flashing-character {
-        width: 100%;
-        height: 9.5vw;
-        font-family: "Inter";
-        font-size: 2vw;
-        font-weight: 200;
-        line-height: normal;
-        color: rgba(0, 0, 0, 0.75);
-        text-align: center;
-    }
-    .polygon-1 {
-    cursor: pointer;
-    }
-    .some-disclaimers-and-such-legal-stuff {
-    font-family: "Inter";
-    font-size: 2vw;
-    font-weight: 400;
-    line-height: normal;
-    color: black;
-    }
-}*/
+.btn { text-transform: unset !important; }
+
 .polygon-1 {
   max-width: 100%;
   max-height: 15px;
   cursor: pointer;
 }
+
+#anchor {
+  overflow-anchor: auto;
+  height: 1px;
+}
+
+::-webkit-scrollbar {
+  width: 6px;
+}
+
+::-webkit-scrollbar-track {
+  background-color: #f1f1f1;
+}
+
+::-webkit-scrollbar-thumb {
+  background-color: #888;
+  border-radius: 3px;
+}
+
+/* Scroll to the bottom of the div when it overflows */
+.chatbox:after {
+  content: "";
+  display: block;
+  height: 1px;
+  margin-top: -1px;
+  visibility: hidden;
+}
+
+.chatbox > *:last-child {
+  margin-bottom: 0;
+}
+
+.chatbox:after,
+.chatbox > *:last-child {
+  margin-bottom: 1px;
+}
+
 
 @media (min-aspect-ratio: 1/1){
   .d-bg-blur{
@@ -1842,12 +1580,26 @@ html {
     font-size: 2.5vh
   }
   .chatbox{
-    position: fixed; 
+    position: absolute; 
     margin-top: 3%; 
     left: 20%;
     width: 70%; 
     height: 70%; 
     overflow-y: auto;
+    overflow-anchor: auto;
+    flex: 1;
+  }
+  .message:last-child {
+    animation: scrollDown .3s ease-out forwards;
+  }
+
+  @keyframes scrollDown {
+    from { transform: translateY(-10px); opacity: 0; }
+    to { transform: translateY(0); opacity: 1; }
+  }
+
+  .message {
+    margin-bottom: 10px;
   }
   .menuButton{
     display: none;

@@ -17,6 +17,8 @@ import AboutUs from '../views/AboutUs.vue'
 import Events from '../views/Events.vue'
 import Event from '../views/Event.vue'
 import ContactUs from '../views/ContactUs.vue'
+import Profile from '../views/Profile.vue'
+import AdminPage from '../views/AdminPage.vue'
 import { auth } from '../firebase'
 require('dotenv').config()
 Vue.use(VueRouter)
@@ -27,7 +29,7 @@ const routes: Array<RouteConfig> = [
   {
     path: '/',
     name: 'Home',
-    component: Home
+    component: Home,
   },
   {
     path: '/contactUs',
@@ -98,6 +100,16 @@ const routes: Array<RouteConfig> = [
     path: '/events',
     name: 'Events',
     component: Events
+  },
+  {
+    path: '/profile',
+    name: 'Profile',
+    component: Profile,
+  },
+  {
+    path: '/adminPage',
+    name: 'AdminPage',
+    component: AdminPage,
   },
   {
     path: '/event/:id',

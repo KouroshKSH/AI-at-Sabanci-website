@@ -11,19 +11,19 @@
             <div style="width: 100%;">
                 
                 <div class="flex-wrapper-five" style="background-color: rgba(207,207,207,1)">
-                  <div class="flex-wrapper-six"><p class="join-us-two" style="z-index: 2">Join Us</p></div>
+                  <div class="flex-wrapper-six"><p class="join-us-two" style="z-index: 2">Joın Us</p></div>
                   <!--<p class="become-a-part-of-our-club-participate-i">
                     Apply to becoming a member of the club and earn the chance to use top level AI equipment and be directly involved in developing projects related to AI/ML development 
                   </p>-->
                   <div class="blur bubblepos-1" style="margin-top: 4%">
-                    Become a part of our club, participate in your favorite activities, and make the best out of it.
+                    We are driven by the mission to spread the transformative power of AI/ML among students and empower them to create real-world solutions.
                   </div>
                   <div class="emoji">👋</div>
                   <div class="blur bubblepos-2">
-                    You can choose from a range of positions, such as AI developer, social media manager, etc.
+                    Our club offers workshops, resources, and the opportunity to develop their own AI/ML projects - all of which are sponsored.
                   </div>
                   <div class="blur bubblepos-3">
-                    So why wait? Join us today and be a part of our club!
+                    So why wait? Join us to explore the cutting-edge of technology and become part of a community of like-minded innovators.
                   </div>
                   <img
                   style="padding: 0 0 0 0;"
@@ -53,6 +53,8 @@
               <input style="width: 100%; height: 100%;" type="email" v-model="email" class="flex-wrapper-three" />
               <h3 v-if="showEmailAlert" style="margin-top: 1%; color: red; font-size: 15px">Please enter your email address.</h3>
               <h3 v-if="showSabanciEmailAlert" style="margin-top: 1%; color: red; font-size: 15px">Please make sure you entered your Sabanci email address.</h3>
+              <h3 v-if="showUsedMemberEmailAlert" style="margin-top: 1%; color: red; font-size: 15px">This email address is already used by a member.</h3>
+              <h3 v-if="showUsedPendingEmailAlert" style="margin-top: 1%; color: red; font-size: 15px">There is already a pending member application with this email.</h3>
               <p class="your-name">Phone number: *</p>
               <input type="phone" v-model="phone" class="flex-wrapper-three" />
               <h3 v-if="showPhoneAlert" style="margin-top: 1%; color: red; font-size: 15px">Please enter your phone number.</h3>
@@ -85,7 +87,7 @@
             <h3 v-if="showClubKnowledgeAlert" style="margin-top: 1%; color: red; font-size: 15px">Please tell us how you heard about the club.</h3>
             <p class="your-name">Why are you interested in joining our club? *</p>
             <textarea cols="140" rows="5" v-model="clubInterest" class="flex-wrapper-four"></textarea>
-            <h3 v-if="showClubInterestAlert" style="margin-top: 1%; color: red; font-size: 15px">Please tell us why you are interested in joining out club.</h3>
+            <h3 v-if="showClubInterestAlert" style="margin-top: 1%; color: red; font-size: 15px">Please tell us why you are interested in joining our club.</h3>
             <p class="your-name">GitHub: </p>
             <input type="text" v-model="GitHub" class="flex-wrapper-three" placeholder="GitHub link" />
             <p class="your-name">LinkedIn: </p>
@@ -111,19 +113,19 @@
             <div class="flex-wrapper-seven"></div>
             <div style="width: 100%;">
                 <div class="d-flex-wrapper-five">
-                  <p class="d-join-us-two" style="z-index: 2">Join Us</p>
+                  <p class="d-join-us-two" style="z-index: 2">Joın Us</p>
                   <!--<p class="become-a-part-of-our-club-participate-i">
                     Apply to becoming a member of the club and earn the chance to use top level AI equipment and be directly involved in developing projects related to AI/ML development 
                   </p>-->
                   <div class="blur bubblepos-1" style="color: white">
-                    Become a part of our club, participate in your favorite activities, and make the best out of it.
+                    We are driven by the mission to spread the transformative power of AI/ML among students and empower them to create real-world solutions.
                   </div>
                   <div class="d-emoji">👋</div>
                   <div class="blur bubblepos-2" style="color: white">
-                    You can choose from a range of positions, such as AI developer, social media manager, etc.
+                    Our club offers workshops, resources, and the opportunity to develop their own AI/ML projects - all of which are sponsored.
                   </div>
                   <div class="blur bubblepos-3" style="color: white">
-                    So why wait? Join us today and be a part of our club!
+                    So why wait? Join us to explore the cutting-edge of technology and become part of a community of like-minded innovators.
                   </div>
                   <img
                   style="padding: 0 0 0 0;"
@@ -206,9 +208,9 @@
       <div class="flex-wrapper-seven-1">
             <router-link to="/contactUs"><div style="width: 100%; padding-top: 15%;"><p class="contact-us">Contact Us</p></div></router-link>
       </div>
-      <a href="#applicationForm">  
+      <a @click="scrollUp()">  
         <img
-          style="max-width:5%; position: absolute; right: 5%; cursor: pointer;"
+          class="backToTop"
           src="../assets/back to top.png"
         >
       </a>
@@ -225,11 +227,13 @@ Vue.component('vue-tel-input', VueTelInput.VueTelInput)
 //Vue.component('vue-phone-number-input', VuePhoneNumberInput);
 import { Email } from "@/smtp.js"
 import memberApplications from '@/assets/memberApplications';
-import { collection, addDoc, getDoc, setDoc, getFirestore, doc } from "firebase/firestore"; 
+import { collection, query, addDoc, getDocs, setDoc, getFirestore, doc } from "firebase/firestore"; 
 import { db } from '../firebase'
 export default {
    data() {
      return {
+      memberEmails: [],
+      pendingEmails: [],
       firstName: "",
       lastName: "",
       phone: "",
@@ -248,6 +252,8 @@ export default {
       showPhoneAlert: false,
       showEmailAlert: false,
       showSabanciEmailAlert: false,
+      showUsedMemberEmailAlert: false,
+      showUsedPendingEmailAlert: false,
       showProgramAlert: false,
       showYearAlert: false,
       showGPAAlert: false,
@@ -275,6 +281,24 @@ export default {
         return this.$store.state.darkMode;
       }
     },
+   mounted() {
+      const q = query(collection(db, "members"));
+      const q2 = query(collection(db, "memberApplications"));
+      const memberEmails = [];
+      const pendingEmails = [];
+      getDocs(q).then((querySnapshot) => {
+        querySnapshot.forEach((doc) => {
+        if(doc.id!="cneSYPTbfhSuZPnXOl51"){memberEmails.push(doc.id)}
+        this.memberEmails = memberEmails
+        });
+        getDocs(q2).then((querySnapshot) => {
+          querySnapshot.forEach((doc) => {
+          if(doc.id!="cneSYPTbfhSuZPnXOl51"){pendingEmails.push(doc.id)}
+          });
+          this.pendingEmails = pendingEmails;
+        });
+      });
+   },
    methods: {
     //handleFileUpload(){
     //  this.CV = this.$refs.file.files[0];
@@ -288,9 +312,11 @@ export default {
         else{this.showLastNameAlert=false}
         if(this.phone==""){this.showPhoneAlert=true; valid=false}
         else{this.showPhoneAlert=false}
-        if(this.email==""){this.showEmailAlert=true; valid=false}
-        else if(!this.email.includes("@sabanciuniv.edu")){this.showSabanciEmailAlert=true; this.showEmailAlert=false; valid=false}
-        else{this.showEmailAlert=false; this.showSabanciEmailAlert=false}
+        if(this.email==""){this.showSabanciEmailAlert=false; this.showUsedMemberEmailAlert=false; this.showUsedPendingEmailAlert=false; this.showEmailAlert=true; valid=false}
+        else if(!this.email.includes("@sabanciuniv.edu")){this.showSabanciEmailAlert=true; this.showUsedMemberEmailAlert=false; this.showUsedPendingEmailAlert=false; this.showEmailAlert=false; valid=false}
+        else if(this.memberEmails.includes(this.email)){this.showSabanciEmailAlert=false; this.showUsedMemberEmailAlert=true; this.showUsedPendingEmailAlert=false; this.showEmailAlert=false; valid=false}
+        else if(this.pendingEmails.includes(this.email)){this.showSabanciEmailAlert=false; this.showUsedMemberEmailAlert=false; this.showUsedPendingEmailAlert=true; this.showEmailAlert=false; valid=false}
+        else{this.showSabanciEmailAlert=false; this.showUsedMemberEmailAlert=false; this.showUsedPendingEmailAlert=false; this.showEmailAlert=false; valid=true}
         if(this.program==""){this.showProgramAlert=true; valid=false}
         else{this.showProgramAlert=false}
         if(this.year==""){this.showYearAlert=true; valid=false}
@@ -361,6 +387,12 @@ export default {
             
             //})
         }
+    },
+    scrollUp() {
+      window.scrollTo({
+        top: window.pageYOffset - (window.innerHeight * 4),
+        behavior: 'smooth'
+      });
     }
    } 
 }
@@ -389,10 +421,10 @@ textarea {
     text-align: center;
   }
   .flex-wrapper-seven {
-      margin-right: 0px;
-      display: flex;
-      flex-direction: column;
-      align-items: center;
+    margin-right: 0px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
   }
   .bottom-bar {
     background-color: rgba(0, 0, 0, 1);
@@ -400,6 +432,12 @@ textarea {
     padding-left: 30%;
     padding-right: 30%;
     position: relative;
+  }
+  .backToTop {
+    max-width: 5%;
+    position: absolute;
+    right: 5%; 
+    cursor: pointer;
   }
 }
 @media (max-aspect-ratio: 1/1){
@@ -413,10 +451,10 @@ textarea {
     text-align: center;
   }
   .flex-wrapper-seven {
-      margin-right: 0px;
-      display: flex;
-      flex-direction: column;
-      align-items: center;
+    margin-right: 0px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
   }
   .bottom-bar {
     background-color: rgba(0, 0, 0, 1);
@@ -424,6 +462,13 @@ textarea {
     padding-left: 30%;
     padding-right: 30%;
     position: relative;
+  }
+  .backToTop {
+    max-width: 15%;
+    position: absolute;
+    right: 5%; 
+    bottom: 10%;
+    cursor: pointer;
   }
 }
 

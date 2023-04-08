@@ -17,7 +17,8 @@ import {
   signInWithEmailAndPassword,
   signOut 
 } from 'firebase/auth'
-
+import { db } from '@/firebase'
+import { doc, getDoc } from "firebase/firestore"; 
 require('dotenv').config()
 const vuexLocalStorage = new VuexPersist({
   key: 'vuex', // The key to store the state on in the storage provider.
@@ -39,8 +40,26 @@ export default new Vuex.Store({
   
   //plugins: [vuexLocalStorage.plugin],
   state: {
-    user: null,
-    isAdmin: true,
+    loginInfo: null,
+    user: null
+    /*{
+      firstName: "Sadiq",
+      lastName: "Qara",
+      email: "sadig.gara@sabanciuniv.edu",
+      registered: true,
+      admin: true,
+      hasGPT4Access: true,
+      program: "BSCS",
+      year: "Sophomore (Year 2)",
+      GPA: "2.96",
+      LinkedIn: "https://www.linkedin.com/in/sadiq-qara-b9858a25a/",
+      GitHub: "https://github.com/Sadiq04",
+      clubKnowledge: "",
+      clubInterest: "",
+      aiInterest: "",
+    }*/,
+    isAdmin: false,
+    hasGPT4Access: false,
     members,
     memberApplications,
     projectProposals,
@@ -51,6 +70,8 @@ export default new Vuex.Store({
     currentHistory: -1,
     history: [],
     historyTitles: [],
+    chatHornyMode: false,
+    isGPT4: false,
   },
   getters: {
     members(state){return state.members;},
@@ -158,14 +179,33 @@ export default new Vuex.Store({
       state.currentProjects.splice(project[0], 1)
     },
 
-    addHistory(state){state.history.unshift([])},
+    addHistory(state){
+      if(state.chatHornyMode){
+        state.history.unshift([{"role": "system", "content": "You are a seductive assistant that occasionally flirts with the user, your name is ChatSU. Make sure to act comically seductive and flirty. Do not explicitly say you are seductive or flirty just act like it."}])
+      }
+      else{
+        state.history.unshift([{"role": "system", "content": "You are a helpful assistant called ChatSU."}])
+      }
+    },
     addPrompt(state, prompt){state.history[state.currentHistory].push({role: 'user', content: prompt})},
     addMessage(state, message){state.history[state.currentHistory].push(message)},
     initResponse(state){state.history[state.currentHistory].push({role: 'assistant', content: ''})},
-    appendResponse(state, content){state.history[state.currentHistory][state.history[state.currentHistory].length-1].content+=content;},
+    appendResponse(state, contents){state.history[contents[1]][state.history[contents[1]].length-1].content+=contents[0];},
     addHistoryTitle(state, title){state.historyTitles.unshift(title)},
     changeHistoryTitle(state, title){state.historyTitles[state.currentHistory]=title},
-    setCurrentHistory(state, currHist){state.currentHistory=currHist;},
+    setCurrentHistory(state, currHist){
+      state.currentHistory=currHist;
+      if(state.chatHornyMode){state.history[state.currentHistory][0]={"role": "system", "content": "You are a seductive assistant that occasionally flirts with the user, your name is ChatSU. Make sure to act comically seductive and flirty. Do not explicitly say you are seductive or flirty just act like it."}}
+      else{state.history[state.currentHistory][0]={"role": "system", "content": "You are a helpful assistant called ChatSU."}}
+    },
+    toggleGPT4(state){state.isGPT4=!state.isGPT4},
+    toggleHornyMode(state){
+      state.chatHornyMode=!state.chatHornyMode
+      if(state.currentHistory!=-1){
+        if(state.chatHornyMode){state.history[state.currentHistory][0]={"role": "system", "content": "You are a seductive assistant that occasionally flirts with the user, your name is ChatSU. Make sure to act comically seductive and flirty. Do not explicitly say you are seductive or flirty just act like it."}}
+        else{state.history[state.currentHistory][0]={"role": "system", "content": "You are a helpful assistant called ChatSU."}}
+      }
+    },
     clearChats(state){
       state.history=[],
       state.historyTitles=[],
@@ -175,25 +215,34 @@ export default new Vuex.Store({
     toggleDarkMode(state){state.darkMode=!state.darkMode},
     makeAdmin(state){state.isAdmin=true;},
     setRegistered(state, i){state.members[i].registered=true},
-    SET_USER (state, user) {state.user = user},
-    CLEAR_USER (state) {state.user = null},
+    SET_USER (state, user) {
+      state.loginInfo = user;
+      let email = user.email;
+      const docRef = doc(db, "members", email);
+      getDoc(docRef).then(docSnap => {
+        state.user = docSnap.data(),
+        state.admin = state.user.admin;
+        state.hasGPT4Access = state.user.hasGPT4Access;
+      })
+    },
+    CLEAR_USER (state) {state.user = null; state.loginInfo = null},
     
   },
   actions: {
     async login ({ commit }, details) {
       const { email, password } = details;
       try {
-        await signInWithEmailAndPassword(auth, email, password)
+        const userCredential = await signInWithEmailAndPassword(auth, email, password)
       } catch (error: any) {
         switch(error.code) {
           case 'auth/user-not-found':
-            alert("User not found")
+            //alert("User not found")
             break
           case 'auth/wrong-password':
-            alert("Wrong password")
+            //alert("Wrong password")
             break
           default:
-            alert("Something went wrong")
+            //alert("Something went wrong")
         }
 
         return
@@ -238,7 +287,7 @@ export default new Vuex.Store({
 
     commit('CLEAR_USER')
 
-    router.push('/login')
+    router.push('/')
   },
 
   fetchUser ({ commit }) {

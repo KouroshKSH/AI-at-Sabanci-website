@@ -5,8 +5,8 @@
       <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Inter">
       <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Cinzel">
       <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
-      <b-container style="margin-top: 3%" class="flex-wrapper-three">
-        <div style="margin-left: 5%;">
+      <b-container fluid style="margin-top: 3%" class="flex-wrapper-three">
+        <div class="our-team">
           <p class="our-team-two">Our Team</p>
           <div style="width: 80%; margin-left: 10%; margin-right: 10%">
             <div class="frame">
@@ -89,7 +89,7 @@
         </p>
       </b-container>
       <b-container>
-        <p class="meet-the-members">Meet the Members</p>
+        <p class="meet-the-members">Meet the Board</p>
         <div class="members">
             <b-row class="flex-wrapper-four">
                 <b-col>
@@ -143,7 +143,7 @@
               </b-col>
             </b-row> 
         </div><!--For wide view-->
-        <div class="m-members">
+        <div class="m-members" style="margin: 0; width: 100%">
             <b-row class="flex-wrapper-four">
                 <b-col>
                   <img
@@ -344,7 +344,7 @@
       </b-row>
       </b-container>-->
       <b-container fluid><b-row align-h="center"><div class="d-line-12"></div></b-row></b-container>
-      <b-container>
+      <b-container fluid>
         <p class="d-who-are-we">Who are We?</p>
         <p class="d-a-group-of-sabanci-university-students">
           A group of Sabanci University students, who are
@@ -353,7 +353,7 @@
         </p>
       </b-container>
       <b-container>
-        <p class="d-meet-the-members">Meet the Members</p>
+        <p class="d-meet-the-members">Meet the Board</p>
         <div class="members">
             <b-row class="flex-wrapper-four">
                 <b-col>
@@ -407,7 +407,7 @@
               </b-col>
             </b-row> 
         </div><!--For wide view-->
-        <div class="m-members">
+        <div class="m-members" style="margin: 0; width: 100%">
             <b-row class="flex-wrapper-four">
                 <b-col>
                   <img
@@ -532,9 +532,9 @@
         <div class="flex-wrapper-seven-1">
               <router-link to="/contactUs"><div style="width: 100%; padding-top: 15%;"><p class="contact-us">Contact Us</p></div></router-link>
         </div>
-        <a href="#aboutUs">  
+        <a @click="scrollUp()">  
           <img
-            style="max-width:5%; position: absolute; right: 5%; cursor: pointer;"
+            class="backToTop"
             src="../assets/back to top.png"
           >
         </a>
@@ -584,6 +584,12 @@
             this.currentImgIdx--;
             if(this.currentImgIdx==-1){this.currentImgIdx=this.images.length-1}
             this.currentImg=this.images[this.currentImgIdx]
+        },
+        scrollUp() {
+          window.scrollTo({
+            top: window.pageYOffset - (window.innerHeight * 4),
+            behavior: 'smooth'
+          });
         }
     }
   };
@@ -674,7 +680,9 @@
     }
     .d-a-group-of-sabanci-university-students {
       height: 0%;
-      width: 100%;
+      width: 70%;
+      margin-left: 15%;
+      margin-right: 15%;
       margin-bottom: 5%;
       font-family: "Inter";
       font-size: 2vh;
@@ -745,7 +753,7 @@
     }
     .d-our-team-two {
       font-family: "Cinzel";
-      font-size: 6vw;
+      font-size: 8vw;
       font-weight: 400;
       line-height: normal;
       color: white;
@@ -762,7 +770,7 @@
     }
     .d-who-are-we {
       font-family: "Cinzel";
-      font-size: 4vw;
+      font-size: 6vw;
       font-weight: 400;
       line-height: normal;
       color: white;
@@ -773,7 +781,7 @@
       width: 100%;
       margin-bottom: 5%;
       font-family: "Inter";
-      font-size: 2vw;
+      font-size: 3vw;
       font-weight: 200;
       line-height: normal;
       color: white;
@@ -782,7 +790,7 @@
     }
     .d-meet-the-members {
       font-family: "Cinzel";
-      font-size: 3.5vw;
+      font-size: 6vw;
       font-weight: 400;
       line-height: normal;
       color: white;
@@ -790,7 +798,8 @@
     }
     .d-name {
       font-family: "Inter";
-      font-size: 2vw;
+      font-size: 3vw !important;
+      margin-bottom: 5% !important;
       font-weight: 200;
       line-height: normal;
       color: white;
@@ -798,7 +807,7 @@
     }
     .d-our-sponsors {
       font-family: "Cinzel";
-      font-size: 3.5vw;
+      font-size: 6vw;
       font-weight: 400;
       line-height: normal;
       color: white;
@@ -813,8 +822,8 @@
     .d-nvidia-is-a-leading-manufacturer-of-high {
       height: 7%;
       width: 70%;
-      margin-left: 15%;
-      margin-right: 15%;
+      margin-left: 5%;
+      margin-right: 25%;
       margin-top: 5%;
       font-family: "Inter";
       font-size: 4vw;
@@ -826,8 +835,8 @@
     .d-sabanci-is-one-of-the-highest-ranked-uni {
       height: 9%;
       width: 70%;
-      margin-left: 15%;
-      margin-right: 15%;
+      margin-left: 5%;
+      margin-right: 25%;
       margin-top: 5%;
       margin-bottom: 10%;
       font-family: "Inter";
@@ -843,11 +852,14 @@
     .m-sponsors{
       display: none;
     }
+    .our-team{
+      width: 100%
+    }
     .frame{
       position: relative;
       margin: 0 auto;
-      width: 100%;
-      margin-left: 5%;
+      width: 80%;
+      margin-left: 13%;
       margin-right: 5%;
     }
     .our-team-three {
@@ -884,6 +896,8 @@
       max-width: 1011px;
       max-height: 1011px;
       margin: 0 0 0 0;
+      margin-left: 10%;
+      margin-right: 10%;
     }
     .flex-wrapper-one {
       height: 100%;
@@ -930,6 +944,7 @@
       margin-bottom: 5%;
       width: 70%;
       margin-left: 15%;
+      margin-right: 15%;
       font-family: "Inter";
       font-size: 2vh;
       font-weight: 200;
@@ -1050,10 +1065,26 @@
       color: gray;
       display: flex;
     }
+    .backToTop {
+      max-width: 5%;
+      position: absolute;
+      right: 5%; 
+      cursor: pointer;
+    }
   }
   @media (max-aspect-ratio: 1/1){
     .sponsors{
       display: none;
+    }
+    .our-team{
+      margin-left: 5%
+    }
+    .frame{
+      position: relative;
+      margin: 0 auto;
+      width: 100%;
+      margin-left: 2%;
+      margin-right: 0%;
     }
     .our-team-three {
       height: 100%;
@@ -1066,7 +1097,7 @@
     }
     .our-team-two {
       font-family: "Cinzel";
-      font-size: 6vw;
+      font-size: 8vw;
       font-weight: 400;
       line-height: normal;
       color: gray;
@@ -1125,7 +1156,7 @@
     }
     .who-are-we {
       font-family: "Cinzel";
-      font-size: 4vw;
+      font-size: 6vw;
       font-weight: 400;
       line-height: normal;
       color: gray;
@@ -1136,7 +1167,7 @@
       width: 100%;
       margin-bottom: 5%;
       font-family: "Inter";
-      font-size: 2vw;
+      font-size: 3vw;
       font-weight: 200;
       line-height: normal;
       color: gray;
@@ -1145,7 +1176,7 @@
     }
     .meet-the-members {
       font-family: "Cinzel";
-      font-size: 3.5vw;
+      font-size: 6vw;
       font-weight: 400;
       line-height: normal;
       color: gray;
@@ -1164,6 +1195,9 @@
       display: flex;
       align-items: flex-start;
       width: 90%;
+      margin-left: 5%;
+      margin-right: 5%;
+      margin-bottom: 5%;
     }
     .ellipse-1 {
       width: 80%;
@@ -1184,7 +1218,8 @@
     }
     .name {
       font-family: "Inter";
-      font-size: 2vw;
+      font-size: 3vw !important;
+      margin-bottom: 5% !important;
       font-weight: 200;
       line-height: normal;
       color: gray;
@@ -1195,6 +1230,9 @@
       display: flex;
       align-items: flex-start;
       width: 90%;
+      margin-left: 5%;
+      margin-right: 5%;
+      margin-bottom: 5%;
     }
     .flex-wrapper-seven {
       padding: 0 0 0 29px;
@@ -1203,7 +1241,7 @@
     }
     .our-sponsors {
       font-family: "Cinzel";
-      font-size: 3.5vw;
+      font-size: 6vw;
       font-weight: 400;
       line-height: normal;
       color: gray;
@@ -1228,8 +1266,8 @@
     .nvidia-is-a-leading-manufacturer-of-high {
       height: 7%;
       width: 70%;
-      margin-left: 15%;
-      margin-right: 15%;
+      margin-left: 5%;
+      margin-right: 25%;
       margin-top: 5%;
       font-family: "Inter";
       font-size: 4vw;
@@ -1245,8 +1283,8 @@
     .sabanci-is-one-of-the-highest-ranked-uni {
       height: 9%;
       width: 70%;
-      margin-left: 15%;
-      margin-right: 15%;
+      margin-left: 5%;
+      margin-right: 25%;
       margin-top: 5%;
       margin-bottom: 10%;
       font-family: "Inter";
@@ -1255,6 +1293,13 @@
       line-height: normal;
       color: gray;
       display: flex;
+    }
+    .backToTop {
+      max-width: 15%;
+      position: absolute;
+      right: 5%; 
+      bottom: 10%;
+      cursor: pointer;
     }
   }
   </style>

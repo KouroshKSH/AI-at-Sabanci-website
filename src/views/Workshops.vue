@@ -1,5 +1,5 @@
 <template>
-  <div class="bg" id="/workshops">
+  <div class="bg" id="workshops">
     <div v-if="!darkMode" class="workshops-two" style="width: 100%">
       <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Michroma">
         <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Inter">
@@ -11,10 +11,10 @@
             <b-row align-h="center">
               <b-col align-self="center">
                 <p class="educational-workshops">
-                    Educational Workshops
+                    Educatıonal Workshops
                 </p>
                 <p class="lorem-ipsum-dolor-sit-amet-consectetur">
-                    As an AI club we will hold weekly workshops, these will be sponsored by companies that are considered experts in the AI/ML field. 
+                  Our workshops are designed to provide hands-on experience and practical knowledge to help individuals elevate their AI/ML skills and drive innovation in the field. With a focus on real-world applications, our workshops are tailored to meet the needs of learners of all levels, encouraging collaboration and critical thinking and enabling participants to take on real-world challenges.
                 </p>
               </b-col>
             </b-row>
@@ -125,12 +125,12 @@
                   </div>
               </b-container>
           </div>
-          <b-container fluid style="margin-bottom: 5%; margin-top: 15%">
-            <b-row>    
+          <b-container fluid style="margin-bottom: 5%; margin-top: 20%">
+            <div>    
               <p class="want-to-attend-these" style="text-align: center;">
                   Want to Attend These?
               </p>
-            </b-row>
+            </div>
             <router-link to="/applicationForm">
               <div class="submit-button">
                   <p class="click-here">Click Here</p>
@@ -150,10 +150,10 @@
             <b-row align-h="center">
               <b-col align-self="center">
                 <p class="d-educational-workshops">
-                    Educational Workshops
+                    Educatıonal Workshops
                 </p>
                 <p class="d-lorem-ipsum-dolor-sit-amet-consectetur">
-                    As an AI club we will hold weekly workshops, these will be sponsored by companies that are considered experts in the AI/ML field. 
+                  Our workshops are designed to provide hands-on experience and practical knowledge to help individuals elevate their AI/ML skills and drive innovation in the field. With a focus on real-world applications, our workshops are tailored to meet the needs of learners of all levels, encouraging collaboration and critical thinking and enabling participants to take on real-world challenges.
                 </p>
               </b-col>
             </b-row>
@@ -264,7 +264,7 @@
                   </div>
               </b-container>
           </div>
-          <b-container fluid style="margin-bottom: 5%; margin-top: 15%">
+          <b-container fluid style="margin-bottom: 5%; margin-top: 20%">
             <b-row>    
               <p class="d-want-to-attend-these" style="text-align: center;">
                   Want to Attend These?
@@ -282,9 +282,9 @@
         <div class="flex-wrapper-seven">
               <router-link to="/contactUs"><div style="width: 100%; padding-top: 15%"><p class="contact-us">Contact Us</p></div></router-link>
         </div>
-        <a href="#/workshops">  
+        <a @click="scrollUp()">  
           <img
-            style="max-width:5%; position: absolute; right: 5%; cursor: pointer;"
+            class="backToTop"
             src="../assets/back to top.png"
           >
         </a>
@@ -344,6 +344,12 @@
             this.getMessage(i)
         },
         getMessage(i){return this.message[i]},
+        scrollUp() {
+          window.scrollTo({
+            top: window.pageYOffset - (window.innerHeight * 4),
+            behavior: 'smooth'
+          });
+        }
     }
   };
   
@@ -884,7 +890,9 @@
     text-align: center;
   }
   .d-lorem-ipsum-dolor-sit-amet-consectetur {
-    width: 100%;
+    width: 80%;
+    margin-left: 10%;
+    margin-right: 10%;
     font-family: "Inter";
     font-size: 2vh;
     font-weight: 200;
@@ -951,7 +959,7 @@
   }
   .d-educational-workshops {
     font-family: "Cinzel";
-    font-size: 5vw;
+    font-size: 7vw;
     font-weight: 400;
     line-height: normal;
     color: white;
@@ -959,19 +967,21 @@
     margin-top: 15%;
   }
   .d-lorem-ipsum-dolor-sit-amet-consectetur {
-    width: 100%;
+    width: 80%;
+    margin-left: 5%;
+    margin-right: 15%;
     font-family: "Inter";
-    font-size: 2vw;
+    font-size: 4vw;
     font-weight: 200;
     line-height: normal;
     color: white;
-    text-align: center;
+    text-align: left;
   }
   .d-deep-learning {
     color: white;
     margin-bottom: 16px;
     margin-left: 5%;
-    font-size: 5vw;
+    font-size: 7vw;
     font-weight: 500;
     /*@include inter-36-medium;*/
   }
@@ -979,7 +989,7 @@
     color: white;
     margin-bottom: 16px;
     margin-left: 5%;
-    font-size: 5vw;
+    font-size: 7vw;
     font-weight: 500;
     /*@include inter-36-medium;*/
   }
@@ -987,8 +997,9 @@
     height: auto;
     width: 80%;
     margin-left: 5%;
+    margin-right: 15%;
     font-family: "Inter";
-    font-size: 3vw;
+    font-size: 4vw;
     font-weight: 200;
     line-height: normal;
     color: rgb(200, 200, 200);
@@ -996,7 +1007,7 @@
   }
   .d-more {
     font-family: "Inter";
-    font-size: 1.5vw;
+    font-size: 3vw;
     font-weight: 200;
     line-height: normal;
     color: white;
@@ -1005,8 +1016,9 @@
     height: auto;
     width: 80%;
     margin-left: 5%;
+    margin-right: 15%;
     font-family: "Inter";
-    font-size: 3vw;
+    font-size: 4vw;
     font-weight: 200;
     line-height: normal;
     color: rgb(200,200,200);
@@ -1016,7 +1028,7 @@
     color: white;
     text-align: center;
     margin-bottom: 3vw;
-    font-size: 3vw;
+    font-size: 5vw;
     margin-left: 0%;
     margin-top: 0%;
     /*@include inter-36-regular;*/
@@ -1041,7 +1053,9 @@
       text-align: center;
     }
     .lorem-ipsum-dolor-sit-amet-consectetur {
-      width: 100%;
+      width: 80%;
+      margin-left: 10%;
+      margin-right: 10%;
       font-family: "Inter";
       font-size: 2vh;
       font-weight: 200;
@@ -1224,6 +1238,12 @@
     margin-top: 0%;
     /*@include inter-36-regular;*/
   }
+  .backToTop {
+    max-width: 5%;
+    position: absolute;
+    right: 5%; 
+    cursor: pointer;
+  }
 }
 @media (max-aspect-ratio: 1/1){
   .workshops-two {
@@ -1235,7 +1255,7 @@
   }
   .educational-workshops {
     font-family: "Cinzel";
-    font-size: 5vw;
+    font-size: 7vw;
     font-weight: 400;
     line-height: normal;
     color: gray;
@@ -1243,13 +1263,15 @@
     margin-top: 15%;
   }
   .lorem-ipsum-dolor-sit-amet-consectetur {
-    width: 100%;
+    width: 80%;
+    margin-left: 5%;
+    margin-right: 15%;
     font-family: "Inter";
-    font-size: 2vw;
+    font-size: 4vw;
     font-weight: 200;
     line-height: normal;
     color: gray;
-    text-align: center;
+    text-align: left;
   }
   .relative-wrapper-one {
     position: relative;
@@ -1260,14 +1282,14 @@
     width: 100%;
   }
   .yes-i-do{
-    width: 15%; 
+    width: 30%; 
     float: right; 
-    margin-right: 15%
+    margin-right: 10%
   }
   .eyes {
-    right: 17%; 
+    right: 15%; 
     margin-top: 2%; 
-    font-size: 2vw; 
+    font-size: 4vw; 
     position: absolute
   }
   .rectangle-66 {
@@ -1275,23 +1297,14 @@
     float: left;
     margin-bottom: 2%;
   }
-  @media (min-aspect-ratio: 1/1){
-    .flex-wrapper-two {
-      display: flex;
-      flex-direction: column;
-      align-items: flex-start;
-    }
-  }
-  @media (max-aspect-ratio: 1/1){
-    .flex-wrapper-two {
-      align-items: flex-start;
-    }
+  .flex-wrapper-two {
+    align-items: flex-start;
   }
   .deep-learning {
     color: black;
     margin-bottom: 16px;
     margin-left: 5%;
-    font-size: 5vw;
+    font-size: 7vw;
     font-weight: 500;
     /*@include inter-36-medium;*/
   }
@@ -1299,7 +1312,7 @@
     color: black;
     margin-bottom: 16px;
     margin-left: 5%;
-    font-size: 5vw;
+    font-size: 7vw;
     font-weight: 500;
     /*@include inter-36-medium;*/
   }
@@ -1307,8 +1320,9 @@
     height: auto;
     width: 80%;
     margin-left: 5%;
+    margin-right: 15%;
     font-family: "Inter";
-    font-size: 3vw;
+    font-size: 4vw;
     font-weight: 200;
     line-height: normal;
     color: gray;
@@ -1341,29 +1355,21 @@
   }
   .more {
     font-family: "Inter";
-    font-size: 2vw;
+    font-size: 3vw;
     font-weight: 200;
     line-height: normal;
     color: black;
-  }
-  @media (min-aspect-ratio: 1/1){
-    .flex-wrapper-three {
-      display: flex;
-      flex-direction: column;
-      align-items: flex-start;
-    }
-  }
-  @media (max-aspect-ratio: 1/1){
-    .flex-wrapper-three {
-      align-items: flex-start;
-    }
+  }    
+  .flex-wrapper-three {
+    align-items: flex-start;
   }
   .lorem-ipsum-dolor-sit-amet-consectetur-three {
     height: auto;
     width: 80%;
     margin-left: 5%;
+    margin-right: 15%;
     font-family: "Inter";
-    font-size: 3vw;
+    font-size: 4vw;
     font-weight: 200;
     line-height: normal;
     color: gray;
@@ -1406,9 +1412,18 @@
     color: gray;
     text-align: center;
     margin-bottom: 3vw;
-    font-size: 3vw;
-    margin-left: 0%;
+    font-size: 5vw;
+    margin-left: 10%;
+    width: 80%;
+
     /*@include inter-36-regular;*/
+  }
+  .backToTop {
+    max-width: 15%;
+    position: absolute;
+    right: 5%; 
+    bottom: 10%;
+    cursor: pointer;
   }
 }
   </style>
