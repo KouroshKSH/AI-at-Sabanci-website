@@ -749,7 +749,7 @@ export default {
   }
   .d-your-account {
     font-family: "Cinzel";
-    font-size: 6vw;
+    font-size: 8vw;
     font-weight: 400;
     line-height: normal;
     color: white;
@@ -757,9 +757,11 @@ export default {
     margin-top: 15%;
   }
   .d-is-it-your-first-time-here-you-can-crea {
-    width: 100%;
+    width: 80%;
+    margin-left: 10%;
+    margin-right: 10%;
     font-family: "Inter";
-    font-size: 2vw;
+    font-size: 4vw;
     font-weight: 200;
     line-height: normal;
     color: white;
@@ -825,7 +827,7 @@ export default {
   .d-already-have-an-account-you-can-log-in {
     text-align: center;
     font-family: "Inter";
-    font-size: 1.5vw;
+    font-size: 3vw;
     font-weight: 200;
     line-height: normal;
     color: white;
@@ -938,7 +940,7 @@ export default {
   .warning {
     margin-top: 1%;
     color: red; 
-    font-size: 2vw;
+    font-size: 2.5vw;
     margin-left: 15%;
     width: 70%;
   }
@@ -951,7 +953,7 @@ export default {
   }
   .your-account {
     font-family: "Cinzel";
-    font-size: 6vw;
+    font-size: 8vw;
     font-weight: 400;
     line-height: normal;
     color: gray;
@@ -959,9 +961,11 @@ export default {
     margin-top: 15%;
   }
   .is-it-your-first-time-here-you-can-crea {
-    width: 100%;
+    width: 80%;
+    margin-left: 10%;
+    margin-right: 10%;
     font-family: "Inter";
-    font-size: 2vw;
+    font-size: 4vw;
     font-weight: 200;
     line-height: normal;
     color: gray;
@@ -1033,7 +1037,7 @@ export default {
   .already-have-an-account-you-can-log-in {
     text-align: center;
     font-family: "Inter";
-    font-size: 1.5vw;
+    font-size: 3vw;
     font-weight: 200;
     line-height: normal;
     color: gray;

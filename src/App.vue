@@ -1,5 +1,8 @@
 <template>
     <div>
+      <head>
+        <meta property="og:title" content="My Component Title">
+      </head>
       <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Michroma">
       <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Inter">
       <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Cinzel">
@@ -9,13 +12,14 @@
           <div class="flex-wrapper-eight" style="background: rgba(255, 255, 255, 0.3); backdrop-filter: blur(10px);">
               <div class="logo-two"><router-link to="/"><a class="logo">
                 <img
-                  src="./assets/fresh logo (1).png"
-                  style="max-width: 30%; margin-left: 1%; margin-top: 1%"
+                  src="./assets/logo+text no bg light.png"
+                  style="max-width: 30%; margin-left: 4%; margin-top: 1%; margin-bottom: 1%;"
                 >
               </a></router-link></div>
               <b-container fluid class="header">
                 <b-row align-self="center">
-                  <b-col><router-link class="profile" to="/login"><p class="profile">Login</p></router-link></b-col>
+                  <b-col v-if="$store.state.user==null"><router-link class="profile" to="/login"><p class="profile">Login</p></router-link></b-col>
+                  <b-col v-else><router-link class="profile" to="/profile"><p class="profile">Profile</p></router-link></b-col>
                   <b-col><router-link to="/workshops"><p class="profile">Workshops</p></router-link></b-col>
                   <b-col><router-link class="profile" to="/projects"><p class="profile">Projects</p></router-link></b-col>
                   <b-col><router-link class="profile" to="/aboutUs"><p class="profile">Our Team</p></router-link></b-col>
@@ -26,12 +30,12 @@
                   <img
                     style="width: 5%; position: absolute; right: 3%; cursor: pointer;"
                     src="./assets/light toggle.png"
-                  >
+                  >W
                 </b-row>
                 <b-row v-else class="header" @click="$store.commit('toggleDarkMode');">
                   <img
-                    style="width: 5%; position: absolute; right: 3%; cursor: pointer;"
-                    src="./assets/dark toggle.png"
+                    style="width: 5%; position: absolute; right: 1%; margin-top: 1%; cursor: pointer;"
+                    src="./assets/theme toggle (2).png"
                   >
                 </b-row>
               </b-container>
@@ -137,13 +141,14 @@
           <div class="flex-wrapper-eight" style="backdrop-filter: blur(10px)">
               <div class="logo-two"><router-link to="/"><a class="logo">
                 <img
-                  src="./assets/dark logo.png"
-                  style="max-width: 30%; margin-left: 1%; margin-top: 1%"
+                  src="./assets/logo+text no bg dark.png"
+                  style="max-width: 30%; margin-left: 4%; margin-top: 1%; margin-bottom: 1%;"
                 >
               </a></router-link></div>
               <b-container fluid class="header">
                 <b-row align-self="center">
-                  <b-col><router-link class="d-profile" to="/login"><p class="d-profile">Login</p></router-link></b-col>
+                  <b-col v-if="$store.state.user==null"><router-link class="d-profile" to="/login"><p class="d-profile">Login</p></router-link></b-col>
+                  <b-col v-else><router-link class="d-profile" to="/profile"><p class="d-profile">Profile</p></router-link></b-col>
                   <b-col><router-link class="d-profile" to="/workshops"><p class="d-profile">Workshops</p></router-link></b-col>
                   <b-col><router-link class="d-profile" to="/projects"><p class="d-profile">Projects</p></router-link></b-col>
                   <b-col><router-link class="d-profile" to="/aboutUs"><p class="d-profile">Our Team</p></router-link></b-col>
@@ -152,8 +157,8 @@
                 </b-row>
                 <b-row v-if="darkMode" class="header" @click="$store.commit('toggleDarkMode');">
                   <img
-                    style="width: 5%; position: absolute; right: 3%; cursor: pointer;"
-                    src="./assets/light toggle.png"
+                    style="width: 5%; position: absolute; right: 1%; margin-top: 1%; cursor: pointer;"
+                    src="./assets/theme toggle (3).png"
                   >
                 </b-row>
                 <b-row v-else class="header" @click="$store.commit('toggleDarkMode');">
@@ -266,18 +271,28 @@
 
 <script>
 //Vue.prototype.$darkMode = false;
+import Authentication from './components/Authentication'
 export default {
+  components: {
+    Authentication
+  },
   data(){
     return{
       showNav: false,
       prevScrollPos: window.pageYOffset,
-      isNavHidden: false
+      isNavHidden: false,    
     }
   },
   /*created() {
     window.addEventListener('scroll', this.handleScroll);
   },
   destroyed() {
+    window.removeEventListener('scroll', this.handleScroll);
+  },*/
+  /*mounted() {
+    window.addEventListener('scroll', this.handleScroll);
+  },
+  beforeUnmount() {
     window.removeEventListener('scroll', this.handleScroll);
   },*/
   computed: {
@@ -289,18 +304,17 @@ export default {
     } 
   },
   methods: {
-    handleScroll() {
-      let currentScrollPos = window.pageYOffset;
-      let navHeight = this.$refs.nav.offsetHeight;
-      if (this.prevScrollPos > currentScrollPos && currentScrollPos > navHeight) {
-        this.isNavHidden = false;
-      } else if (currentScrollPos <= navHeight) {
-        this.isNavHidden = true;
+    /*handleScroll() {
+      const currentBackgroundColor = window.getComputedStyle(document.body).backgroundColor;
+      if (currentBackgroundColor === 'rgb(255, 255, 255)') {
+        this.flexWrapperEight.backgroundColor = 'white';
+        this.flexWrapperEight.color = 'black';
       } else {
-        this.isNavHidden = true;
+        this.flexWrapperEight.backgroundColor = 'transparent';
+        this.flexWrapperEight.color = 'white';
       }
-      this.prevScrollPos = currentScrollPos;
-    }
+    }*/
+    
   }
 }
 </script>
@@ -354,23 +368,21 @@ export default {
     height:0px
   }
   .flex-wrapper-eight {
-    margin-bottom: 0%;
-    padding: 0 0 0 0%;
+    padding: 1% 0 0 0%;
     display: flex;
     align-items: flex-start;
     position: fixed; 
     z-index: 9; 
-    width: 100%
+    width: 100%;
   }
   .profile {
     font-family: "Inter";
     font-size: 1.5vh;
+    color: black;
     font-weight: 300;
     line-height: normal;
-    color: rgba(0, 0, 0, 1);
     text-align: center;
-    margin-right: 0%;
-    width:100%;
+    margin: 0%;
   }
   .d-profile {
     font-family: "Inter";
@@ -379,7 +391,7 @@ export default {
     line-height: normal;
     color: white;
     text-align: center;
-    margin-right: 0%;
+    margin: 0%;
     width:100%;
   }
   .logo-three{
@@ -445,7 +457,7 @@ export default {
   float: right;
 }
 .logo-two {
-  margin-right: 15%;
+  margin-right: 12%;
   position: relative;
 }
 .logo-three{

@@ -11,7 +11,11 @@ require('dotenv').config()
 import 'bootstrap/dist/css/bootstrap.css'
 import 'bootstrap-vue/dist/bootstrap-vue.css'
 import 'mdb-vue-ui-kit/css/mdb.min.css';
+import VueHead from 'vue-head'
+import vueSmoothScroll from 'vue-smooth-scroll'
 
+Vue.use(vueSmoothScroll)
+Vue.use(VueHead)
 Vue.use(VueTelInput)
 Vue.use(BootstrapVue)
 Vue.use(BootstrapVueIcons)

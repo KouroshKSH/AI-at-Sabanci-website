@@ -100,12 +100,12 @@
         <b-container fluid v-if="events[(page-1)*3]" class="relative-wrapper-one">
           <b-row align-h="left">
             <div class="num-1st-event">
-              <img
-                alt=""
-                class="rectangle-34"
-                :src=events[(page-1)*3].img
-              />
-              <p class="our-first-event">{{ events[(page-1)*3].name }}</p>
+                <img
+                  alt=""
+                  class="rectangle-34"
+                  :src=events[(page-1)*3].img
+                />
+                <p class="our-first-event">{{ events[(page-1)*3].name }}</p>
               <div class="flex-wrapper-three">
                 <p
                   class="join-our-first-event-where-we-will-pres"
@@ -155,8 +155,9 @@
                 class="rectangle-34"
                 :src=events[(page-1)*3+2].img
               />
+              <p class="our-first-event">{{ events[(page-1)*3+2].name }}</p>
               <div class="flex-wrapper-three">
-                <p class="our-first-event">{{ events[(page-1)*3+2].name }}</p>
+                
                 <p
                   class="join-our-first-event-where-we-will-pres"
                 >
@@ -174,7 +175,7 @@
         </b-container>
       </div> <!--mobi;e-->
       <b-container class="group-14">
-        <b-row align-h="center" style="margin-top: 5%;">
+        <b-row align-h="center" style="margin-top: 10%;">
             <div style="width: 36px; height: 18px">
               <img
                 v-if="page>1"
@@ -352,8 +353,9 @@
                 class="rectangle-34"
                 :src=events[(page-1)*3+2].img
               />
+              <p class="d-our-first-event">{{ events[(page-1)*3+2].name }}</p>
               <div class="flex-wrapper-three">
-                <p class="d-our-first-event">{{ events[(page-1)*3+2].name }}</p>
+                
                 <p
                   class="d-join-our-first-event-where-we-will-pres"
                 >
@@ -371,7 +373,7 @@
         </b-container>
       </div><!--mobile-->
       <b-container class="group-14">
-        <b-row align-h="center" style="margin-top: 3%;">
+        <b-row align-h="center" style="margin-top: 10%;">
             <div style="width: 36px; height: 18px">
               <img
                 v-if="page>1"
@@ -398,9 +400,9 @@
         <div class="flex-wrapper-seven">
               <router-link to="/contactUs"><div style="width: 100%; padding-top: 15%"><p class="contact-us">Contact Us</p></div></router-link>
         </div>
-        <a href="#events">  
+        <a @click="scrollUp()">  
           <img
-            style="max-width:5%; position: absolute; right: 5%; cursor: pointer;"
+            class="backToTop"
             src="../assets/back to top.png"
           >
         </a>
@@ -424,7 +426,7 @@
                     location: "FENS G077",
                     img: "https://static.overlay-tech.com/assets/2de6e4c5-a258-4c5d-8f34-004fcd00fc3a.png",
                 },
-                /*{
+                {
                     name: "DL in Real Life",
                     abstract: "In this workshop, we will implement the various Deep Learning techniques on real life projects.",
                     date: "Saturday, March 18th, 2023",
@@ -480,7 +482,7 @@
                     location: "FMAN1099",
                     img: "https://s3.ap-south-1.amazonaws.com/techleer/31.jpg",
                 },
-                */
+                
             ]
         }
     },
@@ -489,6 +491,14 @@
         return this.$store.state.darkMode;
       }
     },
+    methods: {
+      scrollUp() {
+        window.scrollTo({
+          top: window.pageYOffset - (window.innerHeight * 4),
+          behavior: 'smooth'
+        });
+      }
+    }
   };
   </script>
   
@@ -655,15 +665,16 @@
     .d-our-first-event {
       color: white;
       width: 100%;
-      font-size: 5vw;
+      font-size: 6vw;
       margin-top: 5%;
+      display: inline;
     }
     .d-join-our-first-event-where-we-will-pres {
       height: 8%;
       width: 100%;
       margin-top: 10%;
       font-family: "Inter";
-      font-size: 3.5vw;
+      font-size: 4vw;
       font-weight: 200;
       line-height: normal;
       color: white;
@@ -674,13 +685,13 @@
       height: 100%;
       width: 100%;
       font-family: "Inter";
-      font-size: 3.5vw;
+      font-size: 4vw;
       font-weight: 200;
       color: white;
     }
     .d-read-more {
       font-family: "Inter";
-      font-size: 2.5vw;
+      font-size: 3vw;
       width: 20vw;
       margin-bottom: 0;
       margin-right: 0;
@@ -781,6 +792,12 @@
       right: 0;
       bottom: 10%;
     }
+    .backToTop {
+      max-width: 5%;
+      position: absolute;
+      right: 5%; 
+      cursor: pointer;
+    }
   }
   @media (max-aspect-ratio: 1/1){
     .events{
@@ -795,7 +812,7 @@
     }
     .events-two {
       font-family: "Cinzel";
-      font-size: 6vw;
+      font-size: 8vw;
       font-weight: 400;
       line-height: normal;
       color: gray;
@@ -808,7 +825,7 @@
       margin-left: 10%;
       margin-right: 10%;
       font-family: "Inter";
-      font-size: 3.5vw;
+      font-size: 4vw;
       font-weight: 200;
       line-height: normal;
       color: gray;
@@ -822,30 +839,27 @@
       background-color: white;
       padding: 2% 3% 2% 3%;
       margin-top: 10%;
-
     }
     .rectangle-34 {
       width: 25%;
       max-width: 249px;
       height: auto;
       margin-right: 2%;
-      float: left;
-    }
-    .flex-wrapper-three {
-
+      display: inline;
     }
     .our-first-event {
       color: gray;
       width: 100%;
-      font-size: 5vw;
+      font-size: 6vw;
       margin-top: 5%;
+      display: inline;
     }
     .join-our-first-event-where-we-will-pres {
       height: 8%;
       width: 100%;
       margin-top: 10%;
       font-family: "Inter";
-      font-size: 3.5vw;
+      font-size: 4vw;
       font-weight: 200;
       line-height: normal;
       color: gray;
@@ -856,13 +870,13 @@
       height: 100%;
       width: 100%;
       font-family: "Inter";
-      font-size: 3.5vw;
+      font-size: 4vw;
       font-weight: 200;
       color: gray;
     }
     .read-more {
       font-family: "Inter";
-      font-size: 2.5vw;
+      font-size: 3vw;
       width: 20vw;
       margin-bottom: 0;
       margin-right: 0;
@@ -872,6 +886,13 @@
       text-decoration: underline;
       position: absolute;
       right: 20%
+    }
+    .backToTop {
+      max-width: 15%;
+      position: absolute;
+      right: 5%; 
+      bottom: 10%;
+      cursor: pointer;
     }
   }
   </style>

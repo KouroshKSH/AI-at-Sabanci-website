@@ -9,8 +9,8 @@ import "firebase/functions";
 
 // Your web app's Firebase configuration
 const firebaseConfig = {
-
-};
+    
+  };
 
 // Initialize Firebase
 const app = initializeApp(firebaseConfig);

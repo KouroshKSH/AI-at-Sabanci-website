@@ -102,10 +102,10 @@
                 <div class="d-flex-wrapper-two">
                   <div style="width: 100%; margin-top:15%; margin-bottom: 10%">
                     <div class="d-our-projects">Our Projects</div>
-                    <div style="padding: 1% 1% 1% 1%; margin-left: 40%; margin-top: 0%;; text-align: left; color: white; border: 1px solid gray" class="blur bubblepos-1">We cover a large array of AI projects that are carried out by many teams.</div>
+                    <div style="padding: 1% 1% 1% 1%; margin-left: 40%; margin-top: 0%; text-align: left; color: white; border: 1px solid gray" class="blur bubblepos-1">We cover a large array of AI projects that are carried out by many teams.</div>
                     <p class="emoji">👾</p>
                     <div style="padding: 1% 1% 1% 1%; margin-left: -0%; margin-top: 10%; text-align: left; color: white; border: 1px solid gray" class="blur bubblepos-2">Anyone can start a project and carry out their vision.</div>
-                    <div style="padding: 1% 1% 1% 2%; margin-left: 60%; margin-top: 2%; text-align: left; float: left; width: 25%; background: linear-gradient(92.13deg, rgba(22, 23, 23, 0.7) 12.48%, rgba(233, 238, 225, 0.7) 103.45%); backdrop-filter: blur(15px); border-radius: 30px; color: white; border: 1px solid gray;" class="blur bubblepos-3">Want to propose one?</div>
+                    <div style="padding: 1% 1% 1% 2%; margin-left: 60%; margin-top: 2%; text-align: left; float: left; width: 25%; background: linear-gradient(92.13deg, rgba(22, 23, 23, 0.7) 12.48%, rgba(233, 238, 225, 0.7) 103.45%); backdrop-filter: blur(15px); border-radius: 30px; color: white; border: 1px solid white;" class="blur bubblepos-3">Want to propose one?</div>
                   </div>
                 </div>
             </b-container>
@@ -185,9 +185,9 @@
           <div class="flex-wrapper-seven-1">
                 <router-link to="/contactUs"><div style="width: 100%; padding-top: 15%;"><p class="contact-us">Contact Us</p></div></router-link>
           </div>
-          <a href="#projects">  
+          <a @click="scrollUp()">  
             <img
-              style="max-width:5%; position: absolute; right: 5%; cursor: pointer;"
+              class="backToTop"
               src="../assets/back to top.png"
             >
           </a>
@@ -210,6 +210,14 @@ export default {
         return this.$store.state.darkMode;
       }
     },
+    methods: {
+      scrollUp() {
+        window.scrollTo({
+          top: window.pageYOffset - (window.innerHeight * 4),
+          behavior: 'smooth'
+        });
+      }
+    }
 }
 </script>
 
@@ -722,9 +730,9 @@ export default {
 @media (max-aspect-ratio: 1/1){
   .emoji{
     position: absolute; 
-    left: 70%; 
-    top: 45%; 
-    font-size: 3vw;
+    left: 78%; 
+    top: 50%; 
+    font-size: 6vw;
   }
 }
 
@@ -1179,7 +1187,7 @@ export default {
   }
   .d-our-projects {
     font-family: "Cinzel";
-    font-size: 5vw;
+    font-size: 7vw;
     font-weight: 400;
     line-height: normal;
     color: white;
@@ -1195,14 +1203,14 @@ export default {
   .d-ai-aided-tomography {
     color: white;
     margin-top: 5%;
-    font-size: 5vw
+    font-size: 6vw
   }
   .d-our-team-has-developed-a-new-approach-to {
     height: 20%;
     width: 80%;
     margin-top: 3%;
     font-family: "Inter";
-    font-size: 2vw;
+    font-size: 4vw;
     font-weight: 200;
     line-height: normal;
     color: white;
@@ -1214,7 +1222,7 @@ export default {
     text-align: center;
     margin-bottom: 1%;
     margin-left: 0%;
-    font-size: 2vw
+    font-size: 5vw
   }
 }
 
@@ -1336,26 +1344,36 @@ export default {
     margin-left: 0%;
     font-size: 2vh
   }
+  .backToTop {
+    max-width: 5%;
+    position: absolute;
+    right: 5%; 
+    cursor: pointer;
+  }
 }
 @media (max-aspect-ratio: 1/1){
   .bubblepos-1{
     margin-left: 20% !important;
-    width: 85% !important;
-    padding: 3% 3% 3% 3% !important; 
+    width: 100% !important;
+    padding: 3% 3% 3% 3% !important;
+    font-size: 3vw !important; 
   }
   .bubblepos-2{
     margin-left: -10% !important;
-    width: 85% !important;
-    padding: 3% 3% 3% 3% !important; 
+    width: 100% !important;
+    padding: 3% 3% 3% 3% !important;
+    margin-top: 5% !important; 
+    font-size: 3vw !important; 
   }
   .bubblepos-3{
     margin-left: 30% !important;
-    margin-top: 10% !important;
-    width: 60% !important; 
+    margin-top: 5% !important;
+    width: 85%!important; 
     padding: 3% 3% 3% 3% !important; 
+    font-size: 3vw !important; 
   }
   .chatbubble{
-    font-size: 2vw;
+    font-size: 4vw;
   }
   .num-1st-event {
     width: 100%;
@@ -1444,13 +1462,13 @@ export default {
   }
   .our-projects {
     font-family: "Cinzel";
-    font-size: 5vw;
+    font-size: 7vw;
     font-weight: 400;
     line-height: normal;
     color: black;
     text-align: center;
     margin-top: 5%;
-    margin-bottom: 15%;
+    margin-bottom: 5%;
   }
   .project-subtext{
     font-family: "Inter";
@@ -1460,14 +1478,14 @@ export default {
   .ai-aided-tomography {
     color: black;
     margin-top: 5%;
-    font-size: 5vw
+    font-size: 6vw
   }
   .our-team-has-developed-a-new-approach-to {
     height: 20%;
     width: 80%;
     margin-top: 3%;
     font-family: "Inter";
-    font-size: 2vw;
+    font-size: 4vw;
     font-weight: 200;
     line-height: normal;
     color: black;
@@ -1479,7 +1497,14 @@ export default {
     text-align: center;
     margin-bottom: 1%;
     margin-left: 0%;
-    font-size: 2vw
+    font-size: 5vw
+  }
+  .backToTop {
+    max-width: 15%;
+    position: absolute;
+    right: 5%; 
+    bottom: 10%;
+    cursor: pointer;
   }
 }
 </style>

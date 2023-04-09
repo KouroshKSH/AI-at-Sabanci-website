@@ -84,9 +84,9 @@
         <div class="flex-wrapper-seven">
               <router-link to="/contactUs"><div style="width: 100%; padding-top: 15%"><p class="contact-us">Contact Us</p></div></router-link>
         </div>
-        <a :href=event>  
+        <a @click="scrollUp()">  
           <img
-            style="max-width:5%; position: absolute; right: 5%; cursor: pointer;"
+            class="backToTop"
             src="../assets/back to top.png"
           >
         </a>
@@ -100,7 +100,7 @@
     data(){
         return{
             index: this.$route.params.id,
-            event: `event/${this.$route.params.id}`,
+            event: `#/event/${this.$route.params.id}`,
             page: 1,
             events: [
                 {
@@ -148,6 +148,14 @@
         return this.$store.state.darkMode;
       }
     },
+    methods:{
+      scrollUp() {
+        window.scrollTo({
+          top: window.pageYOffset - (window.innerHeight * 4),
+          behavior: 'smooth'
+        });
+      }
+    }
   };
   </script>
   
@@ -175,6 +183,12 @@
     padding-right: 30%;
     position: relative;
   }
+  .backToTop {
+    max-width: 5%;
+    position: absolute;
+    right: 5%; 
+    cursor: pointer;
+  }
 }
 @media (max-aspect-ratio: 1/1){
   .contact-us {
@@ -199,6 +213,13 @@
     padding-left: 30%;
     padding-right: 30%;
     position: relative;
+  }
+  .backToTop {
+    max-width: 15%;
+    position: absolute;
+    right: 5%; 
+    bottom: 10%;
+    cursor: pointer;
   }
 }
 
@@ -738,7 +759,7 @@
 @media (max-aspect-ratio: 1/1){
   .d-events-two{
     font-family: "Cinzel";
-    font-size: 7vw;
+    font-size: 8vw;
     font-weight: 400;
     line-height: normal;
     color: white;
@@ -751,17 +772,17 @@
     padding: 0 0 0 0;
   }
   .d-dl-in-real-life {
-    font-size: 5vw;
+    font-size: 6vw;
     color: white;
-    margin-left: 10%;
+    margin-left: 5%;
     margin-top: 10%;
   }
   .d-deep-learning-has-become-increasingly-po {
     font-family: "Inter";
-    font-size: 3.5vw;
+    font-size: 4vw;
     width: 80%;
-    margin-left: 10%;
-    margin-right: 10%;
+    margin-left: 5%;
+    margin-right: 15%;
     font-weight: 200;
     line-height: normal;
     color: white;
@@ -770,12 +791,12 @@
   .d-time-place {
     color: white;
     font-size: 5vw;
-    margin-left: 10%;
+    margin-left: 5%;
   }
   .d-saturday-march-18th-2023-1730-1900 {
     font-family: "Inter";
-    font-size: 3.5vw;
-    margin-left: 10%;
+    font-size: 4vw;
+    margin-left: 5%;
     font-weight: 200;
     line-height: normal;
     color: white;
@@ -877,7 +898,7 @@
 @media (max-aspect-ratio: 1/1){
   .events-two{
     font-family: "Cinzel";
-    font-size: 7vw;
+    font-size: 8vw;
     font-weight: 400;
     line-height: normal;
     color: gray;
@@ -899,9 +920,9 @@
     width: 100%;
   }
   .dl-in-real-life {
-    font-size: 5vw;
+    font-size: 6vw;
     color: black;
-    margin-left: 10%;
+    margin-left: 5%;
     margin-top: 10%;
   }
   .relative-wrapper-one {
@@ -912,10 +933,10 @@
   }
   .deep-learning-has-become-increasingly-po {
     font-family: "Inter";
-    font-size: 3.5vw;
+    font-size: 4vw;
     width: 80%;
-    margin-left: 10%;
-    margin-right: 10%;
+    margin-left: 5%;
+    margin-right: 15%;
     font-weight: 200;
     line-height: normal;
     color: gray;
@@ -924,12 +945,12 @@
   .time-place {
     color: black;
     font-size: 5vw;
-    margin-left: 10%;
+    margin-left: 5%;
   }
   .saturday-march-18th-2023-1730-1900 {
     font-family: "Inter";
-    font-size: 3.5vw;
-    margin-left: 10%;
+    font-size: 4vw;
+    margin-left: 5%;
     font-weight: 200;
     line-height: normal;
     color: gray;

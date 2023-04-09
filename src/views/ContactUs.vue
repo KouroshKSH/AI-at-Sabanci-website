@@ -20,8 +20,8 @@
                     </div>
                     </div>
                     <b-row>
-                        <h3 v-if="showFirstNameAlert" class="warning" style="margin-left: 0%; width:50%">Please enter your first name.</h3>
-                        <h3 v-if="showLastNameAlert" class="warning" style="margin-left: 3%; width:45%">Please enter your last name.</h3>
+                        <h3 v-if="showFirstNameAlert" class="warning" style="margin-left: 0%; width:40%">Please enter your first name.</h3>
+                        <h3 v-if="showLastNameAlert" class="warning" style="margin-left: 18%; width:40%">Please enter your last name.</h3>
                     </b-row>
                     <input class="group-16" v-model="email" placeholder="Email" />
                     <h3 v-if="showEmailAlert" class="warning">Please enter your email address.</h3>
@@ -129,13 +129,19 @@ export default {
 </script>
 
 <style scoped>
+textarea {
+  width: 100%;
+}
 input::placeholder {
-    opacity: 0.5;
+    opacity: 1;
     color: gray;
     font-size: 1.5vh;
 }
-textarea {
-  width: 100%;
+textarea::placeholder {
+  opacity: 1 !important;
+  color: gray !important;
+  font-size: 1.5vh !important;
+  margin-left: 10% !important;
 }
 .form {
   margin-right: 15%;
@@ -688,15 +694,15 @@ textarea {
   }
 }
 @media (max-aspect-ratio: 1/1){
-    .d-flex-wrapper-one {
-        padding: 2% 0 2% 3%;
-        display: flex;
-        align-items: center;
-        border: 2px solid gray;
-        background-color: #242424;
-        color: white;
-        width: 100%
-    }
+  .d-flex-wrapper-one {
+    padding: 2% 0 2% 3%;
+    display: flex;
+    align-items: center;
+    border: 2px solid gray;
+    background-color: #242424;
+    color: white;
+    width: 100%
+  }
   .d-log-in-two {
     background-color: #242424;
     padding: 0px 0 0;
@@ -706,7 +712,7 @@ textarea {
   }
   .d-your-account {
     font-family: "Cinzel";
-    font-size: 6vw;
+    font-size: 8vw;
     font-weight: 400;
     line-height: normal;
     color: white;
@@ -716,7 +722,7 @@ textarea {
   .d-welcome-back {
     width: 100%;
     font-family: "Inter";
-    font-size: 2vw;
+    font-size: 4vw;
     font-weight: 200;
     line-height: normal;
     color: white;
@@ -766,17 +772,17 @@ textarea {
 }
 
 @media (min-aspect-ratio: 1/1){
-    .flex-wrapper-one {
-        padding: 2% 0 2% 3%;
-        display: flex;
-        align-items: center;
-        border: 2px solid rgba(225, 225, 225, 1);
-        width: 100%
-    }
+  .flex-wrapper-one {
+    padding: 2% 0 2% 3%;
+    display: flex;
+    align-items: center;
+    border: 2px solid rgba(225, 225, 225, 1);
+    width: 100%
+  }
   .warning {
     margin-top: 1%;
     color: red; 
-    font-size: 1vh;
+    font-size: 1.75vh;
     margin-left: 0%;
     width: 70%;
   }
@@ -842,17 +848,17 @@ textarea {
   }
 }
 @media (max-aspect-ratio: 1/1){
-    .flex-wrapper-one {
-        padding: 2% 0 2% 3%;
-        display: flex;
-        align-items: center;
-        border: 2px solid rgba(225, 225, 225, 1);
-        width: 100%
-    }
+  .flex-wrapper-one {
+    padding: 2% 0 2% 3%;
+    display: flex;
+    align-items: center;
+    border: 2px solid rgba(225, 225, 225, 1);
+    width: 100%
+  }
   .warning {
     margin-top: 1%;
     color: red; 
-    font-size: 1vw;
+    font-size: 2.5vw;
     margin-left: 0%;
     width: 70%;
   }
@@ -865,7 +871,7 @@ textarea {
   }
   .your-account {
     font-family: "Cinzel";
-    font-size: 6vw;
+    font-size: 8vw;
     font-weight: 400;
     line-height: normal;
     color: gray;
@@ -875,7 +881,7 @@ textarea {
   .welcome-back {
     width: 100%;
     font-family: "Inter";
-    font-size: 2vw;
+    font-size: 4vw;
     font-weight: 200;
     line-height: normal;
     color: gray;

@@ -16,7 +16,7 @@
             <h3 v-if="showMemberEmailAlert" class="warning">Please make sure you have made a first time login.</h3>  
             <input class="group-17" type="password" v-model="password" placeholder="Password" />
             <h3 v-if="showPasswordAlert" class="warning">Please enter a password.</h3>
-            <div style="margin-top: 5%; margin-bottom: 3%;" @click="sendForm()" class="submit-button">
+            <div style="margin-top: 5%; margin-bottom: 1%;" @click="sendForm()" class="submit-button">
                 <p style="text-align: center" class="click-here">Log In</p>
             </div>
             <router-link to="registration"><p class="dont-have-an-account-you-can-sign-up-f">For first time member login click here.</p></router-link>
@@ -41,7 +41,7 @@
             <h3 v-if="showMemberEmailAlert" class="warning">Please make sure you have made a first time login.</h3>  
             <input class="d-group-17" type="password" v-model="password" placeholder="Password" />
             <h3 v-if="showPasswordAlert" class="warning">Please enter a password.</h3>
-            <div style="margin-top: 5%; margin-bottom: 3%;" @click="sendForm()" class="d-submit-button">
+            <div style="margin-top: 5%; margin-bottom: 1%;" @click="sendForm()" class="d-submit-button">
                 <p style="text-align: center" class="d-click-here">Log In</p>
             </div>
             <router-link to="registration"><p class="d-dont-have-an-account-you-can-sign-up-f">For first time member login click here.</p></router-link>
@@ -668,17 +668,10 @@ export default {
     font-weight: 200;
     line-height: normal;
     color: white;
-    margin-top: 3%;
+    margin-top: 0%;
   }
 }
 @media (max-aspect-ratio: 1/1){
-  .warning {
-    margin-top: 1%;
-    color: red; 
-    font-size: 1vw;
-    margin-left: 15%;
-    width: 70%;
-  }
   .d-log-in-two {
     background-color: #242424;
     padding: 32px 0 0;
@@ -688,7 +681,7 @@ export default {
   }
   .d-your-account {
     font-family: "Cinzel";
-    font-size: 6vw;
+    font-size: 8vw;
     font-weight: 400;
     line-height: normal;
     color: white;
@@ -698,7 +691,7 @@ export default {
   .d-welcome-back {
     width: 100%;
     font-family: "Inter";
-    font-size: 2vw;
+    font-size: 4vw;
     font-weight: 200;
     line-height: normal;
     color: white;
@@ -739,7 +732,7 @@ export default {
   .d-dont-have-an-account-you-can-sign-up-f {
     text-align: center;
     font-family: "Inter";
-    font-size: 1.5vw;
+    font-size: 3vw;
     font-weight: 200;
     line-height: normal;
     color: white;
@@ -751,7 +744,7 @@ export default {
   .warning {
     margin-top: 1%;
     color: red; 
-    font-size: 1vh;
+    font-size: 1.75vh;
     margin-left: 15%;
     width: 70%;
   }
@@ -819,14 +812,14 @@ export default {
     font-weight: 200;
     line-height: normal;
     color: gray;
-    margin-top: 3%;
+    margin-top: 0%;
   }
 }
 @media (max-aspect-ratio: 1/1){
   .warning {
     margin-top: 1%;
     color: red; 
-    font-size: 1vw;
+    font-size: 2.5vw;
     margin-left: 15%;
     width: 70%;
   }
@@ -839,7 +832,7 @@ export default {
   }
   .your-account {
     font-family: "Cinzel";
-    font-size: 6vw;
+    font-size: 8vw;
     font-weight: 400;
     line-height: normal;
     color: gray;
@@ -849,7 +842,7 @@ export default {
   .welcome-back {
     width: 100%;
     font-family: "Inter";
-    font-size: 2vw;
+    font-size: 4vw;
     font-weight: 200;
     line-height: normal;
     color: gray;
@@ -869,7 +862,7 @@ export default {
   }
   .username-or-email {
     font-family: "Inter";
-    font-size: 2vw;
+    font-size: 3vw;
     font-weight: 200;
     line-height: normal;
     color: rgba(0, 0, 0, 0.3);
@@ -890,59 +883,10 @@ export default {
     height: 46px;
     background-color: white;
   }
-  @media (min-aspect-ratio: 8/5){
-      .submit-button {
-        border-radius: 5px;
-        padding: 0.5% 0.5% 0.3% 0.5%;
-        box-shadow: 0 4px 4px 0 rgba(0, 0, 0, 0.25);
-        color: white;
-        align-items: center;
-        position: relative;
-        border: 2px solid black;
-        width: 6%;
-        margin-left: 47%;
-        margin-right: 47%;
-      }
-      .submit-button:hover {
-        border-radius: 5px;
-        padding: 0.5% 0.5% 0.3% 0.5%;
-        box-shadow: 0 4px 4px 0 rgba(0, 0, 0, 0.25);
-        align-items: center;
-        position: relative;
-        transition: background-color 0.5s, color 0.5s;
-        color: black;
-        background-color: black;
-        border: 3px solid black;
-        width: 6%;
-        margin-left: 47%;
-        margin-right: 47%;
-        
-      }
-      .click-here {
-        font-family: "Inter";
-        font-size: 1.5vw;
-        font-weight: 400;
-        line-height: normal;
-        color: black;
-        text-align: center;
-        text-shadow: 0 4px 4px rgba(0, 0, 0, 0.25);
-      }
-      .click-here:hover{
-        font-family: "Inter";
-        font-size: 1.5vw;
-        font-weight: 400;
-        line-height: normal;
-        text-align: center;
-        text-shadow: 0 4px 4px rgba(0, 0, 0, 0.25);
-        transition: background-color 0.5s, color 0.5s;
-        color: white;
-      }
-    }
-
   .dont-have-an-account-you-can-sign-up-f {
     text-align: center;
     font-family: "Inter";
-    font-size: 1.5vw;
+    font-size: 3vw;
     font-weight: 200;
     line-height: normal;
     color: gray;

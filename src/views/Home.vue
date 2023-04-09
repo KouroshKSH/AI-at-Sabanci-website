@@ -1,74 +1,21 @@
 <template>
-    <!--<div style="height: 600%">
-        <div id="nav bar" style="position: fixed; width: 100%; height: 10%; top:0%; background-color: black; float: right; z-index: 1;">
-            <router-link v-if="user!=null" to="/account" style="margin: 0; position: relative; top: 50%; -ms-transform: translateY(-50%); transform: translateY(-50%); right: 9%; color: white; margin-right: 0; margin-left: auto; float: right;"><b-button variant="info" style="font-size:2vh" size="sm">Account</b-button></router-link>
-            <router-link v-if="user==null" to="/login" style="margin: 0; position: relative; top: 50%; -ms-transform: translateY(-50%); transform: translateY(-50%); right: 9%; color: white; margin-right: 0; margin-left: auto; float: right;"><b-button @click="logUser()" variant="info" style="font-size:2vh" size="sm">Login</b-button></router-link>
-            <b-button v-if="user!=null" variant="info" @click="logout()" style="margin: 0; position: relative; top: 50%; -ms-transform: translateY(-50%); transform: translateY(-50%); right: 9%; color: white; font-size: 2vh; margin-right: 0; margin-left: auto; float: right;" size="sm">Logout</b-button>
-            <a href="#Contact" style="margin: 0; position: relative; top: 50%; -ms-transform: translateY(-50%); transform: translateY(-50%); right: 12%; color: white; font-size: 3vh; margin-right: 0; margin-left: auto; float: right;">Contact us</a>
-            <a href="#Join the team" style="margin: 0; position: relative; top: 50%; -ms-transform: translateY(-50%); transform: translateY(-50%); right: 15%; color: white; font-size: 3vh; margin-right: 0; margin-left: auto; float: right;">Join us</a>
-            <a href="#Sponsors" style="margin: 0; position: relative; top: 50%; -ms-transform: translateY(-50%); transform: translateY(-50%); right: 18%; color: white; font-size: 3vh; margin-right: 0; margin-left: auto; float: right;">Sponsors</a>
-            <a href="#The Team" style="margin: 0; position: relative; top: 50%; -ms-transform: translateY(-50%); transform: translateY(-50%); right: 21%; color: white; font-size: 3vh; margin-right: 0; margin-left: auto; float: right;">The Team</a>
-            <a href="#Projects" style="margin: 0; position: relative; top: 50%; -ms-transform: translateY(-50%); transform: translateY(-50%); right: 24%; color: white; font-size: 3vh; margin-right: 0; margin-left: auto; float: right;">Projects</a>
-            <a href="#AI info" style="margin: 0; position: relative; top: 50%; -ms-transform: translateY(-50%); transform: translateY(-50%); right: 27%; color: white; font-size: 3vh; margin-right: 0; margin-left: auto; float: right;">What is an AI</a>
-            <a href="#Who we are" style="margin: 0; position: relative; top: 50%; -ms-transform: translateY(-50%); transform: translateY(-50%); right: 30%; color: white; font-size: 3vh; margin-right: 0; margin-left: auto; float: right;">Who we are</a>
-            <h1 style="margin: 0; position: relative; top: 50%; -ms-transform: translateY(-50%); transform: translateY(-50%); right: 3%; color: white; font-size: 2.5vh; margin-right: 0; margin-left: auto; float: left;">(Insert club logo)</h1>
-        </div>    
-        <div style="position: absolute; top: 0%;" id="Who we are"></div>
-        <div style="position: absolute; top: 100%;" id="AI info"></div>
-        <div style="position: absolute; top: 200%;" id="Projects"></div>
-        <div style="position: absolute; top: 300%;" id="The Team"></div>
-        <div style="position: absolute; top: 400%;" id="Sponsors"></div>
-        <div style="position: absolute; top: 450%;" id="Join the team"></div>
-        <div style="position: absolute; top: 500%;" id="Contact"></div>
-
-        <div style="position: absolute; top: 40%; left: 50%; transform: translateX(-50%) translateY(-50%);">
-            <h1 style="font-size: 5vh">Who we are. What we do.</h1>
-            <h1 style="font-size: 2.5vh;">We are a group of passionate students who are interested in AI/ML development and deployment. </h1>
-            <h1 style="font-size: 2.5vh;">Our mission is to foster a community of like-minded individuals who can come together to share ideas, collaborate on projects, and push the boundaries of what is possible with AI.</h1>
-            <h1 style="font-size: 2.5vh;">We will hold weekly meetings, workshops, conferences as well as learning sessions, sponsored by companies that are pioneers in the AI/ML areas.</h1>
-            <h1 style="font-size: 2.5vh;">(Insert group photo)</h1>
-        </div>
-        <div style="position: absolute; top: 125%">
-            <h1 style="position: absolute; font-size: 5vh; bottom: 110%;left: 50%; transform: translateX(-50%) translateY(-50%);">What is an AI?</h1>
-            <h1 style="text-align: left; margin-left: 5%; margin-top: 5%; width: 50%; font-size: 2.5vh">An AI, or artificial intelligence, is a computer system that is designed to simulate human intelligence and thought processes. This can include tasks such as problem solving, decision making, and learning. AIs can be programmed to perform a wide range of tasks, from simple automation to complex decision-making and analysis. They can be found in many different applications, from self-driving cars to virtual personal assistants.</h1>
-            <img style="width:35%; position:absolute; right: 5%; top: 0px" alt="AI image" src="../assets/ai-technology-brain-background-digital-transformation-concept.jpg">
-            <router-link to="/aiChatbox"><b-button variant="info">Try out an AI chatbox</b-button></router-link>
-        </div>
-        <div style="position: absolute; top: 230%; left: 50%; transform: translateX(-50%) translateY(-50%);">
-            <h1 style="font-size: 5vh">Projects</h1>
-            <h1 style="font-size: 2.5vh">As an AI club we offer the possibility to directly work on projects related to AI/ML. If you would like the chance to work on such projects, or if you are interested in seeing what we have done, click the button below.</h1>
-            <router-link to="/projects"><b-button variant="info">Projects</b-button></router-link>
-        </div> 
-        <div style="position: absolute; top: 330%; left: 50%; transform: translateX(-50%) translateY(-50%);">
-            <h1 style="font-size: 5vh">The team:</h1>
-            <h1 style="font-size: 2.5vh">(To be decided what we will put here)</h1>
-        </div>
-        <div style="position: absolute; top: 450%; left: 50%; transform: translateX(-50%) translateY(-50%);">
-            <h1 style="font-size: 5vh">Our Sponsor: </h1>
-            <img alt="NVidia logo" src="../assets/01-nvidia-logo-vert-500x200-2c50-d.png">
-        </div>
-        <div style="position: absolute; top: 500%; left: 50%; transform: translateX(-50%) translateY(-50%);">
-            <h1 style="font-size: 5vh">Join us:</h1>
-            <h1 style="font-size: 2.5vh">If you're interested in joining our club and becoming a part of our community, we'd love to hear from you. Let's work together to shape the future of AI.</h1>
-            <router-link to="/applicationForm"><b-button variant="info">Join the club</b-button></router-link>
-            <router-link to="/viewApplications"><b-button variant="info">Applications</b-button></router-link>
-        </div>
-        <div style="position: absolute; top: 550%; left: 50%; text-align: left; transform: translateX(-50%) translateY(-50%);">
-            <h1 style="font-size: 5vh">Contact us: </h1>
-            <h1 style="font-size: 2.5vh">&emsp; Mail: (Insert contact mail)</h1>
-            <h1 style="font-size: 2.5vh">&emsp; Phone Number: (Insert contact phone number)</h1>
-        </div>-->
-      <div id="">
+      <div id="#">
+        <title>IntelliMind</title>
         <div v-if="!darkMode" class="landing-page" style="width: 100%; z-index: 1;">
             <b-container fluid class="flex-wrapper-five" style="height: auto">
               <b-row align-h="" style="width: 100%; margin-left: 0;">
                 <div class="AIatSabancihas"> 
-                      AI at Sabancı has been selected as 
+                      IntelliMind has been selected as 
                       one of the pilot members of
                       <br><div class="nvidias">NVIDIA’s</div> Student Network initiative!
                 </div><br>
                 <a class="announcements" href="https://developer.nvidia.com/student-network" target="blank">Read More</a>
                 <router-link class="wantToTryChatSU" to="/aiChatbox">Want to try ChatSU?</router-link>
+                <img
+                  @click="scrollDown()"
+                  style="max-width: 5%; height: 5%; margin-top: 15%; cursor: pointer"
+                  src="../assets/Union (2).png"
+                >
                     <!--<div class="ai-sabanci-wrapper">
                         <a>
                           <img
@@ -120,9 +67,7 @@
                             What Do We Want to Accomplish?
                         </p>
                         <p class="our-aim-is-to-expand-the-horizon-of-ai">
-                            Our aim is to expand the horizon of AI, and to
-                            be the one of the pioneers of Deep Learning in
-                            Turkey.
+                          Our goal is to provide AI/ML enthusiasts the opportunity to learn, innovate, and create with the support of our sponsors, while building a collaborative community of passionate individuals.
                         </p>
                         <router-link to="/aboutUs"><p class="more-about-us">More About Us</p></router-link>
                       </div>
@@ -133,13 +78,10 @@
             <div style="width:100%;" class="relative-wrapper-one">
                 <b-container fluid class="turkey">
                     <p class="first-student-club-in-tuerk-iye">
-                      First Legit AI Club in Türkİye
+                      With our sponsors we are stronger than ever
                     </p>
-                    <p class="our-ai-club-here-at-sabanci-is-the-fir" style="text-align: center;">
-                      Our AI club, here at Sabancı, is the first ever
-                      student club that has established itself with the
-                      sponsorship of world-renowned tech companies such
-                      as NVIDIA.
+                    <p class="our-ai-club-here-at-sabanci-is-the-fir">
+                      IntelliMind is the first-ever student club in Turkey to be selected to NVIDIA's Student Network program. With the hardware and content packs sponsorship, we are one step closer to achieving our goal!
                     </p>
                 </b-container>
                 <b-container fluid class="flex-wrapper-one">
@@ -160,9 +102,9 @@
                         <div class="flex-wrapper-seven">
                               <router-link to="/contactUs"><div style="width: 100%"><p class="contact-us">Contact Us</p></div></router-link>
                         </div>
-                        <a href="#">  
+                        <a @click="scrollUp()">  
                           <img
-                            style="max-width:5%; position: absolute; right: 5%; cursor: pointer;"
+                            class="backToTop"
                             src="../assets/back to top.png"
                           >
                         </a>
@@ -178,12 +120,17 @@
             <b-container fluid class="flex-wrapper-five" style="background-color: black;">
               <b-row align-h="" style="width: 100%; margin-left: 0;">
                 <div class="AIatSabancihas"> 
-                      AI at Sabancı has been selected as 
+                      IntelliMind has been selected as 
                       one of the pilot members of
                       <br><div class="nvidias">NVIDIA’s</div> Student Network initiative!
                 </div><br>
                 <a class="announcements" href="https://developer.nvidia.com/student-network" target="blank">Read More</a>
                 <router-link class="wantToTryChatSU" to="/aiChatbox">Want to try ChatSU?</router-link>
+                <img
+                  @click="scrollDown()"
+                  style="max-width: 5%; height: 5%; margin-top: 15%; cursor: pointer"
+                  src="../assets/Union (2).png"
+                >
                     <!--<div class="ai-sabanci-wrapper">
                         <a>
                           <img
@@ -201,7 +148,7 @@
             <b-container fluid class="d-flex-wrapper-six" style="width: 100%; background-color: black;">
               <b-row align-h="center" style="background-color: black;">
                 <div class="flex-wrapper-nine">
-                    <div class="d-workshops">
+                    <div class="workshops">
                       <p class="d-ai-workshops">AI Workshops</p>
                       <p
                           class="d-we-organize-workshops-regarding-deep-lea"
@@ -234,9 +181,7 @@
                           What Do We Want to Accomplish?
                       </p>
                       <p class="d-our-aim-is-to-expand-the-horizon-of-ai">
-                          Our aim is to expand the horizon of AI, and to
-                          be the one of the pioneers of Deep Learning in
-                          Turkey.
+                        Our goal is to provide AI/ML enthusiasts the opportunity to learn, innovate, and create with the support of our sponsors, while building a collaborative community of passionate individuals.
                       </p>
                       <router-link to="/aboutUs"><p class="d-more-about-us">More About Us</p></router-link>
                     </div>
@@ -246,13 +191,10 @@
             <div style="width:100%; background-color: black;" class="relative-wrapper-one">
                 <b-container fluid class="d-turkey">
                     <p class="d-first-student-club-in-tuerk-iye">
-                      First Legit AI Club in Türkİye
+                      With our sponsors we are stronger than ever
                     </p>
                     <p class="d-our-ai-club-here-at-sabanci-is-the-fir" style="text-align: center;">
-                      Our AI club, here at Sabancı, is the first ever
-                      student club that has established itself with the
-                      sponsorship of world-renowned tech companies such
-                      as NVIDIA.
+                      IntelliMind is the first-ever student club in Turkey to be selected to NVIDIA's Student Network program. With the hardware and content packs sponsorship, we are one step closer to achieving our goal!
                     </p>
                 </b-container>
                 <b-container fluid class="d-flex-wrapper-one">
@@ -274,9 +216,9 @@
                         <div class="flex-wrapper-seven">
                               <router-link to="/contactUs"><div style="width: 100%"><p class="contact-us">Contact Us</p></div></router-link>
                         </div>
-                        <a href="#">  
+                        <a @click="scrollUp()">  
                           <img
-                            style="max-width:5%; position: absolute; right: 5%; cursor: pointer;"
+                            class="backToTop"
                             src="../assets/back to top.png"
                           >
                         </a>
@@ -305,13 +247,29 @@ export default {
         return this.$store.state.darkMode;
       }
     },
+    
+    mounted() {
+      document.title = "IntelliMind";
+    },
    methods: {
     logout(){
         store.dispatch('logout');
     },
     logUser(){
         console.log(this.user)
-    }
+    },
+    scrollUp() {
+      window.scrollTo({
+        top: window.pageYOffset - (window.innerHeight * 4),
+        behavior: 'smooth'
+      });
+    },
+    scrollDown(){
+      window.scrollTo({
+        top: window.pageYOffset + window.innerHeight,
+        behavior: 'smooth'
+      });
+    },
    }
 }
 </script>
@@ -1172,7 +1130,7 @@ export default {
     background-color: black;
   }
   /*@media (min-aspect-ratio: 2/3){*/
-    .d-ai-sabanci {
+  .d-ai-sabanci {
     width: 100%;
     margin-left: 0%;
     margin-right: 0;
@@ -1187,31 +1145,7 @@ export default {
     font-style: normal;
     line-height: 114px;
   }
-  .d-where-dreams-come-true-baby {
-    font-family: "Inter";
-    font-size: 2.5vw;
-    width: 60%;
-    height: 5vw;
-    font-weight: 500;
-    line-height: normal;
-    color: rgba(255, 255, 255, 1);
-    text-align: center;
-    margin-bottom: 0%;
-    margin-left: 20%;
-    margin-right: 20%;
-    margin-top: 2%;
-    padding-top: 1%;
-    /* identical to box height */
-    align-items: center;
-    text-align: center;
-    text-shadow: 0px 2px 7px rgba(0, 0, 0, 0.12);
-    background: rgba(255, 255, 255, 0.2);
-    box-shadow: 0px 0px 20px rgba(0, 0, 0, 0.13);
-    backdrop-filter: blur(10px);
-/* Note: backdrop-filter has minimal browser support */
 
-border-radius: 20px;
-  }
   .d-rectangle-92 {
     width: 100%;
     height: 100%;
@@ -1235,33 +1169,55 @@ border-radius: 20px;
     align-items: flex-start;
     width: 100%;
   }
+  .d-union {
+    width: 1.78%;
+    height: 1.78%;
+    margin-bottom: 13%;
+    margin-left: 29.3%;
+  }
+  .d-flex-wrapper-nine {
+    align-items: flex-start;
+    margin-top: 20%;
+    margin-left: 0%;
+    margin-right: 0%;
+    width: 100%;
+  }
+  .d-workshops {
+    align-items: flex-start;
+    margin-right: 7%;
+    height: 40%;
+    width:100%;
+    margin-top: 10%;
+  }
   .d-ai-workshops {
     font-family: "Cinzel";
-    font-size: 5vw;
-    font-weight: 100;
+    font-size: 7.5vw;
+    font-weight: 400;
     line-height: normal;
     color: white;
     text-align: left;
     margin-bottom: 1.9%;
-    margin-left: 10%;
+    margin-top: 3%;
+    margin-left: 10%
   }
   .d-we-organize-workshops-regarding-deep-lea {
     height: auto;
     width: 65%;
     font-family: "Inter";
-    font-size: 3vw;
-    font-weight: 100;
+    font-size: 4.5vw;
+    font-weight: 200;
     line-height: normal;
     color: white;
-    display: flex;
     margin-left: 10%;
+    display: flex;
   }
   .d-read-more {
     font-family: "Inter";
     width: 100%;
-    font-size: 1.5vw;
+    font-size: 3vw;
     font-weight: 200;
     line-height: normal;
+    margin-bottom: 15%;
     color: white;
     text-decoration: underline;
     position: relative;
@@ -1271,21 +1227,20 @@ border-radius: 20px;
     height: auto;
     width: 65%;
     font-family: "Inter";
-    font-size: 3vw;
+    font-size: 4.5vw;
     font-weight: 200;
     line-height: normal;
     color: white;
     display: flex;
     margin-left: 10%;
   }
-  
   .d-read-more-two {
     font-family: "Inter";
     width: 100%;
-    font-size: 1.5vw;
+    font-size: 3vw;
     font-weight: 200;
     line-height: normal;
-    color: rgb(255, 255, 255);
+    color: white;
     text-decoration: underline;
     margin-left: 0%;
     text-align: center;
@@ -1300,39 +1255,45 @@ border-radius: 20px;
     margin-left: 0%;
     position: relative;
     background-repeat: no-repeat;
-    background-color: rgb(8, 8, 8);
+    background-color: black;
     z-index: 2;
   }
   .d-flex-wrapper-three {
     height: 100%;
     background: linear-gradient(
       180deg,
-      rgb(0, 0, 0) 0%,
+      rgba(0,0,0, 1) 0%,
       rgba(241, 241, 241, 0) 100%
     );
     margin-top: 10%;
     position: relative;
     width: 100%;
   }
+  .d-accomplish {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    width: 100%;
+  }
   .d-what-do-we-want-to-accomplish {
-    max-width: 55%;
+    max-width: 75%;
     font-family: "Cinzel";
-    font-size: 5vw;
+    font-size: 7.5vw;
     font-weight: 400;
     line-height: normal;
-    color: rgb(255, 255, 255);
+    color: white;
     margin-bottom: 2.8%;
     padding-top: 10%;
     margin-left: 12%
   }
   .d-our-aim-is-to-expand-the-horizon-of-ai {
     height: 8.6%;
-    width: 40%;
+    width: 60%;
     font-family: "Inter";
-    font-size: 2vw;
+    font-size: 4vw;
     font-weight: 200;
     line-height: normal;
-    color: rgb(255, 255, 255);
+    color: white;
     display: flex;
     margin-left: 12%;
   }
@@ -1342,7 +1303,7 @@ border-radius: 20px;
     background: linear-gradient(
       180deg,
       rgba(255, 255, 255, 0) 29%,
-      rgba(240, 240, 240, 1) 100%
+      rgba(0,0,0, 1) 100%
     );
 
     display: flex;
@@ -1351,18 +1312,19 @@ border-radius: 20px;
   }
   .d-more-about-us {
     font-family: "Inter";
-    font-size: 1.5vw;
+    font-size: 3vw;
     font-weight: 200;
     line-height: normal;
     color: white;
     text-decoration: underline;
     text-align: center;
-    margin-left: 40%;
-    margin-right: 40%;
-    width: 20%;
+    width: 100%;
     position: absolute;
   }
-  
+  .d-relative-wrapper-one{
+    position: relative;
+    height: 97vw;
+  }
   @media (max-aspect-ratio: 5/5) and (min-aspect-ratio: 4/5){
     .d-white-shade{
       position: relative;
@@ -1503,7 +1465,13 @@ border-radius: 20px;
       width: 100%;
     }
   }
-  .rectangle-29 {
+
+  .d-rectangle-23 {
+    width: 100%;
+    height: 90%;
+    position: relative;
+  }
+  .d-rectangle-29 {
     width: 100%;
     height: 75%;
     background: linear-gradient(
@@ -1515,21 +1483,21 @@ border-radius: 20px;
     left: 0;
     top: 25%;
   }
-  .rectangle-70 {
+  .d-rectangle-70 {
     width: 100%;
     height: 30%;
     background: linear-gradient(
       360deg,
-      rgba(255, 250, 245, 0) 0%,
-      rgba(255, 250, 245, 1) 80%
+      rgba(0,0,0, 0) 0%,
+      rgba(0,0,0, 1) 80%
     );
     position: relative;
     left: 0;
     top: 0;
   }
-  .want-to-join-our-club {
+  .d-want-to-join-our-club {
     font-family: "Inter";
-    font-size: 3vw;
+    font-size: 4.5vw;
     font-weight: 400;
     line-height: normal;
     color: rgba(255, 255, 255, 1);
@@ -1538,7 +1506,7 @@ border-radius: 20px;
     position: relative;
     z-index: 5;
   }
-  .rectangle-71 {
+  .d-rectangle-71 {
     width: 100%;
     height: 36%;
     background: linear-gradient(
@@ -1557,61 +1525,54 @@ border-radius: 20px;
     position: relative;
     background: linear-gradient(
       360deg,
-      rgb(0, 0, 0) 50%,
-      rgb(15, 15, 15) 100%
+      rgba(0,0,0,1) 50%,
+      rgba(0,0,0,1) 100%
     );
+
     padding-top: 10%;
   }
   .d-first-student-club-in-tuerk-iye {
     font-family: "Cinzel";
-    font-size: 5vw;
+    font-size: 7.5vw;
     font-weight: 400;
     line-height: normal;
     width: 100%;
-    color: rgba(180, 180, 180);
-    text-align: center;
+    color: white;
+    text-align: left;
     display: flex;
     justify-content: center;
     align-items: center;
+    width: 70%;
     margin-left: 0%;
-    margin-right: 0%;
+    margin-right: 15%;
     margin-top: 5%;
     z-index: 6;
     /*margin-bottom: 20px;
     margin-left: 107px;*/
   }
   .d-our-ai-club-here-at-sabanci-is-the-fir {
-    height: 12.6%;
-    width: 59.5%;
+    width: 70%;
+    margin-left: 0%;
+    margin-right: 15%;
     font-family: "Inter";
-    font-size: 2vw;
+    font-size: 4vw;
     font-weight: 200;
     line-height: normal;
-    color: rgba(180, 180, 180, 1);
+    color: white;
     display: flex;
-    text-align: center;
+    text-align: left !important;
     z-index: 5;
   }
   .contact-us {
     font-family: "Inter";
-    font-size: 4vh;
+    font-size: 4vw;
     font-weight: 200;
     line-height: normal;
-    color: rgba(255, 255, 255, 1);
+    color: black;
     margin-bottom: 0%;
     text-align: center;
   }
-  .contact-us {
-    font-family: "Inter";
-    font-size: 4vh;
-    font-weight: 200;
-    line-height: normal;
-    color: rgba(255, 255, 255, 1);
-    margin-bottom: 0%;
-    text-align: center;
 }
-}
-
 @media (min-aspect-ratio: 1/1) {
   img {
     max-width: 100%;
@@ -2043,7 +2004,7 @@ border-radius: 20px;
       rgba(255,255,255,1) 10%,
       rgba(229,229,229,1) 50%
     );
-    margin-top: 0%;
+    margin-top: -5%;
     margin-bottom: -2%;
   }
   .first-student-club-in-tuerk-iye {
@@ -2132,7 +2093,13 @@ border-radius: 20px;
     color: rgba(255, 255, 255, 1);
     margin-bottom: 0%;
     text-align: center;
-}
+  }
+  .backToTop {
+    max-width:5%;
+    position: absolute;
+    right: 5%; 
+    cursor: pointer;
+  }
 }
 @media (max-aspect-ratio: 1/1) {
   img {
@@ -2153,18 +2120,18 @@ border-radius: 20px;
   .ai-sabanci-wrapper{
     margin-top: 20%; 
     margin-bottom: 20%; 
-    width: 80%; 
-    margin-left: 10%; 
-    margin-right: 10%
+    width: 60%; 
+    margin-left: 20%; 
+    margin-right: 20%
   }
   .AIatSabancihas{
     font-family: 'Inter';
     font-style: normal;
     font-weight: 400;
-    font-size: 5vw;
+    font-size: 6.5vw;
     color: white;
     margin: 20% 0 0% 15%;
-    width: 85%;
+    width: 70%;
   }
   .nvidias{
     display: inline;
@@ -2173,32 +2140,32 @@ border-radius: 20px;
   .announcements{
     text-decoration: underline;
     color: white;
-    font-size: 2vw;
+    font-size: 4vw;
     margin-left: 15%;
-    margin-top: 2%;
+    margin-top: 10%;
     margin-bottom: 20%;
-    width: 20%;
+    width: 30%;
     margin-right: 2%;
     float: left;
     cursor: pointer;
   }
   .wantToTryChatSU{
     color: white;
-    font-size: 2vw;
+    font-size: 4vw;
     display: inline;
     border: 1px solid #FFFFFF;
-    width: 25vw;
-    margin-top: 2%;
+    width: 40vw;
+    margin-top: 10%;
     margin-bottom: 20%;
     text-align: center;
     cursor: pointer;
   }
   .wantToTryChatSU:hover{
-    font-size: 2vw;
+    font-size: 4vw;
     display: inline;
     border: 1px solid #FFFFFF;
-    width: 25vw;
-    margin-top: 2%;
+    width: 40vw;
+    margin-top: 10%;
     margin-bottom: 20%;
     text-align: center;
     transition: background-color 0.5s, color 0.5s;
@@ -2222,7 +2189,6 @@ border-radius: 20px;
     margin-bottom: 18.15%;
     margin-left: 94.9%;
   }
-  /*@media (min-aspect-ratio: 2/3){*/
   .ai-sabanci {
     width: 100%;
     margin-left: 0%;
@@ -2239,35 +2205,6 @@ border-radius: 20px;
     line-height: 114px;
   }
 
-  /*}
-  @media (max-aspect-ratio: 2/3){
-    .ai-sabanci {
-      width: 100%;
-      font-family: "Michroma";
-      font-size: 3.8vw;
-      font-weight: 400;
-      line-height: normal;
-      color: rgba(255, 255, 255, 1);
-      text-align: center;
-      text-shadow: 0 4px 7px rgba(0, 0, 0, 0.4);
-      font-family: 'Michroma';
-      font-style: normal;
-      line-height: 114px;
-    }
-    .where-dreams-come-true-baby {
-      font-family: "Inter";
-      font-size: 2vw;
-      width: 70%;
-      font-weight: 500;
-      line-height: normal;
-      color: rgba(255, 255, 255, 1);
-      text-align: center;
-      margin-bottom: 0%;
-      margin-left: 15%;
-      margin-right: 15%;
-      text-shadow: 0 4px 4px rgba(0, 0, 0, 0.25);
-    }
-  }*/
   .rectangle-92 {
     width: 100%;
     height: 100%;
@@ -2313,7 +2250,7 @@ border-radius: 20px;
   }
   .ai-workshops {
     font-family: "Cinzel";
-    font-size: 5vw;
+    font-size: 7.5vw;
     font-weight: 400;
     line-height: normal;
     color: rgba(54, 54, 54, 1);
@@ -2326,7 +2263,7 @@ border-radius: 20px;
     height: auto;
     width: 65%;
     font-family: "Inter";
-    font-size: 3vw;
+    font-size: 4.5vw;
     font-weight: 200;
     line-height: normal;
     color: rgba(86, 86, 86, 1);
@@ -2336,9 +2273,10 @@ border-radius: 20px;
   .read-more {
     font-family: "Inter";
     width: 100%;
-    font-size: 1.5vw;
+    font-size: 3vw;
     font-weight: 200;
     line-height: normal;
+    margin-bottom: 15%;
     color: rgba(0, 0, 0, 1);
     text-decoration: underline;
     position: relative;
@@ -2348,7 +2286,7 @@ border-radius: 20px;
     height: auto;
     width: 65%;
     font-family: "Inter";
-    font-size: 3vw;
+    font-size: 4.5vw;
     font-weight: 200;
     line-height: normal;
     color: rgba(86, 86, 86, 1);
@@ -2358,7 +2296,7 @@ border-radius: 20px;
   .read-more-two {
     font-family: "Inter";
     width: 100%;
-    font-size: 1.5vw;
+    font-size: 3vw;
     font-weight: 200;
     line-height: normal;
     color: rgba(0, 0, 0, 1);
@@ -2397,9 +2335,9 @@ border-radius: 20px;
     width: 100%;
   }
   .what-do-we-want-to-accomplish {
-    max-width: 55%;
+    max-width: 75%;
     font-family: "Cinzel";
-    font-size: 5vw;
+    font-size: 7.5vw;
     font-weight: 400;
     line-height: normal;
     color: rgba(54, 54, 54, 1);
@@ -2409,9 +2347,9 @@ border-radius: 20px;
   }
   .our-aim-is-to-expand-the-horizon-of-ai {
     height: 8.6%;
-    width: 40%;
+    width: 60%;
     font-family: "Inter";
-    font-size: 2vw;
+    font-size: 4vw;
     font-weight: 200;
     line-height: normal;
     color: rgba(86, 86, 86, 1);
@@ -2433,7 +2371,7 @@ border-radius: 20px;
   }
   .more-about-us {
     font-family: "Inter";
-    font-size: 1.5vw;
+    font-size: 3vw;
     font-weight: 200;
     line-height: normal;
     color: rgba(0, 0, 0, 1);
@@ -2618,7 +2556,7 @@ border-radius: 20px;
   }
   .want-to-join-our-club {
     font-family: "Inter";
-    font-size: 3vw;
+    font-size: 4.5vw;
     font-weight: 400;
     line-height: normal;
     color: rgba(255, 255, 255, 1);
@@ -2649,71 +2587,40 @@ border-radius: 20px;
       rgba(255,255,255,1) 50%,
       rgba(229,229,229,1) 100%
     );
+    margin-top: -5%;
     padding-top: 10%;
   }
   .first-student-club-in-tuerk-iye {
     font-family: "Cinzel";
-    font-size: 5vw;
+    font-size: 7.5vw;
     font-weight: 400;
     line-height: normal;
     width: 100%;
     color: rgba(54, 54, 54, 1);
-    text-align: center;
+    text-align: left;
     display: flex;
     justify-content: center;
     align-items: center;
+    width: 70%;
     margin-left: 0%;
-    margin-right: 0%;
+    margin-right: 15%;
     margin-top: 5%;
     z-index: 6;
     /*margin-bottom: 20px;
     margin-left: 107px;*/
   }
   .our-ai-club-here-at-sabanci-is-the-fir {
-    height: 12.6%;
-    width: 59.5%;
+    width: 70%;
+    margin-left: 0%;
+    margin-right: 15%;
     font-family: "Inter";
-    font-size: 2vw;
+    font-size: 4vw;
     font-weight: 200;
     line-height: normal;
     color: rgba(86, 86, 86, 1);
     display: flex;
-    text-align: center;
+    text-align: left;
     z-index: 5;
-  }
-  .contact-us {
-    font-family: "Inter";
-    font-size: 1.5vw;
-    font-weight: 200;
-    line-height: normal;
-    color: rgba(255, 255, 255, 1);
-    margin-bottom: 2%;
-  }
-  .powered-by-squared-space {
-    font-family: "Inter";
-    font-size: 18px;
-    font-weight: 400;
-    line-height: normal;
-    color: rgba(255, 255, 255, 1);
-  }
-  .back-to-top-two {
-    margin-top: 0.8%;
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-  }
-  .union-two {
-    width: 34.34px;
-    height: 19.17px;
-    margin-bottom: 12px;
-  }
-  .back-to-top {
-    font-family: "Inter";
-    font-size: 18px;
-    font-weight: 300;
-    line-height: normal;
-    color: rgba(255, 255, 255, 1);
-    text-align: center;
   }
   .contact-us {
     font-family: "Inter";
@@ -2723,7 +2630,14 @@ border-radius: 20px;
     color: rgba(255, 255, 255, 1);
     margin-bottom: 0%;
     text-align: center;
-}
+  }
+  .backToTop {
+    max-width: 15%;
+    position: absolute;
+    right: 5%; 
+    bottom: 10%;
+    cursor: pointer;
+  }
 }
 
 .flex-wrapper-seven {
